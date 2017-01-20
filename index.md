@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## THUNDERKATZ
 
 You can use the [editor on GitHub](https://github.com/r-meagher/CS2212Group14/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
