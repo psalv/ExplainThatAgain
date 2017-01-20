@@ -1,6 +1,9 @@
 # THUNDERKATZ
 
-[Team Roster](../CS2212Group14/teamWebsite/teamroster)
+[Team Roster](../CS2212Group14/teamroster)
+[Software Design](../CS2212Group14/softwareDesign)
+[UI Design](../CS2212Group14/UIDesign)
+[Project Plan](../CS2212Group14/projectPlan)
 
 
 You can use the [editor on GitHub](https://github.com/r-meagher/CS2212Group14/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
