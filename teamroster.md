@@ -3,7 +3,7 @@
 <img src="https://raw.githubusercontent.com/r-meagher/CS2212Group14/master/resources/paul.jpg?token=AX1VEvInn6xuL2OWdO0w4fjdUbRHsVZhks5YkPniwA%3D%3D" width="100" height="100" />
 Salvatore, Paul
 
-Chevrette, Olivia S
+<img src="https://raw.githubusercontent.com/r-meagher/CS2212Group14/master/resources/olivia.jpg?token=AX1VEh-OoTwhjfrQVfbO5unFIernJNF5ks5YkP2owA%3D%3DChevrette" width="100" height="100" /> Olivia Chevrette
 
 Chen, Jianan
 
