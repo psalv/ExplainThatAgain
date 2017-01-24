@@ -12,15 +12,15 @@ Jake Schindler
 <img src="https://github.com/r-meagher/CS2212Group14/blob/master/resources/bryce.png?raw=true" width="100" height="100" />
 Bryce Reid
 
+<img src="https://github.com/r-meagher/CS2212Group14/blob/master/resources/martin.png?raw=true" width="100" height="100" />
+Martin Vieira
+
+<img src="https://github.com/r-meagher/CS2212Group14/blob/master/resources/adithya.png?raw=true" width="100" height="100" />
+Sukumar, Adithya
+
 Chen, Jianan
 
 Meagher, Robert Michael
-
-Reid, Bryce
-
-Sukumar, Adithya
-
-Vieira, Martin
 
 Koh, Justin
 
