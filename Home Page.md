@@ -1,6 +1,6 @@
 # THUNDERKATZ - CS 2212 Group 14
 ---
-<img src="https://a2-images.myspacecdn.com/images03/31/d8dacc0baf4645dcb7b72e1acbdea57b/300x300.jpg" alt="Thunderkatz Logo" width="128" height="128">
+<img src="https://raw.githubusercontent.com/r-meagher/CS2212Group14/master/resources/thunderkatz.jpg?token=AX5ksmtkdautpcum63TqOByd7br0Hd-Qks5YkP7HwA%3D%3D" alt="Thunderkatz Logo" width="128" height="128">
 
 [Team Roster](../CS2212Group14/teamroster)     
              [Software Design](../CS2212Group14/softwareDesign)      
