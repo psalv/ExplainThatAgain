@@ -6,7 +6,7 @@ Salvatore, Paul
 <img src="https://raw.githubusercontent.com/r-meagher/CS2212Group14/master/resources/olivia.jpg?token=AX1VEsVZPNmtyacqw_2MSw-Jk80z1ceqks5YkP42wA%3D%3D" width="100" height="100" /> 
 Olivia Chevrette
 
-<img src="https://raw.githubusercontent.com/r-meagher/CS2212Group14/master/resources/jake.png?token=AX1VEhxVjIk6CgbrTR4EfsIdVA4ytcNYks5YkP-PwA%3D%3D" width="100" height="100" />
+<img src="https://github.com/r-meagher/CS2212Group14/blob/master/resources/jake.png?raw=true" width="100" height="100" />
 Schindler, Jake
 
 Chen, Jianan
