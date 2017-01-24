@@ -1,6 +1,7 @@
 # Team Roster
 
-<p> Chen, Jianan<br>
+<p> <img src="paul.jpg" alt="Paul" height="50" width="50> 
+Chen, Jianan<br>
 Chevrette, Olivia S<br>
 Meagher, Robert Michael<br>
 Reid, Bryce John<br>
