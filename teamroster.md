@@ -1,6 +1,7 @@
 # Team Roster
 
-<p> <img src="paul.jpg" alt="Paul" height="50" width="50> 
+<p> 
+<img src="fire.png" alt="Pic" width="128" height="128"><br>
 Chen, Jianan<br>
 Chevrette, Olivia S<br>
 Meagher, Robert Michael<br>
