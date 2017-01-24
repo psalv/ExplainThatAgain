@@ -1,14 +1,13 @@
 # Team Roster
 
-<p> 
-<img src="fire.png" alt="Pic" width="128" height="128"><br>
-Chen, Jianan<br>
-Chevrette, Olivia S<br>
-Meagher, Robert Michael<br>
-Reid, Bryce John<br>
-Salvatore, Paul<br>
-Schindler, Jake<br>
-Sukumar, Adithya<br>
-Vieira, Martin<br>
-Koh, Justin<br>
-</p>
+![alt text] (https://raw.githubusercontent.com/r-meagher/CS2212Group14/master/resources/paul.jpg?token=AX1VEgRSi3gpnPlu5j5TO5qyAxHF-n-_ks5YkPfMwA%3D%3D Paul)
+Chen, Jianan
+Chevrette, Olivia S
+Meagher, Robert Michael
+Reid, Bryce John
+Salvatore, Paul
+Schindler, Jake
+Sukumar, Adithya
+Vieira, Martin
+Koh, Justin
+
