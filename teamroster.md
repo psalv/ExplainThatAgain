@@ -1,6 +1,6 @@
 # Team Roster
 
-![alt text](CS2212Group14/resources/paul.jpg)
+![alt img](https://github.com/r-meagher/CS2212Group14/resources/paul.jpg|alt=octocat])
 
 Chen, Jianan
 
