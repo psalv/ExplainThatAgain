@@ -23,15 +23,19 @@ Sukumar, Adithya
 <img src="https://github.com/r-meagher/CS2212Group14/blob/master/resources/chen.png?raw=true" width="100" height="100" />
 Jianan Chen 
 
-<img src="https://github.com/r-meagher/CS2212Group14/blob/master/resources/robert.png?raw=true" width="100" height="100" />
-Robert Meagher
-*Backend*
-A fourth-year Mechatronics Engineering / Computer Science dual degree taker. Likes robots, soccer, and the Toronto Maple Leafs, who will definitely, totally make playoffs this year.
-
-Background: Currently grey (unless the site changes)
-Languages: Java, C++, English
-Hobbies: In engineering, no time for hobbies
-Philosophy: \"Due tomorrow, do tomorrow\"
+<hr>
+<img src="https://github.com/r-meagher/CS2212Group14/blob/master/resources/robert.png?raw=true" width="100" height="100" /> 
+<br>Robert Meagher
+<br>*Backend*
+<br>A fourth-year Mechatronics Engineering / Computer Science dual degree taker. Likes robots, soccer, and the Toronto Maple Leafs, who will definitely, totally make playoffs this year. Best moustache on the team.
+<p>
+  Background: Currently grey (unless the site changes)
+  <br>Languages: Java, C++, Python, Arduino, English
+  <br>IDEs: Intellij, Sublime, Visual Studio, Arduino
+  <br>Hobbies: In engineering, no time for hobbies
+  <br>Philosophy: "Due tomorrow, do tomorrow"
+</p>
+<hr>
 
 Koh, Justin
 
