@@ -48,6 +48,6 @@
 </p>
 
 <hr>
-<img src="" width="100" height="100" />
+<img src="https://github.com/r-meagher/CS2212Group14/blob/master/resources/justin.png?raw=true" width="100" height="100" />
 <br>Justin Koh 
 <br>*Frontend*
