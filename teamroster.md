@@ -18,7 +18,7 @@
 <img src="https://github.com/r-meagher/CS2212Group14/blob/master/resources/bryce.png?raw=true" width="100" height="100" />
 <br>Bryce Reid
 <br>*Frontend*
-<br>A second-year Computer Science student. Likes reading, watching movies, and is a huge Harry Pottter fan.
+<br>A second-year Computer Science student. Likes reading, watching movies, and is a huge Harry Potter fan.
 <p>
   Background: Currently grey (unless the site changes)
   <br>Languages: Java, C, Python, English
