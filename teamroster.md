@@ -51,3 +51,8 @@
 <img src="https://github.com/r-meagher/CS2212Group14/blob/master/resources/justin.png?raw=true" width="100" height="100" />
 <br>Justin Koh 
 <br>*Frontend*
+<br>I am a second-year Computer Science student. I hope to get into game development, and like playing rugby/listening to hip hop. Have no moustache to contribute to the team.
+<p>
+	Languages: Java, Python, JavaScript, some C# script, swift
+	<br>Tools: Eclipse, Unity, Pycharm
+	<br>Hobbies: Gaming, Gym, Trying to make cool side projects
