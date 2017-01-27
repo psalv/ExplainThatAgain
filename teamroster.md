@@ -30,12 +30,6 @@
 <img src="https://github.com/r-meagher/CS2212Group14/blob/master/resources/martin.png?raw=true" width="100" height="100" />
 <br>Martin Vieira
 <br>*Frontend*
-<br>A second-year Computer Science student. Likes soccer, playing cards, partying.
-<p>
-  <br>Languages: Java, C, Python
-  <br>IDEs: Intellij, Eclipse
-  <br>Hobbies: Eating, Sleeping
-</p>
 
 <hr>
 <img src="https://github.com/r-meagher/CS2212Group14/blob/master/resources/adithya.png?raw=true" width="100" height="100" />
@@ -46,7 +40,11 @@
 <img src="https://github.com/r-meagher/CS2212Group14/blob/master/resources/chen.png?raw=true" width="100" height="100" />
 <br>Jianan Chen 
 <br>*Backend*
-
+<br>A second-year Compsci student who does not hate coding.
+<br>Languages: Java, C, Python, Chinese, Japanese
+<br>IDEs: Eclipse, learining Spring
+<br>Hobbies: gaming (League of Legends bronze player), basketball & tennis.
+   
 <hr>
 <img src="https://github.com/r-meagher/CS2212Group14/blob/master/resources/robert.png?raw=true" width="100" height="100" /> 
 <br>Robert Meagher
