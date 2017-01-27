@@ -30,6 +30,12 @@
 <img src="https://github.com/r-meagher/CS2212Group14/blob/master/resources/martin.png?raw=true" width="100" height="100" />
 <br>Martin Vieira
 <br>*Frontend*
+<br>A second-year Computer Science student. Likes soccer, playing cards, partying.
+<p>
+  <br>Languages: Java, C, Python
+  <br>IDEs: Intellij, Eclipse
+  <br>Hobbies: Eating, Sleeping
+</p>
 
 <hr>
 <img src="https://github.com/r-meagher/CS2212Group14/blob/master/resources/adithya.png?raw=true" width="100" height="100" />
@@ -47,7 +53,7 @@
 <br>*Backend*
 <br>A fourth-year Mechatronics Engineering / Computer Science dual degree taker. Likes robots, soccer, and the Toronto Maple Leafs, who will definitely, totally make playoffs this year. Best moustache on the team.
 <p>
-  Background: #f2f2f2
+  Background: Currently grey (unless the site changes)
   <br>Languages: Java, C++, Python, Arduino, English
   <br>IDEs: Intellij, Sublime, Visual Studio, Arduino
   <br>Hobbies: In engineering, no time for hobbies
