@@ -42,6 +42,7 @@
 <br>IDEs: Eclipse
 <br>Hobbies: Eating, Sleeping, Netflix.
 
+<hr>
 <img src="https://github.com/r-meagher/CS2212Group14/blob/master/resources/adithya.png?raw=true" width="100" height="100" />
 <br>Adithya Sukumar
 <br>*Backend / Testing*
