@@ -8,6 +8,13 @@
 <img src="https://raw.githubusercontent.com/r-meagher/CS2212Group14/master/resources/olivia.jpg?token=AX1VEsVZPNmtyacqw_2MSw-Jk80z1ceqks5YkP42wA%3D%3D" width="100" height="100" /> 
 <br>Olivia Chevrette
 <br>*Backend*
+<br>Third-year Accounting and Computer Science major with a football problem. Likes peanut butter, country music (sorry) and the Habs (not sorry). Dislikes the fact she can’t compete in the race for best moustache.
+<p>
+  Languages: Java, C, Python, SQL
+  <br>IDEs: Eclipse, Pycharm
+  <br>Hobbies: Crosswords, Rewatching How I Met Your Mother, Overthinking, Ceeps
+  <br>Philosophy: "Pick a bitch, hit a bitch"
+</p>
 
 <hr>
 <img src="https://github.com/r-meagher/CS2212Group14/blob/master/resources/jake.png?raw=true" width="100" height="100" />
