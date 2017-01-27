@@ -84,7 +84,7 @@
 	Languages: Java, Python, JavaScript, some C# script, swift
 	<br>Tools: Eclipse, Unity, Pycharm
 	<br>Hobbies: Gaming, Gym, Trying to make cool side projects
+</p>
 
 
-
-<a href="index.md">Back</a>
+<a style="font-size: 20px; margin-top: 10px;" href="index">Back</a>
