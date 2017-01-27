@@ -47,7 +47,7 @@
 <br>*Backend*
 <br>A fourth-year Mechatronics Engineering / Computer Science dual degree taker. Likes robots, soccer, and the Toronto Maple Leafs, who will definitely, totally make playoffs this year. Best moustache on the team.
 <p>
-  Background: Currently grey (unless the site changes)
+  Background: #f2f2f2
   <br>Languages: Java, C++, Python, Arduino, English
   <br>IDEs: Intellij, Sublime, Visual Studio, Arduino
   <br>Hobbies: In engineering, no time for hobbies
