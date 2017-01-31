@@ -12,8 +12,11 @@
 
 ---
 
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 <p align="center">
-<img src="https://raw.githubusercontent.com/r-meagher/CS2212Group14/master/resources/ETA.png?token=AX4KmspZsUi29gtL-eyxU8UAL7rp4pA8ks5Ymh0kwA%3D%3D" alt="Thunderkatz Logo" width="156" height="256" style="margin-left: 50%">
+<img src="https://raw.githubusercontent.com/r-meagher/CS2212Group14/master/resources/ETA.png?token=AX4KmspZsUi29gtL-eyxU8UAL7rp4pA8ks5Ymh0kwA%3D%3D" alt="Thunderkatz Logo" width="156" height="256" class="center">
 </p>
 
 #### Explain That Again
