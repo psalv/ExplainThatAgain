@@ -1,5 +1,5 @@
 # THUNDERKATZ
-<img src="https://raw.githubusercontent.com/r-meagher/CS2212Group14/master/resources/thunderkatz.jpg?token=AX5ksmtkdautpcum63TqOByd7br0Hd-Qks5YkP7HwA%3D%3D" alt="Thunderkatz Logo" width="128" height="128">
+<img src="https://raw.githubusercontent.com/r-meagher/CS2212Group14/master/resources/Thunderkatz.png?token=AX4KmmAKGiGzDJs1oEqBVhG93DG5u0-Pks5YmhyjwA%3D%3D" alt="Thunderkatz Logo" width="256" height="200">
 
 ---
 [Team Roster](../CS2212Group14/teamroster)
