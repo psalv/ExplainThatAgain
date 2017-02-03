@@ -2,13 +2,13 @@
 <img src="https://raw.githubusercontent.com/r-meagher/CS2212Group14/master/resources/Thunderkatz.png?token=AX4KmmAKGiGzDJs1oEqBVhG93DG5u0-Pks5YmhyjwA%3D%3D" alt="Thunderkatz Logo" width="256" height="200">
 
 ---
-[Team Roster](../CS2212Group14/teamroster)
+[Team Roster](teamroster.md)
 
-[Software Design](../CS2212Group14/softwareDesign) 
+[Software Design](softwareDesign.md) 
 
-[UI Design](../CS2212Group14/UIDesign)
+[UI Design](UIDesign.md)
 
-[Project Plan](../CS2212Group14/projectPlan)
+[Project Plan](projectPlan.md)
 
 ---
 
