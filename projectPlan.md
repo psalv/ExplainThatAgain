@@ -11,3 +11,6 @@ Lectures will be documented on the professor's personal page. This will allow st
 
 ### Audio Recording
 Professors will be able to record their lecture's audio. These audio files will be available to students for playback. This is accomplished through the built in Java feature of recording audio. The files will be saved to the professor's personal page.
+
+### Professor Resources
+Professors will be able to view and download lecture notes and chat logs of previous lectures. They will also be able to set lectures live allowing students to join and see the lecture in real time.
