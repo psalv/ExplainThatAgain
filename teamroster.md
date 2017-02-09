@@ -33,7 +33,7 @@
 <br>*Frontend*
 <br>A second-year Computer Science student. Likes reading, watching movies, and is a huge Harry Potter fan.
 <p>
-  Background: Currently grey (unless the site changes)
+  Role: Photoshop Champ - "Master of the Magic Wand Tool"
   <br>Languages: Java, C, Python, English
   <br>IDEs: Eclipse
   <br>Hobbies: Gaming, Reading, Writing, Watching Anime
