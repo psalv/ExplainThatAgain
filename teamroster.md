@@ -52,6 +52,10 @@
 <img src="https://github.com/r-meagher/CS2212Group14/blob/master/resources/adithya.png?raw=true" width="100" height="100" />
 <br>Adithya Sukumar
 <br>*Backend / Testing*
+<br>A second-year Compsci student (barely).
+<br>Languages: Java, C, Python, HTML, CSS, Javascript, SQL
+<br>IDEs: Intellij, Eclipse
+<br>Hobbies: Phoptography, snowboarding
 
 <hr>
 <img src="https://github.com/r-meagher/CS2212Group14/blob/master/resources/chen.png?raw=true" width="100" height="100" />
