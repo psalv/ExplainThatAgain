@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a77a4621-c5f1-4576-a4ae-cc3b996bb04e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/CS2212Group14.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+    <list default="true" id="a77a4621-c5f1-4576-a4ae-cc3b996bb04e" name="Default" comment="Removing .idea to get out of git index so we can avoid checkout errors.">
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -162,12 +158,20 @@
       <option name="presentableId" value="Default" />
       <updated>1486179989783</updated>
       <workItem from="1486179991195" duration="2198000" />
-      <workItem from="1487693511982" duration="102000" />
+      <workItem from="1487693511982" duration="290000" />
     </task>
+    <task id="LOCAL-00001" summary="Removing .idea to get out of git index so we can avoid checkout errors.">
+      <created>1487693659337</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1487693659337</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2300000" />
+    <option name="totallyTimeSpent" value="2488000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
@@ -209,11 +213,23 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Removing .idea to get out of git index so we can avoid checkout errors." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removing .idea to get out of git index so we can avoid checkout errors." />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/resources/Login/ExplainThisAgain Prof View v1.jpg" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
