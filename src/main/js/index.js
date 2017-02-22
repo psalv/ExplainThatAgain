@@ -1,6 +1,4 @@
-/**
- * Created by ethan on 04/02/17.
- */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Example } from './example';
