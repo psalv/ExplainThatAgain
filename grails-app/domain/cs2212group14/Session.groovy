@@ -1,4 +1,4 @@
-package explainthatagain
+package cs2212group14
 
 /*
 A session contains the transcript of the content of the lecture, powerpoints and the
@@ -7,9 +7,9 @@ at that time spot. Students can add comments to chatroom. “Most confusing” g
  */
 class Session {
 
-    private int sessionID
+    int sessionID
     static hasOne = [transcript: Transcript, powerpoint: Presentation, chatroom: ChatRoom, graph: Graph]
-
+    File notes;
 
     //TODO: ChatRoom must be init
 
@@ -17,6 +17,18 @@ class Session {
         transcript nullable: true
         powerpoint nullable: true
         graph nullable: true
+
+    }
+
+    def beginSession(){
+
+    }
+
+    def endSession(){
+
+    }
+
+    def uploadNotes(String path){
 
     }
 }
