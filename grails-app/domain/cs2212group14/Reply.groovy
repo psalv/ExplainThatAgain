@@ -1,4 +1,4 @@
-package explainthatagain
+package cs2212group14
 
 import java.time.LocalDateTime
 
@@ -6,6 +6,7 @@ class Reply {
 
     String text
     static hasOne = [poster: User, commentThread: Comment]
+
     //TODO: find the right date/time to use
     LocalDateTime datePosted
 

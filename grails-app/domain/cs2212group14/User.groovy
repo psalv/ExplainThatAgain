@@ -1,4 +1,4 @@
-package explainthatagain
+package cs2212group14
 
 class User {
 
@@ -6,6 +6,8 @@ class User {
     String username
     String email
     String password
+
+    static hasMany = [posts: Reply]
 
     static constraints = {
         realName nullable: false
