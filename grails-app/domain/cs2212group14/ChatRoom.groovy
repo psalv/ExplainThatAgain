@@ -7,5 +7,6 @@ class ChatRoom {
 
     static constraints = {
         commentList nullable: true
+        session nullable: true //so that ChatRoom can be created to add to Session
     }
 }
