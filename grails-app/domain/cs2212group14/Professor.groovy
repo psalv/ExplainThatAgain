@@ -7,4 +7,5 @@ class Professor extends User {
     static constraints = {
         //classesTeaching nullable:true
     }
+
 }

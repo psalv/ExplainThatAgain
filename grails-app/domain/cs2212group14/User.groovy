@@ -15,4 +15,8 @@ class User {
         password size: 5..15, blank: false
         email email: true, blank: false
     }
+
+    def getUserName(){
+        return userName
+    }
 }

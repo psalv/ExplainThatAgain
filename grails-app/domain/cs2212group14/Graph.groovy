@@ -14,5 +14,6 @@ class Graph {
 
 
     static constraints = {
+        session nullible: true //so that ChatRoom can be created to add to Session
     }
 }

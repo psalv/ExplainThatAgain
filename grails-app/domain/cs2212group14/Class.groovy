@@ -3,18 +3,17 @@ package cs2212group14
 class Class {
 
     String className
-    Date startDate, endDate
+    //TODO: determine how to do start and end dates
+    //Date startDate, endDate
 
-    static belongsTo = [owner: Professor]
-    static hasMany = [admins: User, students: Student, sessionList: Session]
+    static belongsTo = [professor: Professor]
+    static hasMany = [admins: User, students: Student, sessions: Session]
 
-    //TODO: need to initially add owner to admin
 
     static constraints = {
 
-        className nullable: false
         students nullable: true
-        sessionList nullable: true
+        sessions nullable: true
 
     }
 }
