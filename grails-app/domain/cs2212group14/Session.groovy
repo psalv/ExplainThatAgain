@@ -7,11 +7,10 @@ at that time spot. Students can add comments to chatroom. “Most confusing” g
  */
 class Session {
 
-    public static int currentID = 0
     int sessionID
     static hasOne = [transcript: Transcript, powerpoint: Presentation, chatroom: ChatRoom, graph: Graph]
     static belongsTo = [class: Class]
-    File notes;
+    File notes
 
 
     static constraints = {
