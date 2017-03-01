@@ -9,13 +9,18 @@ class Session {
 
     int sessionID
     static hasOne = [transcript: Transcript, powerpoint: Presentation, chatroom: ChatRoom, graph: Graph]
-    static belongsTo = [class: Class]
+    static belongsTo = [course: Course]
     File notes
 
 
     static constraints = {
         transcript nullable: true
         powerpoint nullable: true
+        chatroom nullable: true
+        graph nullable: true
+        notes nullable: true
+        sessionID nullable: false
+
 
     }
 

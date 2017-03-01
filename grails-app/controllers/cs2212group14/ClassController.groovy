@@ -9,14 +9,14 @@ class ClassController extends RestfulController {
     static responceFormats = ['json', 'xml']
 
     ClassController(){
-        super(Class)
+        super(Course)
     }
 
     def index() {
         render "I am a ClassController"
     }
 
-    //creates a new Class
+    //creates a new Course
     //PARAM {classname: String, prof: Professor}
     def createClass(){
         def classstring = params.classname
@@ -27,8 +27,8 @@ class ClassController extends RestfulController {
             response.status = 404
         }else{
             //creates new prof and adds profs to admin as well
-            new Class(professor: professor, admins: professor, className: classstring).save()
-            System.out.print('Class created. Name: '+ classstring)
+            new Course(professor: professor, admins: professor, className: classstring).save()
+            System.out.print('Course created. Name: '+ classstring)
             response.status = 200
         }
     }

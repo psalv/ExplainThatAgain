@@ -12,7 +12,7 @@ class User {
     static constraints = {
         realName nullable: false
         username nullable: false
-        password size: 5..15, blank: false
+        password size: 4..15, blank: false
         email email: true, blank: false
     }
 

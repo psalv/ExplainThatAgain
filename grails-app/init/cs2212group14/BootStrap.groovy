@@ -3,11 +3,15 @@ package cs2212group14
 class BootStrap {
 
     def init = { servletContext ->
-        def test="test"
-        new Professor(realname: test, username: test, password: test, email: test, verified: true).save()
-        new Class(owner: Professor.findByRealName(test), className: test).save()
-        new Session(class: Class.findByClassName(test), sessionID: 1).save()
-        new Graph(session: Session.findBySessionID(1), graphID: 1).save()
+        new Professor(realName: "test", username: "test", password: "test", email: "test@test.ca", verified: true).save(flush: true, failOnError: true)
+        new Course(prof: Professor.findByRealName("test"), courseName: "test").save(flush: true, failOnError: true)
+        new Session(course: Course.findByCourseName("test"), sessionID: 1).save(flush: true, failOnError: true)
+        new Graph(session: Session.findBySessionID(1), graphID: 1).save(flush: true, failOnError: true)
+
+        println Professor.findAll()
+        println Course.findAll()
+        println Session.findAll()
+        println Graph.findAll()
     }
     def destroy = {
     }
