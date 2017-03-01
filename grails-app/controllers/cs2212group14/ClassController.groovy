@@ -5,7 +5,7 @@ import grails.rest.RestfulController
 
 class ClassController extends RestfulController {
 
-    static allowedMethods = [createClass: 'POST']
+    static allowedMethods = [createClass: 'POST', deleteClass: 'DELETE', getSessions: 'GET']
     static responceFormats = ['json', 'xml']
 
     ClassController(){
@@ -17,13 +17,13 @@ class ClassController extends RestfulController {
     }
 
     //creates a new Class
-    //PARAM {classname: String, prof: Professor}
+    //PARAM {classname: String, user: User}
     def createClass(){
         def classstring = params.classname
-        def prof = Professor.find{username == params.prof}
-        if (prof == null){
+        def user = User.find{username == params.user}
+        if (user == null){
             // if the prof doesnt exist
-            System.out.print('no prof found by username: ' + params.prof)
+            System.out.print('no user found by username: ' + params.user)
             response.status = 404
         }else{
             //creates new prof and adds profs to admin as well
@@ -32,4 +32,40 @@ class ClassController extends RestfulController {
             response.status = 200
         }
     }
+
+    //Deletes a Class
+    //PARAM {classname: String}
+    def deleteClass(){
+        def foundclass = Class.find{className == params.classname}
+        if (foundclass == null){
+            //class doesn't exist
+            System.out.print("Class doesn't exist -Class Name: " + params.classname)
+            response.status = 404
+        }else{
+            //deletes class
+            foundclass.delete(flush: true)
+            System.out.print('Class deleted. Class Name: '+ classname)
+            response.status = 200
+        }
+    }
+    //returns all the sessions in a Class
+    //PARAMS {classname: Class}
+    def getSessions(){
+        System.out.println('request received.')
+        def foundclass = Class.find{className == params.classname}
+
+        if(foundclass!=null){
+            respond foundclass.getSessions()
+        }
+        else{
+            response.status = 404
+        }
+    }
+
+    def addAdmins(){
+
+    }
+
+    def deleteAdmins(){}
+
 }
