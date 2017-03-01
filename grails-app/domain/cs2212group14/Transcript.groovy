@@ -10,7 +10,7 @@ class Transcript {
 
 
     static constraints = {
-        recording nullable: false
+//        recording nullable: false
         transcription nullable: true
 
     }

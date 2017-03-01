@@ -12,39 +12,47 @@ class GraphController extends RestfulController{
 
     def addInstance() {
 
-        def session = Session.findBySessionID((Integer)params.sessionID)
+        response.status = 404
+        println "\nSlide number sent to add instance: " + (String)params.slide
+        def session = Session.findBySessionID(Integer.parseInt(params.sessionID))
 
-        println "in instance"
         if(session != null){
-            println "found session"
             def graph = session.getGraph()
             if(graph != null){
                 new GraphInstance(graph: graph, slide: params.slide).save()
                 response.status = 200
-                return
             }
         }
-        println "did not find session"
-        response.status = 404
-
     }
 
 
     def updateInstance() {
-//        def uname = params.userName
-//        System.out.print(uname + ": ")
-//        def account = UserAccount.find{userName == uname}
-//        if(account == null){
-//            account = new UserAccount(userName: uname, password: "2212")
-//            new Profile(ownerAccount: account).save()
-//            System.out.print('created')
-//            response.status = 200
-//        }
-//        else{
-//            // Find a better response code...
-//            System.out.println('already there')
-//            response.status = 404
-//        }
+
+        response.status = 404
+        println "\nSlide number sent to update confusion: " + (String)params.slide
+        def session = Session.findBySessionID(Integer.parseInt(params.sessionID))
+        println GraphInstance.findAll()
+
+        if(session != null){
+            def graph = session.getGraph()
+            if(graph != null){
+                def inst = null
+
+                // todo: this can be sped up
+                for(GraphInstance i: graph.getGraphPoints()){
+                    if(i.getSlide() == Integer.parseInt(params.slide)){
+                        inst = i
+                        break
+                    }
+                }
+                if(inst != null){
+                    inst.incrementConfused()
+                    inst.save(flush: true, failOnError: true)
+                    println "Current confusion: " + inst.getConfused()
+                    response.status = 200
+                }
+            }
+        }
     }
 
 }

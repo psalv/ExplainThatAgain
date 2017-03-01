@@ -11,4 +11,8 @@ class GraphInstance {
         slide nullable: false
     }
 
+    void incrementConfused() {
+        confused++
+    }
+
 }

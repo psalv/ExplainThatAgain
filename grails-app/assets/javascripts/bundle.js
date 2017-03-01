@@ -9477,46 +9477,42 @@ var GraphUpdaterField = _react2.default.createClass({
     },
 
 
-    // Event handler for button clicked / enter typed
-    handleClick: function handleClick(e) {
-        // Prevents reinitialization
-        e.preventDefault();
-        // let slide = this.state.slide;
-        // fetch('http://localhost:8080/Graph/updateInstance?slide=' + slide, {
-        //     method: 'POST',
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     }
-        // }).then(res =>{
-        //     if(res.ok){
-        //         this.setState({success1: 'You did not understand.'});
-        //     }
-        //     else{
-        //         this.setState({success1: 'Our server did not understand.'});
-        //     }
-        // })
-    },
+    // TODO: add a method for finding the session ID.
 
-
-    // Event handler for button clicked / enter typed
-    handleSlide: function handleSlide(e) {
+    handleConfused: function handleConfused(e) {
         var _this = this;
 
         // Prevents reinitialization
         e.preventDefault();
-        var slide = ++this.state.slide;
-        fetch('http://localhost:8080/Graph/addInstance?sessionID=1&slide=' + slide, {
+        fetch('http://localhost:8080/Graph/updateInstance?sessionID=1&slide=' + this.state.slide, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
             }
         }).then(function (res) {
             if (res.ok) {
-                _this.state.slide++;
-                _this.setState({ success2: 'New slide instance created.' });
+                _this.setState({ success1: 'You did not understand.' });
             } else {
-                --_this.state.slide;
-                _this.setState({ success2: 'Trouble creating slide instance.' });
+                _this.setState({ success1: 'Our server did not understand.' });
+            }
+        });
+    },
+    handleSlide: function handleSlide(e) {
+        var _this2 = this;
+
+        // Prevents reinitialization
+        e.preventDefault();
+        fetch('http://localhost:8080/Graph/addInstance?sessionID=1&slide=' + ++this.state.slide, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (res) {
+            if (res.ok) {
+                _this2.setState({ success2: 'New slide instance created.' });
+            } else {
+                --_this2.state.slide;
+                _this2.setState({ success2: 'Trouble creating slide instance.' });
             }
         });
     },
@@ -9526,7 +9522,7 @@ var GraphUpdaterField = _react2.default.createClass({
             null,
             _react2.default.createElement(
                 "button",
-                { defaultValue: this.state.update, onClick: this.handleClick },
+                { defaultValue: this.state.update, onClick: this.handleConfused },
                 "I don't understand"
             ),
             _react2.default.createElement(
@@ -9539,7 +9535,10 @@ var GraphUpdaterField = _react2.default.createClass({
             this.state.success1,
             _react2.default.createElement("br", null),
             "Success next slide: ",
-            this.state.success2
+            this.state.success2,
+            _react2.default.createElement("br", null),
+            "Current slide: ",
+            this.state.slide
         );
     }
 });
