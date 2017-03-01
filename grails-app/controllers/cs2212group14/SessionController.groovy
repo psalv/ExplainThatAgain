@@ -4,7 +4,7 @@ import grails.rest.RestfulController
 
 class SessionController extends RestfulController{
 
-    static allowedMethods = [createSession: 'POST']
+    static allowedMethods = [createSession: 'POST', deleteSession: 'DELETE']
     static responseFormats = ['json', 'xml']
 
     SessionController(){
@@ -35,4 +35,21 @@ class SessionController extends RestfulController{
             response.status = 200
         }
     }
+
+    //Deletes a Class
+    //PARAM {sessionID: String}
+    def deleteSession() {
+        def session = Session.find { sessionID == params.sessionID }
+        if (session == null) {
+            //session doesn't exist
+            System.out.print("Session doesn't exist -SessionID: " + params.sessionID)
+            response.status = 404
+        } else {
+            //deletes session
+            session.delete(flush: true)
+            System.out.print("Session deleted. SessionID: " + params.sessionID)
+            response.status = 200
+        }
+    }
+
 }
