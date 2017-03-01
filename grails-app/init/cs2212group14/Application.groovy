@@ -8,5 +8,9 @@ class Application extends GrailsAutoConfiguration {
         GrailsApp.run(Application, args)
 
 
+        def prof = new Professor(realName: 'jake', userName: 'jakejake', email: 'aaa@gmal.com',
+                        password: 'jakejakejake')
+ 
+
     }
 }
