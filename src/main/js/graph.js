@@ -27,7 +27,8 @@ var GraphUpdaterField = React.createClass({
                 this.setState({success1: 'You did not understand.'});
             }
             else{
-                this.setState({success1: 'Our server did not understand.'});
+                let str = this.state.slide == 0 ? "Please wait for the presentation to begin." :  "Our server did not understand.";
+                this.setState({success1: str});
             }
         })
     },
@@ -54,7 +55,7 @@ var GraphUpdaterField = React.createClass({
     render () {
         return (
             <div>
-                <button defaultValue={this.state.update} onClick={this.handleConfused}>I don't understand</button>
+                <button defaultValue={this.state.update} onClick={this.handleConfused}>Explain that again</button>
                 <button defaultValue={this.state.slide} onClick={this.handleSlide}>Next slide</button>
                 <br/>
                 Success confused: {this.state.success1}
