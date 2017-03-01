@@ -13,6 +13,7 @@ class BootStrap {
         println Session.findAll()
         println Graph.findAll()
     }
+
     def destroy = {
     }
 }
