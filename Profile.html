@@ -1,134 +1,116 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!doctype html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="1404.47">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px Helvetica; color: #000000; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px Helvetica; color: #000000; -webkit-text-stroke: #000000; min-height: 14.0px}
-    span.s1 {font-kerning: none}
-    span.Apple-tab-span {white-space:pre}
-  </style>
+<meta charset=“utf-8”>
+<link rel=“stylesheet” type=“text/css”
+	href=“https://fonts.googleapis.com/css?family=Raleway”>
+<title>Profile</title>
+	<style>
+    
+	.right{
+		width:35%;
+		float:right;
+		padding-top:10px;
+	}
+    
+  	.left{
+		width:60%;
+		float:left;
+	}
+    
+	body{
+		background-color: #3b444c;
+	}
+
+	#admin{
+		text-align:center
+	}
+
+	h1 {
+    		font:1.3em 'Raleway', sans-serif;
+    		padding: 1%;
+  		background: #4C4F50;
+  		color: white;
+    		margin-bottom: 1%;
+    		span{ margin-right .3%;}
+    		a{text-decoration:none; color:white;}
+    	}
+    
+    	.panel {
+    		font: 1em 'Raleway', sans-serif;
+    		padding:1%;
+   		background: #4C4F50;
+    		color: white;
+    		display:none;
+	}
+    
+	</style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+
+$(window).ready(function() {
+  
+$('.dropdown h1 a').click(function(){
+    
+$(this).parent().next().slideToggle();
+$(this).parent().siblings().removeClass('active');	      
+$(this).parent().toggleClass('active');
+  
+  return false;
+	
+ });
+ 
+});
+
+</script>
+    
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!doctype html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;meta charset=“utf-8”&gt;</span></p>
-<p class="p1"><span class="s1">&lt;link rel=“stylesheet” type=“text/css”</span></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span>href=“https://fonts.googleapis.com/css?family=Raleway”&gt;</span></p>
-<p class="p1"><span class="s1">&lt;title&gt;Profile&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span>&lt;style&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span>.right{</span></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>width:35%;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>float:right;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>padding-top:10px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span>}</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  <span class="Apple-tab-span">	</span></span>.left{</span></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>width:60%;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>float:left;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span>}</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span>body{</span></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>background-color: #3b444c;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span>#admin{</span></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>text-align:center</span></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span>h1 {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    <span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>font:1.3em 'Raleway', sans-serif;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    <span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>padding: 1%;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  <span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>background: #4C4F50;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  <span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>color: white;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    <span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>margin-bottom: 1%;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    <span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>span{ margin-right .3%;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    <span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>a{text-decoration:none; color:white;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    <span class="Apple-tab-span">	</span></span>}</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    <span class="Apple-tab-span">	</span></span>.panel {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    <span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>font: 1em 'Raleway', sans-serif;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    <span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>padding:1%;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">   <span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>background: #4C4F50;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    <span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>color: white;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    <span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>display:none;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span>}</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span>&lt;/style&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;script&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">$(window).ready(function() {</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span></span></p>
-<p class="p1"><span class="s1">$('.dropdown h1 a').click(function(){</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1">$(this).parent().next().slideToggle();</span></p>
-<p class="p1"><span class="s1">$(this).parent().siblings().removeClass('active');<span class="Apple-tab-span">	</span> <span class="Apple-converted-space">     </span></span></p>
-<p class="p1"><span class="s1">$(this).parent().toggleClass('active');</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return false;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-tab-span">	</span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space"> </span>});</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1">});</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;div id="Dr Teacher" style="font-family: 'Raleway Black',sans-serif; color: #ffffff; font-size: 50px"&gt;Dr Teacher&lt;/div&gt; &lt;br&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;div class="right"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div id="Administrator" style="font-family: 'Raleway Black', sans-serif; color:#ffffff; text-align:center; font-size: 16px"&gt;Administrators&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;form id="admin"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;input type="Administrator" placeholder="Add a user"&gt; &lt;br&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button type="button" onclick="alert('Do you wish to add an administrator?')"&gt;Add&lt;/button&gt; &lt;br&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/form&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;div class="left"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;button type="button" onclick="alert('Add a Course')" style="padding-right:25px"&gt;Add Course&lt;/button&gt; &lt;br&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;section class='dropdown'&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;h1&gt;&lt;a href='#'&gt;Class 1&lt;/a&gt;&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div class='panel'&gt;</span></p>
-<p class="p1"><span class="s1">&lt;button type="button" onclick="alert('Add a lecture')" style="padding-right:25px"&gt;Add lecture&lt;/button&gt; &lt;br&gt;</span></p>
-<p class="p1"><span class="s1">&lt;a href='#'&gt;Lecture 1&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1">&lt;button type="button" onclick="alert('Delete a lecture')" style="padding-right:25px"&gt;Delete lecture&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;h1&gt;&lt;a href='#'&gt;Class 2&lt;/a&gt;&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div class='panel'&gt;</span></p>
-<p class="p1"><span class="s1">&lt;button type="button" onclick="alert('Add a lecture')" style="padding-right:25px"&gt;Add lecture&lt;/button&gt; &lt;br&gt;</span></p>
-<p class="p1"><span class="s1">&lt;a href='#'&gt;Lecture 1&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1">&lt;button type="button" onclick="alert('Delete a lecture')" style="padding-right:25px"&gt;Delete lecture&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;h1&gt;&lt;a href='#'&gt;Class 3&lt;/a&gt;&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div class='panel'&gt;</span></p>
-<p class="p1"><span class="s1">&lt;button type="button" onclick="alert('Add a lecture')" style="padding-right:25px"&gt;Add lecture&lt;/button&gt; &lt;br&gt;</span></p>
-<p class="p1"><span class="s1">&lt;a href='#'&gt;Lecture 1&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1">&lt;button type="button" onclick="alert('Delete a lecture')" style="padding-right:25px"&gt;Delete lecture&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;h1&gt;&lt;a href='#'&gt;Class 4&lt;/a&gt;&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div class='panel'&gt;</span></p>
-<p class="p1"><span class="s1">&lt;button type="button" onclick="alert('Add a lecture')" style="padding-right:25px"&gt;Add lecture&lt;/button&gt; &lt;br&gt;</span></p>
-<p class="p1"><span class="s1">&lt;a href='#'&gt;Lecture 1&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1">&lt;button type="button" onclick="alert('Delete a lecture')" style="padding-right:25px"&gt;Delete lecture&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/section&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+
+<div id="Dr Teacher" style="font-family: 'Raleway Black',sans-serif; color: #ffffff; font-size: 50px">Dr Teacher</div> <br>
+
+<div class="right">
+<div id="Administrator" style="font-family: 'Raleway Black', sans-serif; color:#ffffff; text-align:center; font-size: 16px">Administrators</div>
+    <form id="admin">
+    <input type="Administrator" placeholder="Add a user"> <br>
+    <button type="button" onclick="alert('Do you wish to add an administrator?')">Add</button> <br>
+    </form>
+    </div>
+
+<div class="left">
+<button type="button" onclick="alert('Add a Course')" style="padding-right:25px">Add Course</button> <br>
+
+<section class='dropdown'>
+
+<h1><a href='#'>Class 1</a></h1>
+<div class='panel'>
+<button type="button" onclick="alert('Add a lecture')" style="padding-right:25px">Add lecture</button> <br>
+<a href='#'>Lecture 1</a>
+<button type="button" onclick="alert('Delete a lecture')" style="padding-right:25px">Delete lecture</button>
+</div>
+
+<h1><a href='#'>Class 2</a></h1>
+<div class='panel'>
+<button type="button" onclick="alert('Add a lecture')" style="padding-right:25px">Add lecture</button> <br>
+<a href='#'>Lecture 1</a>
+<button type="button" onclick="alert('Delete a lecture')" style="padding-right:25px">Delete lecture</button>
+</div>
+
+<h1><a href='#'>Class 3</a></h1>
+<div class='panel'>
+<button type="button" onclick="alert('Add a lecture')" style="padding-right:25px">Add lecture</button> <br>
+<a href='#'>Lecture 1</a>
+<button type="button" onclick="alert('Delete a lecture')" style="padding-right:25px">Delete lecture</button>
+</div>
+
+<h1><a href='#'>Class 4</a></h1>
+<div class='panel'>
+<button type="button" onclick="alert('Add a lecture')" style="padding-right:25px">Add lecture</button> <br>
+<a href='#'>Lecture 1</a>
+<button type="button" onclick="alert('Delete a lecture')" style="padding-right:25px">Delete lecture</button>
+</div>
+</section>
+</div>
+
 </body>
 </html>
