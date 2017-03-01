@@ -7,13 +7,13 @@ can find the number of users who were confused in between the start and end time
  */
 class Graph {
 
+    int graphID
+
     static belongsTo = [session: Session]
-
-    // <Time:User>
-    def confusedMap = [:]
-
+    static hasMany = [graphPoints: GraphInstance]
 
     static constraints = {
         session nullible: true //so that ChatRoom can be created to add to Session
+        graphPoints nullable: true
     }
 }
