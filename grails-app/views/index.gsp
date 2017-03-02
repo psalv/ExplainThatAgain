@@ -49,13 +49,18 @@
 
     <body>
 
-    <g:link url="${resource(dir:'session', file:'session.gsp')}">session/session.gsp</g:link>
-    %{--<a href="session/session.gsp">tester</a>--}%
-    %{--<g:link mapping="session">User Foo</g:link>--}%
-    %{--<g:link controller="SessionController" action="session/redirectTo" params="id: 1">Session</g:link>--}%
-    %{--<g:link controller="RedirectController" action="session" name="session" id="${currentSession.sessionID}">Session</g:link>--}%
+
+    %{--
+
+    Change pages has proved to be very challenging in grails, so my plan right now is to literally just load everything
+    on one page and then make the divs hidden/unhidden as a form of navigation.
+
+    --}%
 
 
+
+
+    <g:link controller="Session" action="show" params="[sessionId: '1']">Navigate to session</g:link>
 
     %{--Bundles all javascripts into a single file--}%
     <asset:javascript src="bundle.js"/>
