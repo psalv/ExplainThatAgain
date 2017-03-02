@@ -55,37 +55,60 @@
                     this will be where the graph/slides go
 
 
-
                     <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
                     <script type="text/javascript">
 
                         window.onload = function () {
+                            CanvasJS.addColorSet("1color",
+                                [//colorSet Array
+                                    "#3CB371"
+                                    //"#008080"
+                                ]);
+                            var dataPoints = [{y : 10}, {y : 13}, {y : 18}, {y : 20}, {y : 17}];
                             var chart = new CanvasJS.Chart("chartContainer", {
+                                colorSet: "1color",
                                 title:{
-                                    text: "My First Chart in CanvasJS"
+                                    text: "Explain That Again"
+                                },
+                                axisX:{
+                                    title : "Lecture Time"
+                                },
+                                axisY:{
+                                    title : "Number of Confused Students",
+                                    interlacedColor: "#F0F8FF"
+                                },
+                                axisX2:{
+                                    title : "Confusion Chart"
                                 },
                                 data: [
                                     {
                                         // Change type to "doughnut", "line", "splineArea", etc.
                                         type: "column",
-                                        dataPoints: [
-                                            { label: "apple",  y: 10  },
-                                            { label: "orange", y: 15  },
-                                            { label: "banana", y: 25  },
-                                            { label: "mango",  y: 30  },
-                                            { label: "grape",  y: 28  }
-                                        ]
+                                        dataPoints: dataPoints
                                     }
                                 ]
                             });
                             chart.render();
+                            var yVal = 15, updateCount = 0;
+                            var updateChart = function () {
+
+                                yVal = yVal + Math.round(5 + Math.random() * (-5 - 5));
+                                updateCount++;
+
+                                dataPoints.push({
+                                    y : yVal
+                                });
+                                chart.render();
+
+                            };
+                            //update every 1 seconds
+                            setInterval(function(){updateChart()}, 1000);
                         }
                     </script>
 
+                    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 
 
-                    <div class="graph"></div>
-                    <div class="slides hidden"></div>
                 </div>
                 <div class="row contentControls">
                     <div id="graph"></div>
