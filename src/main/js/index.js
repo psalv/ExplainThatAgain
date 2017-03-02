@@ -18,10 +18,12 @@ const Greet = () =>
     <div className="jumbotron">
         <h1>Explain That Again</h1>
         <p>Please Login below</p>
+        <SignIn />
         <FacebookLogin
             appId="231018617305901"
             autoLoad={true}
             fields="name,email,picture" />
+        <p><Link to={Paths.SIGNUP} className="btn btn-primary btn-lg">Sign Up</Link></p>
     </div>;
 
 const NotFound = () =>

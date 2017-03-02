@@ -14847,7 +14847,7 @@ var Navigation = function (_React$Component) {
                         _react2.default.createElement(
                             _reactRouter.Link,
                             { to: '/', className: 'navbar-brand' },
-                            'Grails3 \u2764\uFE0F React'
+                            'Explain That Again'
                         )
                     ),
                     this.state.loggedIn ? _react2.default.createElement(
@@ -31626,10 +31626,20 @@ var Greet = function Greet() {
             null,
             'Please Login below'
         ),
+        _react2.default.createElement(_signin2.default, null),
         _react2.default.createElement(_reactFacebookLogin2.default, {
             appId: '231018617305901',
             autoLoad: true,
-            fields: 'name,email,picture' })
+            fields: 'name,email,picture' }),
+        _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+                _reactRouter.Link,
+                { to: Paths.SIGNUP, className: 'btn btn-primary btn-lg' },
+                'Sign Up'
+            )
+        )
     );
 };
 
