@@ -41,8 +41,6 @@
     <asset:stylesheet src="bundle.css"/>
 
     <!-- Custom CSS -->
-    %{--<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">--}%
-    <link rel="stylesheet" type="text/css" href="../../assets/stylesheets/session.css">
     <link rel="stylesheet" href="${resource(dir: 'stylesheets', file: 'session.css')}" type="text/css">
 </head>
 
@@ -53,58 +51,6 @@
             <div class="col-lg-9 text-center contentSession">
                 <div class="row contentContent">
                     this will be where the graph/slides go
-
-
-                    <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
-                    <script type="text/javascript">
-
-                        window.onload = function () {
-                            CanvasJS.addColorSet("1color",
-                                [//colorSet Array
-                                    "#3CB371"
-                                    //"#008080"
-                                ]);
-                            var dataPoints = [{y : 10}, {y : 13}, {y : 18}, {y : 20}, {y : 17}];
-                            var chart = new CanvasJS.Chart("chartContainer", {
-                                colorSet: "1color",
-                                title:{
-                                    text: "Explain That Again"
-                                },
-                                axisX:{
-                                    title : "Lecture Time"
-                                },
-                                axisY:{
-                                    title : "Number of Confused Students",
-                                    interlacedColor: "#F0F8FF"
-                                },
-                                axisX2:{
-                                    title : "Confusion Chart"
-                                },
-                                data: [
-                                    {
-                                        // Change type to "doughnut", "line", "splineArea", etc.
-                                        type: "column",
-                                        dataPoints: dataPoints
-                                    }
-                                ]
-                            });
-                            chart.render();
-                            var yVal = 15, updateCount = 0;
-                            var updateChart = function () {
-
-                                yVal = yVal + Math.round(5 + Math.random() * (-5 - 5));
-                                updateCount++;
-
-                                dataPoints.push({
-                                    y : yVal
-                                });
-                                chart.render();
-
-                            };
-                            //update every 1 seconds
-                            setInterval(function(){updateChart()}, 1000);
-                        }
-                    </script>
 
                     <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 
@@ -120,15 +66,18 @@
             </div>
         </div>
     </div>
-<div class="row text-center">
-    <g:link controller="Session" action="returnTo">Back</g:link>
-</div>
+    <div class="row text-center">
+        <g:link controller="Session" action="returnTo">Back</g:link>
+    </div>
 
 
-%{--Bundles all javascripts into a single file--}%
-<asset:javascript src="bundle.js"/>
+    %{--Bundles all javascripts into a single file--}%
+    <asset:javascript src="bundle.js"/>
 
-<link rel="stylesheet" href="${resource(dir: 'javascripts', file: 'jquery-2.2.0.min.js')}" type="text/css">
+    <link rel="javascript" href="${resource(dir: 'javascripts', file: 'jquery-2.2.0.min.js')}" type="text/css">
+    <link rel="javascript" href="${resource(dir: 'javascripts', file: 'graphGen.js')}" type="text/css">
+    <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
 </body>
 
 </html>
