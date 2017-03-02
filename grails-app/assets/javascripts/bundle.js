@@ -22216,12 +22216,10 @@ The StatusSearch object is being created in a separate js file
 */
 
 _reactDom2.default.render(_react2.default.createElement(
-  'div',
-  null,
-  _react2.default.createElement(_example.Example, null)
-), document.getElementById('example')); /**
-                                         * Created by ethan on 04/02/17.
-                                         */
+    'div',
+    null,
+    _react2.default.createElement(_example.Example, null)
+), document.getElementById('example'));
 
 /***/ })
 /******/ ]);
