@@ -3,13 +3,10 @@ package cs2212group14
 class UrlMappings {
 
     static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
-            constraints {
-                // apply constraints here
-            }
-        }
+        "/api/signup"(controller: "user", action: "signUp", method: "POST")
 
         "/"(view:"/index")
+        "/**"(view:"/index")
         "500"(view:'/error')
         "404"(view:'/notFound')
     }
