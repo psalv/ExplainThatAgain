@@ -13,11 +13,19 @@ class UserRole implements Serializable {
 	User user
 	Role role
 
+	UserRole(User u, Role r) {
+		this()
+		user = u
+		role = r
+	}
+
 	@Override
 	boolean equals(other) {
-		if (other instanceof UserRole) {
-			other.userId == user?.id && other.roleId == role?.id
+		if (!(other instanceof UserRole)) {
+			return false
 		}
+
+		other.user?.id == user?.id && other.role?.id == role?.id
 	}
 
 	@Override
@@ -43,34 +51,47 @@ class UserRole implements Serializable {
 		}
 	}
 
-	static UserRole create(User user, Role role) {
+	static UserRole create(User user, Role role, boolean flush = false) {
 		def instance = new UserRole(user: user, role: role)
-		instance.save()
+		instance.save(flush: flush, insert: true)
 		instance
 	}
 
-	static boolean remove(User u, Role r) {
-		if (u != null && r != null) {
-			UserRole.where { user == u && role == r }.deleteAll()
-		}
+	static boolean remove(User u, Role r, boolean flush = false) {
+		if (u == null || r == null) return false
+
+		int rowCount = UserRole.where { user == u && role == r }.deleteAll()
+
+		if (flush) { UserRole.withSession { it.flush() } }
+
+		rowCount
 	}
 
-	static int removeAll(User u) {
-		u == null ? 0 : UserRole.where { user == u }.deleteAll()
+	static void removeAll(User u, boolean flush = false) {
+		if (u == null) return
+
+		UserRole.where { user == u }.deleteAll()
+
+		if (flush) { UserRole.withSession { it.flush() } }
 	}
 
-	static int removeAll(Role r) {
-		r == null ? 0 : UserRole.where { role == r }.deleteAll()
+	static void removeAll(Role r, boolean flush = false) {
+		if (r == null) return
+
+		UserRole.where { role == r }.deleteAll()
+
+		if (flush) { UserRole.withSession { it.flush() } }
 	}
 
 	static constraints = {
 		role validator: { Role r, UserRole ur ->
-			if (ur.user?.id) {
-				UserRole.withNewSession {
-					if (UserRole.exists(ur.user.id, r.id)) {
-						return ['userRole.exists']
-					}
-				}
+			if (ur.user == null || ur.user.id == null) return
+			boolean existing = false
+			UserRole.withNewSession {
+				existing = UserRole.exists(ur.user.id, r.id)
+			}
+			if (existing) {
+				return 'userRole.exists'
 			}
 		}
 	}
