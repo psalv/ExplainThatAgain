@@ -15,6 +15,11 @@ class SessionController extends RestfulController{
         render "hello. I am session controller"
     }
 
+    def redirectTo(){
+        redirect(controller: 'redirect', params: '[id:' + (String)params.id + ', type: session]')
+    }
+
+
     //creates a new Session with initialized instances of ChatRoom and Graph
     //sessionID is increments static variable in Session domain class
     //PARAM {classname: Course Object}

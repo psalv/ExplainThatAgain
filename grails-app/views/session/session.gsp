@@ -14,11 +14,11 @@
     <!-- Favicons
     ================================================== -->
     <link rel="shortcut icon" href="">
-    <link rel="apple-touch-icon" sizes="57x57" href="../assets/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="../../assets/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="60x60" href="">
     <link rel="apple-touch-icon" sizes="72x72" href="">
     <link rel="apple-touch-icon" sizes="76x76" href="">
-    <link rel="apple-touch-icon" sizes="114x114" href="../assets/images/apple-touch-icon-retina.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../../assets/images/apple-touch-icon-retina.png">
     <link rel="apple-touch-icon" sizes="120x120" href="">
     <link rel="apple-touch-icon" sizes="144x144" href="">
     <link rel="apple-touch-icon" sizes="152x152" href="">
@@ -33,7 +33,7 @@
 
     <!--=========================================== CSS FILES ===========================================-->
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" type="text/css" href="../assets/stylesheets/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/stylesheets/bootstrap.css">
 
     <!-- Custom Fonts -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -47,20 +47,17 @@
 
 
 
-    <body>
-
-    <g:link url="${resource(dir:'session', file:'session.gsp')}">session/session.gsp</g:link>
-    %{--<a href="session/session.gsp">tester</a>--}%
-    %{--<g:link mapping="session">User Foo</g:link>--}%
-    %{--<g:link controller="SessionController" action="session/redirectTo" params="id: 1">Session</g:link>--}%
-    %{--<g:link controller="RedirectController" action="session" name="session" id="${currentSession.sessionID}">Session</g:link>--}%
+<body>
 
 
+WE DID IT.
+<div id="graph"></div>
 
-    %{--Bundles all javascripts into a single file--}%
-    <asset:javascript src="bundle.js"/>
 
-    </body>
+%{--Bundles all javascripts into a single file--}%
+<asset:javascript src="bundle.js"/>
+
+</body>
 
 
 
