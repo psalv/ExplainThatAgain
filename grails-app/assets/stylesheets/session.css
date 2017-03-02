@@ -1,0 +1,12 @@
+* {
+  border: 1px solid red !important;
+}
+.fullsize {
+  height: 90vh;
+}
+.fullsize .contentContent {
+  height: 90vh;
+}
+.fullsize .contentContent .contentControls {
+  height: 5vh;
+}

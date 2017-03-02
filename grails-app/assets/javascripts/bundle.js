@@ -9520,26 +9520,46 @@ var GraphUpdaterField = _react2.default.createClass({
     render: function render() {
         return _react2.default.createElement(
             "div",
-            null,
+            { className: "row" },
             _react2.default.createElement(
-                "button",
-                { defaultValue: this.state.update, onClick: this.handleConfused },
-                "Explain that again"
+                "div",
+                { className: "col-md-3" },
+                _react2.default.createElement(
+                    "button",
+                    { defaultValue: this.state.update, onClick: this.handleConfused },
+                    "Explain that again"
+                )
             ),
             _react2.default.createElement(
-                "button",
-                { defaultValue: this.state.slide, onClick: this.handleSlide },
-                "Next slide"
+                "div",
+                { className: "col-md-3" },
+                _react2.default.createElement(
+                    "button",
+                    { defaultValue: this.state.slide, onClick: this.handleSlide },
+                    "Next slide"
+                )
             ),
-            _react2.default.createElement("br", null),
-            "Success confused: ",
-            this.state.success1,
-            _react2.default.createElement("br", null),
-            "Success next slide: ",
-            this.state.success2,
-            _react2.default.createElement("br", null),
-            "Current slide: ",
-            this.state.slide
+            _react2.default.createElement(
+                "div",
+                { className: "col-md-2" },
+                "Success confused: ",
+                _react2.default.createElement("br", null),
+                this.state.success1
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "col-md-2" },
+                "Success next slide: ",
+                _react2.default.createElement("br", null),
+                this.state.success2
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "col-md-2" },
+                "Current slide: ",
+                _react2.default.createElement("br", null),
+                this.state.slide
+            )
         );
     }
 });
@@ -9556,11 +9576,7 @@ var GraphUpdater = exports.GraphUpdater = function (_React$Component) {
     _createClass(GraphUpdater, [{
         key: "render",
         value: function render() {
-            return _react2.default.createElement(
-                "div",
-                null,
-                _react2.default.createElement(GraphUpdaterField, null)
-            );
+            return _react2.default.createElement(GraphUpdaterField, null);
         }
     }]);
 
@@ -21831,11 +21847,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  The StatusSearch object is being created in a separate js file
  */
 
-_reactDom2.default.render(_react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(_graph.GraphUpdater, null)
-), document.getElementById('graph'));
+_reactDom2.default.render(_react2.default.createElement(_graph.GraphUpdater, null), document.getElementById('graph'));
 
 /***/ })
 /******/ ]);
