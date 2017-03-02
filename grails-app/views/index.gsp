@@ -4,8 +4,8 @@
         <title>Explain that Again</title>
     </head>
     <body>
-        <div id='chart-container'></div>
-        <asset:javascript src="graph.bundle.js"/>
+        <div id="app" role="main"></div>
+    	<asset:javascript src="application.js"/>
     </body>
 </html>
 
