@@ -44,25 +44,13 @@
 
 </head>
 
-
-
-
 <body>
 
-
-WE DID IT.
 <div id="graph"></div>
-
 
 %{--Bundles all javascripts into a single file--}%
 <asset:javascript src="bundle.js"/>
 
 </body>
-
-
-
-
-
-
 
 </html>

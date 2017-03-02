@@ -4,7 +4,7 @@ import grails.rest.RestfulController
 
 class SessionController extends RestfulController{
 
-    static allowedMethods = [createSession: 'POST']
+    static allowedMethods = [createSession: 'POST', show: 'GET']
     static responseFormats = ['json', 'xml']
 
     SessionController(){
@@ -12,13 +12,24 @@ class SessionController extends RestfulController{
     }
 
     def index() {
-        render "hello. I am session controller"
     }
 
-    def redirectTo(){
-        redirect(controller: 'redirect', params: '[id:' + (String)params.id + ', type: session]')
+
+    def list() {
+        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        [sessionPageInstanceList: Session.list(params), sessionPageInstanceTotal: Session.count()]
     }
 
+    def show() {
+        def sessionInstance = Session.findBySessionID(Integer.parseInt(params.sessionId))
+
+        if (!sessionInstance) {
+            redirect action: "list"
+        }
+        else {
+            [sessionInstance: sessionInstance]
+        }
+    }
 
     //creates a new Session with initialized instances of ChatRoom and Graph
     //sessionID is increments static variable in Session domain class

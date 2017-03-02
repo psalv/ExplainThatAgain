@@ -7,8 +7,7 @@ at that time spot. Students can add comments to chatroom. “Most confusing” g
  */
 class Session {
 
-    int sessionID
-    static hasOne = [transcript: Transcript, powerpoint: Presentation, chatroom: ChatRoom, graph: Graph]
+    static hasOne = [transcript: Transcript, powerpoint: Presentation, chatroom: ChatRoom, graph: Graph, sessionID: Integer]
     static belongsTo = [course: Course]
     File notes
 
