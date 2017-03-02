@@ -66,6 +66,7 @@
             </div>
         </div>
     </div>
+
     <div class="row text-center">
         <g:link controller="Session" action="returnTo">Back</g:link>
     </div>
@@ -75,8 +76,8 @@
     <asset:javascript src="bundle.js"/>
 
     <link rel="javascript" href="${resource(dir: 'javascripts', file: 'jquery-2.2.0.min.js')}" type="text/css">
+    <script src="//canvasjs.com/assets/script/canvasjs.min.js"></script>
     <link rel="javascript" href="${resource(dir: 'javascripts', file: 'graphGen.js')}" type="text/css">
-    <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 </body>
 

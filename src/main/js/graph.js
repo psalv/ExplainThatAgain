@@ -91,3 +91,68 @@ export class GraphUpdater extends React.Component{
 
 
 
+
+var Graph = React.createClass({
+
+    getInitialState () {
+        return {
+            dataPoints : [{y : 10}, {y : 13}, {y : 18}, {y : 20}, {y : 17}],
+            // dataPoints : [],
+            chart : createNewChart(dataPoints)
+        }
+    },
+
+    createNewChart (dataPoints){
+        CanvasJS.addColorSet("1color", ["#3CB371"]);
+
+        return {
+            new CanvasJS.Chart("chartContainer", {
+                colorSet: "1color",
+                title: {
+                    text: "Explain That Again"
+                },
+                axisX: {
+                    title: "Lecture Slide"
+                },
+                axisY: {
+                    title: "Number of Confused Students",
+                    interlacedColor: "#F0F8FF"
+                },
+                axisX2: {
+                    title: "Confusion Chart"
+                },
+                data: [
+                    {
+                        // Change type to "doughnut", "line", "splineArea", etc.
+                        type: "column",
+                        dataPoints: dataPoints
+                    }
+                ]
+            })
+        };
+
+        // chart.render();
+        // let yVal = 15, updateCount = 0;
+        // let updateChart = function () {
+        //
+        //     yVal = yVal + Math.round(5 + Math.random() * (-5 - 5));
+        //     updateCount++;
+        //
+        //     dataPoints.push({
+        //         y : yVal
+        //     });
+        //     chart.render();
+        //
+        // };
+        // update every 1 seconds
+        // setInterval(function(){updateChart()}, 10000);
+    },
+    render () {
+        return (
+            <div></div>
+
+        );
+    }
+
+
+});
