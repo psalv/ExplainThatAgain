@@ -6,6 +6,7 @@ import SignIn from './signin';
 import SignUp from './signup';
 import Logout from './logout';
 import auth from './auth';
+import FacebookLogin from 'react-facebook-login';
 
 const Paths = {
     SIGNIN: "/signin",
@@ -17,7 +18,10 @@ const Greet = () =>
     <div className="jumbotron">
         <h1>Explain That Again</h1>
         <p>Please Login below</p>
-        <SignIn/>
+        <FacebookLogin
+            appId="231018617305901"
+            autoLoad={true}
+            fields="name,email,picture" />
     </div>;
 
 const NotFound = () =>
