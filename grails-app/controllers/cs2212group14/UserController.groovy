@@ -16,6 +16,7 @@ class UserController {
         log.debug("Signing up a new user: ${username}:[******]")
         def user = userService.signUp(username, password)
         def payload = [username: user.username] as Object
+        println User.getAll()
         respond payload, status: HttpStatus.CREATED
     }
 
