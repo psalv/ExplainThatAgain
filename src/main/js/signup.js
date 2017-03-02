@@ -2,6 +2,7 @@ import React from 'react';
 import UserForm from './user-form';
 import 'whatwg-fetch';
 import {withRouter} from 'react-router';
+import ReactDOM from 'react-dom';
 
 const checkStatus = (response) => {
     if(response.status >= 200 && response.status < 300) {
@@ -44,6 +45,17 @@ class SignUp extends React.Component {
         .then(this.fail.bind(this))
     }
 
+    facebookSignup() {
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                console.log('Logged in.');
+            }
+            else {
+                FB.login();
+            }
+        });
+    }
+
     success(user) {
         console.log("Signed up", user);
         this.props.router.replace("/");
@@ -65,7 +77,6 @@ class SignUp extends React.Component {
             <div className="col-sm-4 col-sm-offset-4">
                 { this.state.error ? <Error/> : null }
                 <UserForm submitLabel="Sign up" onSubmit={this.signUp} ref={ (ref) => this.form = ref }/>
-
             </div>
         )
     }
