@@ -25,7 +25,6 @@ class GraphController extends RestfulController{
         }
     }
 
-
     def updateInstance() {
 
         response.status = 404
@@ -54,5 +53,6 @@ class GraphController extends RestfulController{
             }
         }
     }
-
 }
+
+
