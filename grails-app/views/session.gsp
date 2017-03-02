@@ -35,7 +35,7 @@
                 ]
             });
             chart.render();
-            var yVal = 15, updateCount = 0;
+            var yVal = 15; //updateCount = 0;
             var updateChart = function () {
 
                 yVal = yVal + Math.round(5 + Math.random() * (-5 - 5));
