@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 var GraphUpdaterField = React.createClass({
 
     // Used to initialize state
@@ -54,15 +55,26 @@ var GraphUpdaterField = React.createClass({
 
     render () {
         return (
-            <div>
-                <button defaultValue={this.state.update} onClick={this.handleConfused}>Explain that again</button>
-                <button defaultValue={this.state.slide} onClick={this.handleSlide}>Next slide</button>
-                <br/>
-                Success confused: {this.state.success1}
-                <br/>
-                Success next slide: {this.state.success2}
-                <br/>
-                Current slide: {this.state.slide}
+            <div className="row">
+                <div className="col-md-3">
+                    <button defaultValue={this.state.update} onClick={this.handleConfused}>Explain that again</button>
+                </div>
+
+                <div className="col-md-3">
+                    <button defaultValue={this.state.slide} onClick={this.handleSlide}>Next slide</button>
+                </div>
+
+                <div className="col-md-2">
+                    Success confused: <br/>{this.state.success1}
+                </div>
+
+                <div className="col-md-2">
+                    Success next slide: <br/>{this.state.success2}
+                </div>
+
+                <div className="col-md-2">
+                    Current slide: <br/>{this.state.slide}
+                </div>
             </div>
 
         );
@@ -72,9 +84,7 @@ var GraphUpdaterField = React.createClass({
 export class GraphUpdater extends React.Component{
     render(){
         return(
-            <div>
-                <GraphUpdaterField/>
-            </div>
+            <GraphUpdaterField/>
         );
     }
 }

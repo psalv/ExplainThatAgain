@@ -31,6 +31,11 @@ class SessionController extends RestfulController{
         }
     }
 
+    def returnTo(){
+//        render(url: "/")
+        render(view: "/index")
+    }
+
     //creates a new Session with initialized instances of ChatRoom and Graph
     //sessionID is increments static variable in Session domain class
     //PARAM {classname: Course Object}

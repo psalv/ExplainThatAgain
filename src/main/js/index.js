@@ -10,7 +10,5 @@ import { GraphUpdater } from './graph';
  */
 
 ReactDOM.render(
-    <div>
-        <GraphUpdater/>
-    </div>, document.getElementById('graph')
+    <GraphUpdater/>, document.getElementById('graph')
 );
