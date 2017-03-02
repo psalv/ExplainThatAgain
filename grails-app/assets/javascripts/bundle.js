@@ -9493,7 +9493,8 @@ var GraphUpdaterField = _react2.default.createClass({
             if (res.ok) {
                 _this.setState({ success1: 'You did not understand.' });
             } else {
-                _this.setState({ success1: 'Our server did not understand.' });
+                var str = _this.state.slide == 0 ? "Please wait for the presentation to begin." : "Our server did not understand.";
+                _this.setState({ success1: str });
             }
         });
     },
@@ -9523,7 +9524,7 @@ var GraphUpdaterField = _react2.default.createClass({
             _react2.default.createElement(
                 "button",
                 { defaultValue: this.state.update, onClick: this.handleConfused },
-                "I don't understand"
+                "Explain that again"
             ),
             _react2.default.createElement(
                 "button",
