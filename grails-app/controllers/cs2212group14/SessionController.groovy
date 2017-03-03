@@ -15,24 +15,34 @@ class SessionController extends RestfulController{
     }
 
 
-    def list() {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [sessionPageInstanceList: Session.list(params), sessionPageInstanceTotal: Session.count()]
-    }
-
     def show() {
         def sessionInstance = Session.findBySessionID(Integer.parseInt(params.sessionId))
-
-        if (!sessionInstance) {
-            redirect action: "list"
+        if(sessionInstance == null || !sessionInstance.getActive()){
+            // todo: make this redirect to a page not found
+            render(view: "/notFound")
         }
         else {
             [sessionInstance: sessionInstance]
         }
     }
 
-    def returnTo(){
+    def returnToIndex(){
         render(view: "/index")
+    }
+
+    def endSession (){
+        def sessionInstance = Session.findBySessionID(Integer.parseInt(params.sessionId))
+
+        println sessionInstance.getActive()
+
+        if(sessionInstance != null && sessionInstance.getActive()){
+            sessionInstance.setActive(false)
+            sessionInstance.save(flush: true, failOnError: true)
+        }
+
+        println sessionInstance.getActive()
+        println params
+        returnToIndex()
     }
 
     //creates a new Session with initialized instances of ChatRoom and Graph

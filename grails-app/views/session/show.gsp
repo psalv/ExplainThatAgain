@@ -38,7 +38,7 @@
     <!-- Custom Fonts -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Raleway:300,400,700" rel="stylesheet">
-    <asset:stylesheet src="bundle.css"/>
+    %{--<asset:stylesheet src="bundle.css"/>--}%
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="${resource(dir: 'stylesheets', file: 'session.css')}" type="text/css">
@@ -48,18 +48,17 @@
 <body>
 
     <div class="row">
+        <div class="row">
+            <div class="col-md-6">
+
+            </div>
+            <div class="col-md-6">
+                <g:link controller="Session" action="endSession" params="[sessionId: 1]">End Session</g:link>
+            </div>
+        </div>
         <div class="row fullsize">
             <div class="col-lg-9 text-center contentSession">
-                <div class="row contentContent">
-
-                    <div id="chart_div"></div>
-
-
-
-                </div>
-                <div class="row contentControls">
-                    <div id="graph"></div>
-                </div>
+                <div id="graph"></div>
             </div>
 
             <div class="col-lg-3 text-center chatSession">
@@ -69,20 +68,11 @@
     </div>
 
     <div class="row text-center">
-        <g:link controller="Session" action="returnTo">Back</g:link>
+        <g:link controller="Session" action="returnToIndex">Back</g:link>
     </div>
 
 
     %{--Bundles all javascripts into a single file--}%
-
-    %{--<script type="text/javascript" src="//www.gstatic.com/charts/loader.js"></script>--}%
-
-    <link rel="javascript" href="${resource(dir: 'javascripts', file: 'jquery-2.2.0.min.js')}" type="text/js">
-    <link rel="javascript" href="${resource(dir: 'javascripts', file: 'graphcanvas.js')}" type="text/js">
-
- %{--<script type="text/javascript" src="//canvasjs.com/assets/script/canvasjs.min.js"></script>--}%
-
-
     <asset:javascript src="bundle.js"/>
 
 </body>

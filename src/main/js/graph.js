@@ -1,4 +1,5 @@
 import React from 'react';
+import { Bar } from 'react-chartjs'
 
 
 let GraphUpdaterField = React.createClass({
@@ -6,6 +7,8 @@ let GraphUpdaterField = React.createClass({
     // Used to initialize state
     getInitialState () {
         return {
+            labels: [],
+            data: [],
             success1 : "",
             success2 : "",
             slide : 0
@@ -24,6 +27,7 @@ let GraphUpdaterField = React.createClass({
             }
         }).then(res =>{
             if(res.ok){
+                this.state.data[this.state.slide - 1] = this.state.data[this.state.slide - 1] + 1;
                 this.setState({success1: 'You did not understand.'});
             }
             else{
@@ -43,6 +47,7 @@ let GraphUpdaterField = React.createClass({
             }
         }).then(res =>{
             if(res.ok){
+                this.changeSlide();
                 this.setState({success2: 'New slide instance created.'});
             }
             else{
@@ -52,27 +57,49 @@ let GraphUpdaterField = React.createClass({
         })
     },
 
+    changeSlide(){
+        this.state.labels.push('Slide #' + (this.state.slide).toString());
+        this.state.data.push(0);
+    },
+
     render () {
+        let graphData = {
+            labels: this.state.labels,
+            datasets: [
+                {
+                    label: "Confusometer",
+                    borderWidth: 1,
+                    data: this.state.data,
+                }
+            ]
+        };
         return (
-            <div className="row">
-                <div className="col-md-3">
-                    <button onClick={this.handleConfused}>Explain that again</button>
+            <div>
+                <div className="row contentContent">
+                    <Bar className="theGraph" data={graphData} width="1000" height="600"></Bar>
                 </div>
+                <div className="row contentControls">
+                    <div className="row">
+                        <div className="col-md-3">
+                            <button onClick={this.handleConfused}>Explain that again</button>
+                        </div>
 
-                <div className="col-md-3">
-                    <button defaultValue={this.state.slide} onClick={this.handleSlide}>Next slide</button>
-                </div>
+                        <div className="col-md-3">
+                            <button defaultValue={this.state.slide} onClick={this.handleSlide}>Next slide</button>
+                        </div>
 
-                <div className="col-md-2">
-                    Success confused: <br/>{this.state.success1}
-                </div>
+                        <div className="col-md-2">
+                            Success confused: <br/>{this.state.success1}
+                        </div>
 
-                <div className="col-md-2">
-                    Success next slide: <br/>{this.state.success2}
-                </div>
+                        <div className="col-md-2">
+                            Success next slide: <br/>{this.state.success2}
+                        </div>
 
-                <div className="col-md-2">
-                    Current slide: <br/>{this.state.slide}
+                        <div className="col-md-2">
+                            Current slide: <br/>{this.state.slide}
+                        </div>
+                    </div>
                 </div>
             </div>
 

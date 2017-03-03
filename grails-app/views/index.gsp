@@ -50,14 +50,6 @@
     <body>
 
 
-    %{--
-
-    Change pages has proved to be very challenging in grails, so my plan right now is to literally just load everything
-    on one page and then make the divs hidden/unhidden as a form of navigation.
-
-    --}%
-
-
     <g:link controller="Session" action="show" params="[sessionId: '1']">Navigate to session</g:link>
 
     %{--Bundles all javascripts into a single file--}%

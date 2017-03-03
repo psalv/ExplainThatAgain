@@ -2,7 +2,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { GraphUpdater } from './graph';
-import { GComp } from './graphcanvas';
 
 
 /*
@@ -12,9 +11,5 @@ import { GComp } from './graphcanvas';
 
 ReactDOM.render(
     <GraphUpdater/>, document.getElementById('graph'));
- 
 
-ReactDOM.render(
-    <GComp/>, document.getElementById('chart_div')
-);
 
