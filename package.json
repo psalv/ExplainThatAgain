@@ -20,9 +20,10 @@
     "url": "https://github.com/r-meagher/CS2212Group14/issues"
   },
   "dependencies": {
-    "chart.js": "^2.5.0",
+    "chart.js": "^1.1.1",
     "fusioncharts": "^3.11.3-sr.1",
     "react": "^15.4.2",
+    "react-chartjs": "^0.8.0",
     "react-dom": "^15.4.2",
     "react-fusioncharts": "^1.0.4",
     "whatwg-fetch": "^2.0.2"

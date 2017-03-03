@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { GraphUpdater } from './graph';
-import { GraphE } from './graphcanvas';
+import { GComp } from './graphcanvas';
 
 
 /*
@@ -15,6 +15,6 @@ ReactDOM.render(
  
 
 ReactDOM.render(
-    <GraphE/>, document.getElementById('graphLocation')
+    <GComp/>, document.getElementById('chart_div')
 );
 
