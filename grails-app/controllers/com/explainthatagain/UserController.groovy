@@ -16,17 +16,16 @@ class UserController {
         log.debug("Signing up a new user: ${username}:[******]")
         def user = userService.signUp(username, password)
         def payload = [username: user.username] as Object
-        println User.getAll()
         respond payload, status: HttpStatus.CREATED
     }
 
     def facebookSignin(@RequestParameter('username') String username, @RequestParameter('password') String password) {
-        if (User.countByUsername(username) == 0) {
-            signUp(username, password)
-            respond username, status: HttpStatus.CREATED
+        try {
+            userService.signUp(username, password)
+            respond status: HttpStatus.CREATED
         }
-        else {
-            respond username, status: HttpStatus.OK
+        catch(Exception ex) {
+            respond status: HttpStatus.OK
         }
     }
 
