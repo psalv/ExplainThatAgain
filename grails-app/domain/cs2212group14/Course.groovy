@@ -6,7 +6,7 @@ class Course {
     //TODO: determine how to do start and end dates
     //Date startDate, endDate
 
-    static belongsTo = [prof: Professor]
+    static belongsTo = [user: User]
     static hasMany = [sessions: Session]
 
 
