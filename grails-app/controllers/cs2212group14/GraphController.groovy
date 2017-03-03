@@ -4,6 +4,9 @@ import grails.rest.RestfulController
 
 class GraphController extends RestfulController{
 
+    static allowedMethods = [addInstance: 'POST', updateInstance: 'POST']
+    static responseFormats = ['json', 'xml']
+
     GraphController(){
         super(Graph)
     }
