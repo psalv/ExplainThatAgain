@@ -3,34 +3,32 @@ import { Bar } from 'react-chartjs'
 
 
 let MyComponent = React.createClass({
+
+    getInitialState () {
+        return {
+            labels: ['Slide #1', 'Slide #2'],
+            data: [10, 20],
+            slide : 0
+        }
+    },
+
+    changeSlide(){
+        this.state.labels.push('Slide #3');
+        this.state.data.push(30);
+    },
+
     render: function() {
-        let data = {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+        let graphData = {
+            labels: this.state.labels,
             datasets: [
                 {
-                    label: "My First dataset",
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
+                    label: "Confusometer",
                     borderWidth: 1,
-                    data: [65, 59, 80, 81, 56, 55, 40],
+                    data: this.state.data,
                 }
             ]
-        };        return <Bar data={data} width="600" height="250"/>;
-        /*return <Bar data={mockData} options={chartOptions} width="600" height="250"/>*/
+        };
+        return <Bar data={graphData} width="600" height="250"/>;
     }
 });
 

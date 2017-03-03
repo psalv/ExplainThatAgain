@@ -32,7 +32,6 @@ class SessionController extends RestfulController{
     }
 
     def returnTo(){
-//        render(url: "/")
         render(view: "/index")
     }
 

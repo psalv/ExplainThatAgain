@@ -6,7 +6,6 @@ let GraphUpdaterField = React.createClass({
     // Used to initialize state
     getInitialState () {
         return {
-            update : false,
             success1 : "",
             success2 : "",
             slide : 0
@@ -57,7 +56,7 @@ let GraphUpdaterField = React.createClass({
         return (
             <div className="row">
                 <div className="col-md-3">
-                    <button defaultValue={this.state.update} onClick={this.handleConfused}>Explain that again</button>
+                    <button onClick={this.handleConfused}>Explain that again</button>
                 </div>
 
                 <div className="col-md-3">
