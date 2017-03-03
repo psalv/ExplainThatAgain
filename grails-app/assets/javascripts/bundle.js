@@ -25869,5 +25869,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _reactDom2.default.render(_react2.default.createElement(_graph.GraphUpdater, null), document.getElementById('graph'));
 
+_reactDom2.default.render(_react2.default.createElement(
+    Router,
+    { history: browserHistory },
+    _react2.default.createElement(IndexRoute, { component: Greet }),
+    _react2.default.createElement(Route, { path: Paths.ADDADMIN }),
+    _react2.default.createElement(Route, { path: Paths.DELETEADMIN }),
+    _react2.default.createElement(Route, { path: Paths.ADDCLASS }),
+    _react2.default.createElement(Route, { path: Paths.DELETECLASS }),
+    _react2.default.createElement(Route, { path: Paths.ADDCOURSE }),
+    _react2.default.createElement(Route, { path: Paths.DELETECOURSE }),
+    _react2.default.createElement(Route, { path: '*', component: NotFound })
+), document.getElementById(''));
+
 /***/ })
 /******/ ]);

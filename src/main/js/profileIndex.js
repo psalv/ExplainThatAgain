@@ -45,17 +45,3 @@ const NotFound = () =>
         <h1>404.</h1>
     </div>;
 
-ReactDOM.render(
-    <Router history={browserHistory}>
-
-            <IndexRoute component={Greet}/>
-            <Route path={Paths.ADDADMIN}/>
-            <Route path={Paths.DELETEADMIN}/>
-            <Route path={Paths.ADDCLASS}/>
-            <Route path={Paths.DELETECLASS}/>
-            <Route path={Paths.ADDCOURSE}/>
-            <Route path={Paths.DELETECOURSE}/>
-            <Route path="*" component={NotFound} />
-
-    </Router>
-);
