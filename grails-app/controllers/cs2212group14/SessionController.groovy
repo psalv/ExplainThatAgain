@@ -4,7 +4,7 @@ import grails.rest.RestfulController
 
 class SessionController extends RestfulController{
 
-    static allowedMethods = [createSession: 'POST', show: 'GET']
+    static allowedMethods = [createSession: 'POST', show: 'GET', deleteSession: 'DELETE']
     static responseFormats = ['json', 'xml']
 
     SessionController(){
@@ -47,10 +47,10 @@ class SessionController extends RestfulController{
 
     //creates a new Session with initialized instances of ChatRoom and Graph
     //sessionID is increments static variable in Session domain class
-    //PARAM {classname: Course Object}
+    //PARAM {classname: Class Object}
     def createSession(){
-        def classstring = params.classname
-        def foundclass = Course.find{courseName == classstring}
+        def classstring = params.classname;
+        def foundclass = Class.find{className == classstring}
         if (foundclass == null){
             // if the class doesn't exist
             System.out.print('no class found by classname: ' + classstring)
@@ -65,4 +65,21 @@ class SessionController extends RestfulController{
             response.status = 200
         }
     }
+
+    //Deletes a Class
+    //PARAM {sessionID: String}
+    def deleteSession() {
+        def session = Session.find { sessionID == params.sessionID }
+        if (session == null) {
+            //session doesn't exist
+            System.out.print("Session doesn't exist -SessionID: " + params.sessionID)
+            response.status = 404
+        } else {
+            //deletes session
+            session.delete(flush: true)
+            System.out.print("Session deleted. SessionID: " + params.sessionID)
+            response.status = 200
+        }
+    }
+
 }
