@@ -1,4 +1,4 @@
-package grails3.example
+package com.explainthatagain
 
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor

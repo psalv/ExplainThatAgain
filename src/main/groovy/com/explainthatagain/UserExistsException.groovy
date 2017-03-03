@@ -1,9 +1,9 @@
-package cs2212group14
+package com.explainthatagain
 
 /**
  *
  */
-class UserExistsException extends  Exception {
+class UserExistsException extends Exception {
     UserExistsException() {
     }
 

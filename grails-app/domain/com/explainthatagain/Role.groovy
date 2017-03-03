@@ -1,4 +1,4 @@
-package cs2212group14
+package com.explainthatagain
 
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString

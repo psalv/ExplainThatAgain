@@ -50,7 +50,7 @@ environments:
 grails:
     profile: web
     codegen:
-        defaultPackage: cs2212group14
+        defaultPackage: com.explainthatagain
     spring:
         transactionManagement:
             proxies: false
@@ -135,6 +135,9 @@ grails:
                     - pattern: '/api/signup'
                       filters: 'anonymousAuthenticationFilter,restExceptionTranslationFilter'
 
+                    - pattern: '/api/facebookSignin'
+                      filters: 'anonymousAuthenticationFilter,restExceptionTranslationFilter'
+
                     - pattern: '/api/**'
                       filters: 'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter,-rememberMeAuthenticationFilter'
 
@@ -147,7 +150,7 @@ grails:
                         enableAnonymousAccess: true
 
             userLookup:
-                userDomainClassName: 'grails3.example.User'
-                authorityJoinClassName: 'grails3.example.UserRole'
+                userDomainClassName: 'com.explainthatagain.User'
+                authorityJoinClassName: 'com.explainthatagain.UserRole'
             authority:
-                className: 'grails3.example.Role'
+                className: 'com.explainthatagain.Role'

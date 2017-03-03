@@ -1,7 +1,7 @@
-package cs2212group14
+package com.explainthatagain
 
 import grails.transaction.Transactional
-import cs2212group14.util.OptionalCategory
+import com.explainthatagain.util.OptionalCategory
 
 class UserService {
 

@@ -1,4 +1,4 @@
-package cs2212group14
+package com.explainthatagain
 
 import grails.plugin.springsecurity.annotation.Secured
 import grails.web.RequestParameter
