@@ -20,6 +20,16 @@ class UserController {
         respond payload, status: HttpStatus.CREATED
     }
 
+    def facebookSignin(@RequestParameter('username') String username, @RequestParameter('password') String password) {
+        if (User.countByUsername(username) == 0) {
+            signUp(username, password)
+            respond username, status: HttpStatus.CREATED
+        }
+        else {
+            respond username, status: HttpStatus.OK
+        }
+    }
+
     def handleUserExists(UserExistsException userExistsException) {
         def payload = [error: userExistsException.message] as Object
         respond payload, status: HttpStatus.BAD_REQUEST

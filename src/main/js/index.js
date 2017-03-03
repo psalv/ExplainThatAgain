@@ -6,22 +6,12 @@ import SignIn from './signin';
 import SignUp from './signup';
 import Logout from './logout';
 import auth from './auth';
-import ConnectWithFacebook from './connect-with-facebook';
 
 const Paths = {
-    SIGNIN: "/signin",
-    LOGOUT: "/logout",
-    SIGNUP: "/signup",
-    CONNECT: "/connect"
+    SIGNIN: "signin",
+    LOGOUT: "logout",
+    SIGNUP: "signup",
 };
-
-const Greet = () =>
-    <div className="jumbotron">
-        <h1>Explain That Again</h1>
-        <p>Please Login below</p>
-        <SignIn />
-        <ConnectWithFacebook />
-    </div>;
 
 const NotFound = () =>
     <div className="row">
@@ -31,30 +21,19 @@ const NotFound = () =>
     </div>;
 
 function checkAuth(next, replace) {
-
     let nextPath = next.location.pathname;
     if (auth.loggedIn()) {
-        if(nextPath == Paths.SIGNIN || nextPath == Paths.SIGNUP) {
-            replace({pathname: "/"});
-        }
-    } else {
-        if(nextPath != Paths.SIGNIN && nextPath != Paths.SIGNUP) {
-            replace({
-                pathname: Paths.SIGNIN,
-                state: {nextPath: nextPath}
-            });
-        }
+        console.log("Logged in redirect");
+        browserHistory.push("/home/")
     }
 }
 
 ReactDOM.render(
     <Router history={browserHistory}>
-        <Route path="/" component={App}>
-            <IndexRoute component={Greet}/>
-            <Route path={Paths.SIGNIN} component={SignIn} onEnter={checkAuth} />
+        <Route path="/" component={App} >
+            <IndexRoute component={SignIn} onEnter={checkAuth} />
             <Route path={Paths.LOGOUT} component={Logout}/>
             <Route path={Paths.SIGNUP} component={SignUp} onEnter={checkAuth}/>
-            <Route path={Paths.CONNECT} component={ConnectWithFacebook}/>
             <Route path="*" component={NotFound} />
         </Route>
     </Router>

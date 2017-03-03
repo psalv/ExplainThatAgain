@@ -32,12 +32,6 @@ class Navigation extends React.Component {
                         <Link to="/" className="navbar-brand">Explain That Again</Link>
                     </div>
                     { this.state.loggedIn ?
-                        <ul className="nav navbar-nav">
-                            <li><Link to="/search">Search</Link></li>
-                        </ul> : null
-                    }
-
-                    { this.state.loggedIn ?
                         <ul className="nav navbar-nav navbar-right">
                             <li><Link to="/logout">Log out</Link></li>
                         </ul> : null
@@ -45,7 +39,7 @@ class Navigation extends React.Component {
 
                     { this.state.loggedIn ? null :
                         <ul className="nav navbar-nav navbar-right">
-                            <li><Link to="/signin">Sign in</Link></li>
+                            <li><Link to="/">Sign in</Link></li>
                         </ul>
                     }
                 </div>
@@ -55,5 +49,3 @@ class Navigation extends React.Component {
 }
 
 export default Navigation;
-
-
