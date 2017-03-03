@@ -9666,7 +9666,6 @@ var GraphUpdaterField = _react2.default.createClass({
                     _this.state.multiple = "You've already clicked that.";
                 } else {
                     _this.state.lastETA = _this.state.slide;
-                    _this.state.multiple = '';
                 }
 
                 _this.setState({ success1: 'You did not understand.' });
@@ -9689,6 +9688,7 @@ var GraphUpdaterField = _react2.default.createClass({
         }).then(function (res) {
             if (res.ok) {
                 _this2.changeSlide();
+                _this2.state.multiple = '';
                 _this2.setState({ success2: 'New slide instance created.' });
             } else {
                 --_this2.state.slide;

@@ -50,7 +50,7 @@
     <div class="row">
         <div class="row topRow">
             <div class="col-md-6 text-center">
-                Session ID: ${session.id}
+                Session ID: ${this.params.sessionId}
             </div>
             <div class="col-md-6 text-center">
                 <g:link controller="Session" action="endSession" params="[sessionId: 1]">End Session</g:link>
