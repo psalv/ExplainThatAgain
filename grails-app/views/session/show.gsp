@@ -51,8 +51,9 @@
         <div class="row fullsize">
             <div class="col-lg-9 text-center contentSession">
                 <div class="row contentContent">
-                    %{--<div id="chartContainer" style="height: 300px; width: 100%;">location of graph</div>--}%
-                    <div id="graphLocation" style="height: 300px; width: 100%;">location of graph</div>
+
+                    <div id="chart_div"></div>
+
 
 
                 </div>
@@ -73,8 +74,15 @@
 
 
     %{--Bundles all javascripts into a single file--}%
-    %{--<link rel="javascript" href="${resource(dir: 'javascripts', file: 'jquery-2.2.0.min.js')}" type="text/css">--}%
-    <script type="text/javascript" src="//canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    %{--<script type="text/javascript" src="//www.gstatic.com/charts/loader.js"></script>--}%
+
+    <link rel="javascript" href="${resource(dir: 'javascripts', file: 'jquery-2.2.0.min.js')}" type="text/js">
+    <link rel="javascript" href="${resource(dir: 'javascripts', file: 'graphcanvas.js')}" type="text/js">
+
+ %{--<script type="text/javascript" src="//canvasjs.com/assets/script/canvasjs.min.js"></script>--}%
+
+
     <asset:javascript src="bundle.js"/>
 
 </body>
