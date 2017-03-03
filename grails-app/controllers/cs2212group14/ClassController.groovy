@@ -6,7 +6,7 @@ import grails.rest.RestfulController
 class ClassController extends RestfulController {
 
     static allowedMethods = [createClass: 'POST', deleteClass: 'DELETE', getSessions: 'GET']
-    static responceFormats = ['json', 'xml']
+    static responseFormats = ['json', 'xml']
 
     ClassController(){
         super(Class)

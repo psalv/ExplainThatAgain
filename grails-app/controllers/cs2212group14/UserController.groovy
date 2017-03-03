@@ -5,6 +5,9 @@ import grails.web.RequestParameter
 
 class UserController extends RestfulController{
 
+    static allowedMethods = [show: 'POST', addCourse: 'POST', deleteCourse: 'POST', addSession: 'POST', deleteSession: 'POST']
+    static responseFormats = ['json', 'xml']
+
     UserController(){
         super(User)
     }
@@ -58,36 +61,47 @@ class UserController extends RestfulController{
 
 
 
-    def addCourse(@RequestParameter('courseName') String courseName){
+    def addCourse(@RequestParameter('courseName') String courseName, @RequestParameter('user') String user){
         response.status = 404
-        println "\Course name sent is: " + courseName
+        println "Course name sent is: " + courseName
 
-        def course = Course.findByCourseName(courseName)
+        def usr = User.findByUserName(user)
+        if(usr != null){
+            def course = usr.getCourses().find{courseName: courseName}
 
-        if(course == null){
-            def graph = session.getGraph()
-            if(graph != null){
-                new GraphInstance(graph: graph, slide: params.slide).save()
+            if(course == null){
+                new Course(user: usr).save(flush: true)
                 response.status = 200
             }
         }
     }
 
-
-    def addSession(@RequestParameter('courseName') String courseName, @RequestParameter('sessionName') String sessionName){
-        response.status = 404
-        println "\nSession name sent is: " + sessionName
-
-
-        def session = Session.findBySessionID(Integer.parseInt(params.sessionID))
-
-        if(session != null){
-            def graph = session.getGraph()
-            if(graph != null){
-                new GraphInstance(graph: graph, slide: params.slide).save()
-                response.status = 200
-            }
-        }
-    }
+//    def addSession(@RequestParameter('courseName') String courseName, @RequestParameter('sessionName') String sessionName){
+//        response.status = 404
+//        println "Course name sent is: " + courseName
+//
+//        def course = Course.findByCourseName(courseName)
+//
+//        if(course != null){
+//            new Course(graph: graph, slide: params.slide).save(flush: true)
+//            response.status = 200
+//        }
+//    }
+//
+//    def addSession(@RequestParameter('courseName') String courseName, @RequestParameter('sessionName') String sessionName){
+//        response.status = 404
+//        println "\nSession name sent is: " + sessionName
+//
+//
+//        def session = Session.findBySessionID(Integer.parseInt(params.sessionID))
+//
+//        if(session != null){
+//            def graph = session.getGraph()
+//            if(graph != null){
+//                new GraphInstance(graph: graph, slide: params.slide).save(flush: true)
+//                response.status = 200
+//            }
+//        }
+//    }
 
 }

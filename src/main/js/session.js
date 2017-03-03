@@ -13,23 +13,18 @@ let NewSession = React.createClass({
     handleAdd () {
         e.preventDefault();
         fetch('http://localhost:8080/User/addCourse?courseName=' + this.state.courseName + '&sessionName=' + this.state.sessionName, {
-            // fetch('api/addInstance?sessionID=1&slide=' + ++this.state.slide, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
-                // "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
             }
         }).then(res =>{
             if(res.ok){
-                this.changeSlide();
-                this.state.multiple = '';
-                this.setState({success2: 'New slide instance created.'});
+                this.setState({success: 'New session created.'});
             }
             else{
-                --this.state.slide;
-                this.setState({success2: 'Trouble creating new session, check that the course exists and the session is unique.'});
+                this.setState({success: 'Trouble creating new session, check that the course exists and the session is unique.'});
             }
-        })
+        });
     },
 
 

@@ -9643,7 +9643,21 @@ var NewCourse = _react2.default.createClass({
         this.setState({ name: e.target.value });
     },
     handleAdd: function handleAdd() {
-        // need to get the course name and pass it to the controller to add, state success
+        var _this = this;
+
+        e.preventDefault();
+        fetch('http://localhost:8080/User/addCourse?user=test&courseName=' + this.state.courseName, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (res) {
+            if (res.ok) {
+                _this.setState({ success: 'New course created.' });
+            } else {
+                _this.setState({ success: 'Trouble creating new course, check that the course does not already exist.' });
+            }
+        });
     },
 
 
@@ -9923,7 +9937,22 @@ var NewSession = _react2.default.createClass({
         };
     },
     handleAdd: function handleAdd() {
-        // need to get the course name and pass it to the controller to add, state success
+        var _this = this;
+
+        e.preventDefault();
+        fetch('http://localhost:8080/User/addCourse?courseName=' + this.state.courseName + '&sessionName=' + this.state.sessionName, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (res) {
+            if (res.ok) {
+                _this.setState({ success: 'New session created.' });
+            } else {
+                --_this.state.slide;
+                _this.setState({ success: 'Trouble creating new session, check that the course exists and the session is unique.' });
+            }
+        });
     },
     handleChangeSession: function handleChangeSession(e) {
         // Prevent following the link.
