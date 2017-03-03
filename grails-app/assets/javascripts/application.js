@@ -6,6 +6,7 @@
 // to create separate JavaScript files as needed.
 //
 //= require jquery-2.2.0.min
+//= require canvasjs.min
 //= require bootstrap
 //= require_tree .
 //= require_self
