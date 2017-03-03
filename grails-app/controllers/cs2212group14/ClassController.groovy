@@ -17,7 +17,7 @@ class ClassController extends RestfulController {
     }
 
     //creates a new Class
-    //PARAM {classname: String, user: User}
+    //PARAM {classname: String, user: String}
     def createClass(){
         def classstring = params.classname
         def user = User.find{username == params.user}
@@ -63,6 +63,8 @@ class ClassController extends RestfulController {
     }
 
     def addAdmins(){
+
+
 
     }
 
