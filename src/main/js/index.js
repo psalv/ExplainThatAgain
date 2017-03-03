@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { GraphUpdater } from './graph';
-import { GraphE } from './graph';
+import { GraphE } from './graphcanvas';
 
 
 /*

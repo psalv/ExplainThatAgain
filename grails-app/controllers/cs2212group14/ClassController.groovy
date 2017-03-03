@@ -16,6 +16,7 @@ class ClassController extends RestfulController {
         render "I am a ClassController"
     }
 
+
     //creates a new Course
     //PARAM {classname: String, prof: Professor}
     def createClass(){
