@@ -48,21 +48,21 @@
 <body>
 
     <div class="row">
-        <div class="row">
-            <div class="col-md-6">
-
+        <div class="row topRow">
+            <div class="col-md-6 text-center">
+                Session ID: ${session.id}
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 text-center">
                 <g:link controller="Session" action="endSession" params="[sessionId: 1]">End Session</g:link>
             </div>
         </div>
         <div class="row fullsize">
-            <div class="col-lg-9 text-center contentSession">
+            <div class="col-lg-8 text-center contentSession">
                 <div id="graph"></div>
             </div>
 
             <div class="col-lg-3 text-center chatSession">
-                this section will represent the chat
+                CHAT<br>(FORTHCOMING)
             </div>
         </div>
     </div>
