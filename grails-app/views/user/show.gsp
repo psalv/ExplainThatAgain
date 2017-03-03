@@ -47,8 +47,12 @@
 
 <body>
 
-    <div class="row">
-        This is the profile page
+    <div class="row" style="margin: 150px">
+        User profile for: ${this.params.username}
+        <br>
+        <div id="courseField"></div>
+        <br>
+        <div id="sessionField"></div>
     </div>
 
     <div class="row text-center">
@@ -57,7 +61,7 @@
 
 
 %{--Bundles all javascripts into a single file--}%
-<asset:javascript src="bundle.js"/>
+    <asset:javascript src="bundle.js"/>
 
 </body>
 
