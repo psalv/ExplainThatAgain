@@ -42,6 +42,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="${resource(dir: 'stylesheets', file: 'session.css')}" type="text/css">
+
 </head>
 
 <body>
@@ -50,7 +51,8 @@
         <div class="row fullsize">
             <div class="col-lg-9 text-center contentSession">
                 <div class="row contentContent">
-                    <div id="chartContainer" style="height: 300px; width: 100%;">location of graph</div>
+                    %{--<div id="chartContainer" style="height: 300px; width: 100%;">location of graph</div>--}%
+                    <div id="graphLocation" style="height: 300px; width: 100%;">location of graph</div>
 
 
                 </div>
@@ -71,9 +73,9 @@
 
 
     %{--Bundles all javascripts into a single file--}%
+    %{--<link rel="javascript" href="${resource(dir: 'javascripts', file: 'jquery-2.2.0.min.js')}" type="text/css">--}%
     <script type="text/javascript" src="//canvasjs.com/assets/script/canvasjs.min.js"></script>
     <asset:javascript src="bundle.js"/>
-    <link rel="javascript" href="${resource(dir: 'javascripts', file: 'jquery-2.2.0.min.js')}" type="text/css">
 
 </body>
 
