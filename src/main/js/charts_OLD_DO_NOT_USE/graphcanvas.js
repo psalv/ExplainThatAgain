@@ -6,8 +6,7 @@ let MyComponent = React.createClass({
 
     getInitialState () {
         return {
-            labels: ['Slide #1', 'Slide #2'],
-            data: [10, 20],
+
             slide : 0
         }
     },
