@@ -89,40 +89,90 @@ export class GraphUpdater extends React.Component{
     }
 }
 
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.src = "//canvasjs.com/assets/script/canvasjs.min.js";
 
+function loadScript(callback)
+{
+    let url = "//canvasjs.com/assets/script/canvasjs.min.js";
+    // Adding the script tag to the head as suggested before
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
 
+    // Then bind the event to the callback function.
+    // There are several events for cross browser compatibility.
+    script.onreadystatechange = callback;
+    script.onload = callback;
+
+    // Fire the loading
+    head.appendChild(script);
+}
+
+function createNewChart (dataPoints) {
+    CanvasJS.addColorSet("1color", ["#3CB371"]);
+
+    let chart = new CanvasJS.Chart("chartContainer", {
+        colorSet: "1color",
+        title: {
+            text: "Explain That Again"
+        },
+        axisX: {
+            title: "Lecture Slide"
+        },
+        axisY: {
+            title: "Number of Confused Students",
+            interlacedColor: "#F0F8FF"
+        },
+        axisX2: {
+            title: "Confusion Chart"
+        },
+        data: [
+            {
+                // Change type to "doughnut", "line", "splineArea", etc.
+                type: "column",
+                dataPoints: dataPoints
+            }
+        ]
+    });
+
+    chart.render();
+    return chart;
+}
 
 var GraphEl = React.createClass({
 
 
-    createNewChart (dataPoints){
-        CanvasJS.addColorSet("1color", ["#3CB371"]);
-
-        let chart = new CanvasJS.Chart("chartContainer", {
-            colorSet: "1color",
-            title: {
-                text: "Explain That Again"
-            },
-            axisX: {
-                title: "Lecture Slide"
-            },
-            axisY: {
-                title: "Number of Confused Students",
-                interlacedColor: "#F0F8FF"
-            },
-            axisX2: {
-                title: "Confusion Chart"
-            },
-            data: [
-                {
-                    // Change type to "doughnut", "line", "splineArea", etc.
-                    type: "column",
-                    dataPoints: dataPoints
-                }
-            ]
-        });
-
-        chart.render();
+    // createNewChart (dataPoints){
+    //     CanvasJS.addColorSet("1color", ["#3CB371"]);
+    //
+    //     let chart = new CanvasJS.Chart("chartContainer", {
+    //         colorSet: "1color",
+    //         title: {
+    //             text: "Explain That Again"
+    //         },
+    //         axisX: {
+    //             title: "Lecture Slide"
+    //         },
+    //         axisY: {
+    //             title: "Number of Confused Students",
+    //             interlacedColor: "#F0F8FF"
+    //         },
+    //         axisX2: {
+    //             title: "Confusion Chart"
+    //         },
+    //         data: [
+    //             {
+    //                 // Change type to "doughnut", "line", "splineArea", etc.
+    //                 type: "column",
+    //                 dataPoints: dataPoints
+    //             }
+    //         ]
+    //     });
+    //
+    //     chart.render();
 
         // let yVal = 15, updateCount = 0;
         // let updateChart = function () {
@@ -138,29 +188,28 @@ var GraphEl = React.createClass({
         // };
         // update every 1 seconds
         // setInterval(function(){updateChart()}, 10000);
-    },
+    // },
 
     getInitialState () {
         return {
-            dataPoints : [{y : 10}, {y : 13}, {y : 18}, {y : 20}, {y : 17}],
-            chart : createNewChart(datapoints),
+            dataPoints : [],
+            chart : createNewChart([{y : 10}, {y : 13}, {y : 18}, {y : 20}, {y : 17}])
         }
     },
 
     render () {
         return (
-            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+            <div id="chartContainer" style="height: 300px; width: 100%;">this is the graph container</div>
 
         );
     }
 
 });
 
-export class Graph extends React.Component{
+export class GraphE extends React.Component{
     render(){
         return(
             <GraphEl/>
         );
     }
 }
-

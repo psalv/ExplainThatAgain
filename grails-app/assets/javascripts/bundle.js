@@ -9446,7 +9446,7 @@ module.exports = ReactPropTypesSecret;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.GraphUpdater = undefined;
+exports.GraphE = exports.GraphUpdater = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -9581,6 +9581,139 @@ var GraphUpdater = exports.GraphUpdater = function (_React$Component) {
     }]);
 
     return GraphUpdater;
+}(_react2.default.Component);
+
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.src = "//canvasjs.com/assets/script/canvasjs.min.js";
+
+function loadScript(callback) {
+    var url = "//canvasjs.com/assets/script/canvasjs.min.js";
+    // Adding the script tag to the head as suggested before
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+
+    // Then bind the event to the callback function.
+    // There are several events for cross browser compatibility.
+    script.onreadystatechange = callback;
+    script.onload = callback;
+
+    // Fire the loading
+    head.appendChild(script);
+}
+
+function createNewChart(dataPoints) {
+    CanvasJS.addColorSet("1color", ["#3CB371"]);
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+        colorSet: "1color",
+        title: {
+            text: "Explain That Again"
+        },
+        axisX: {
+            title: "Lecture Slide"
+        },
+        axisY: {
+            title: "Number of Confused Students",
+            interlacedColor: "#F0F8FF"
+        },
+        axisX2: {
+            title: "Confusion Chart"
+        },
+        data: [{
+            // Change type to "doughnut", "line", "splineArea", etc.
+            type: "column",
+            dataPoints: dataPoints
+        }]
+    });
+
+    chart.render();
+    return chart;
+}
+
+var GraphEl = _react2.default.createClass({
+    displayName: "GraphEl",
+
+
+    // createNewChart (dataPoints){
+    //     CanvasJS.addColorSet("1color", ["#3CB371"]);
+    //
+    //     let chart = new CanvasJS.Chart("chartContainer", {
+    //         colorSet: "1color",
+    //         title: {
+    //             text: "Explain That Again"
+    //         },
+    //         axisX: {
+    //             title: "Lecture Slide"
+    //         },
+    //         axisY: {
+    //             title: "Number of Confused Students",
+    //             interlacedColor: "#F0F8FF"
+    //         },
+    //         axisX2: {
+    //             title: "Confusion Chart"
+    //         },
+    //         data: [
+    //             {
+    //                 // Change type to "doughnut", "line", "splineArea", etc.
+    //                 type: "column",
+    //                 dataPoints: dataPoints
+    //             }
+    //         ]
+    //     });
+    //
+    //     chart.render();
+
+    // let yVal = 15, updateCount = 0;
+    // let updateChart = function () {
+    //
+    //     yVal = yVal + Math.round(5 + Math.random() * (-5 - 5));
+    //     updateCount++;
+    //
+    //     dataPoints.push({
+    //         y : yVal
+    //     });
+    //     chart.render();
+    //
+    // };
+    // update every 1 seconds
+    // setInterval(function(){updateChart()}, 10000);
+    // },
+
+    getInitialState: function getInitialState() {
+        return {
+            dataPoints: [],
+            chart: createNewChart([{ y: 10 }, { y: 13 }, { y: 18 }, { y: 20 }, { y: 17 }])
+        };
+    },
+    render: function render() {
+        return _react2.default.createElement(
+            "div",
+            { id: "chartContainer", style: "height: 300px; width: 100%;" },
+            "this is the graph container"
+        );
+    }
+});
+
+var GraphE = exports.GraphE = function (_React$Component2) {
+    _inherits(GraphE, _React$Component2);
+
+    function GraphE() {
+        _classCallCheck(this, GraphE);
+
+        return _possibleConstructorReturn(this, (GraphE.__proto__ || Object.getPrototypeOf(GraphE)).apply(this, arguments));
+    }
+
+    _createClass(GraphE, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(GraphEl, null);
+        }
+    }]);
+
+    return GraphE;
 }(_react2.default.Component);
 
 /***/ }),
@@ -21848,6 +21981,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 
 _reactDom2.default.render(_react2.default.createElement(_graph.GraphUpdater, null), document.getElementById('graph'));
+
+_reactDom2.default.render(_react2.default.createElement(_graph.GraphE, null), document.getElementById('graphLocation'));
 
 /***/ })
 /******/ ]);
