@@ -1,8 +1,9 @@
 import React from 'react';
 import UserForm from './user-form';
 import 'whatwg-fetch';
-import {withRouter, Link} from 'react-router';
+import {withRouter, Link, browserHistory} from 'react-router';
 import auth from './auth';
+import FacebookLogin from 'react-facebook-login';
 
 const checkStatus = (response) => {
     if(response.status >= 200 && response.status < 300) {
@@ -14,8 +15,6 @@ const checkStatus = (response) => {
     }
 };
 
-
-
 class SignIn extends React.Component {
     constructor() {
         super();
@@ -25,12 +24,12 @@ class SignIn extends React.Component {
             error: ''
         };
         this.signIn = this.signIn.bind(this);
+        this.handleFacebook = this.handleFacebook.bind(this);
     }
 
     signIn(e) {
         e.preventDefault();
-        console.log("Signing in...", this.form.data());
-
+        
         fetch("/api/login", {
             method: 'POST',
             headers: {
@@ -44,13 +43,35 @@ class SignIn extends React.Component {
         .catch(this.fail.bind(this))
     }
 
+    handleFacebook(e) {
+        let body = "{username=" + e.email + ", password=" + e.accessToken + "}"
+
+        fetch("/api/facebookSignin", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: body
+        })
+
+        fetch("/api/login", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: body
+        })
+        .then(checkStatus)
+        .then(this.success.bind(this))
+        .catch(this.fail.bind(this))
+    }
+
     success(authObject) {
         console.log("Signed in", authObject);
         auth.signIn(authObject);
-        let locationState = this.props.location.state,
-            nextPath = locationState ? locationState.nextPath : "/";
-        this.props.router.replace(nextPath ? nextPath : "/");
-        //this.props.router.reload();
+        browserHistory.push("/")
     }
 
     fail(res) {
@@ -59,13 +80,13 @@ class SignIn extends React.Component {
     }
 
     render () {
-        let Error = () => <p className="alert alert-danger">{this.state.error} <Link to="/signup">Sign up</Link></p>;
+        let Error = () => <p className="alert alert-danger">{this.state.error} </p>;
         return (
-
             <div className="col-sm-4 col-sm-offset-4">
                 { this.state.error ? <Error/> : null }
                 <UserForm submitLabel="Sign in" onSubmit={this.signIn} ref={ (ref) => this.form = ref }/>
-
+                <FacebookLogin appId="231018617305901" autoLoad={false} fields="name,email" callback={this.handleFacebook} />
+                <Link to="/signup">Sign up</Link>
             </div>
         )
     }
