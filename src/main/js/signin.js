@@ -23,45 +23,43 @@ class SignIn extends React.Component {
             password: '',
             error: ''
         };
+        this.handleForm = this.handleForm.bind(this);
         this.signIn = this.signIn.bind(this);
         this.handleFacebook = this.handleFacebook.bind(this);
     }
 
-    signIn(e) {
-        e.preventDefault();
-        
-        fetch("/api/login", {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.form.data())
-        })
-        .then(checkStatus)
-        .then(this.success.bind(this))
-        .catch(this.fail.bind(this))
-    }
-
     handleFacebook(e) {
-        let body = "{username=" + e.email + ", password=" + e.accessToken + "}"
+        console.log(e)
+        this.state.name = e.email
+        this.state.password = e.userID
 
         fetch("/api/facebookSignin", {
             method: 'POST',
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
             },
-            body: body
-        })
+            body: "username=" + this.state.name + "&password=" + this.state.password
+        }).then(this.signIn.bind(this))
+    }
 
+    handleForm(e) {
+        e.preventDefault();
+        this.state.name = this.form.data().username;
+        this.state.password = this.form.data().password;
+        this.signIn();
+    }
+
+    signIn() {
         fetch("/api/login", {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: body
+            body: JSON.stringify({
+                username: this.state.name,
+                password: this.state.password,
+            })
         })
         .then(checkStatus)
         .then(this.success.bind(this))
@@ -71,7 +69,7 @@ class SignIn extends React.Component {
     success(authObject) {
         console.log("Signed in", authObject);
         auth.signIn(authObject);
-        browserHistory.push("/")
+        browserHistory.push("/home/")
     }
 
     fail(res) {
@@ -84,7 +82,7 @@ class SignIn extends React.Component {
         return (
             <div className="col-sm-4 col-sm-offset-4">
                 { this.state.error ? <Error/> : null }
-                <UserForm submitLabel="Sign in" onSubmit={this.signIn} ref={ (ref) => this.form = ref }/>
+                <UserForm submitLabel="Sign in" onSubmit={this.handleForm} ref={ (ref) => this.form = ref }/>
                 <FacebookLogin appId="231018617305901" autoLoad={false} fields="name,email" callback={this.handleFacebook} />
                 <Link to="/signup">Sign up</Link>
             </div>

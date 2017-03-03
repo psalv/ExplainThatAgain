@@ -14,7 +14,7 @@ class UserService {
         def lowerCaseUsername = username.toLowerCase()
         def role = Optional
             .ofNullable(Role.findByAuthority(ROLE_USER))
-            .orElse(new Role(authority: ROLE_USER).save())
+            .orElse(new Role(authority: ROLE_USER).save(flush: true))
 
         def user = use(OptionalCategory) {
             Optional
@@ -22,11 +22,11 @@ class UserService {
             .andThrow { User user ->
                 new UserExistsException("User ${lowerCaseUsername} is already signed up")
             }
-            .orElse(new User(username: lowerCaseUsername, password: password).save())
+            .orElse(new User(username: lowerCaseUsername, password: password).save(flush: true))
         } as User
         log.debug("Created user ${user}")
 
-        UserRole.create(user, role)
+        UserRole.create(user, role, true)
         log.debug("Granted user role ${role.authority}#${role.id}")
 
         user

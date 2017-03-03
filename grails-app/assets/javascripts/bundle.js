@@ -14563,46 +14563,48 @@ var SignIn = function (_React$Component) {
             password: '',
             error: ''
         };
+        _this.handleForm = _this.handleForm.bind(_this);
         _this.signIn = _this.signIn.bind(_this);
         _this.handleFacebook = _this.handleFacebook.bind(_this);
         return _this;
     }
 
     _createClass(SignIn, [{
-        key: 'signIn',
-        value: function signIn(e) {
-            e.preventDefault();
-
-            fetch("/api/login", {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(this.form.data())
-            }).then(checkStatus).then(this.success.bind(this)).catch(this.fail.bind(this));
-        }
-    }, {
         key: 'handleFacebook',
         value: function handleFacebook(e) {
-            var body = "{username=" + e.email + ", password=" + e.accessToken + "}";
+            console.log(e);
+            this.state.name = e.email;
+            this.state.password = e.userID;
 
             fetch("/api/facebookSignin", {
                 method: 'POST',
                 headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
                 },
-                body: body
-            });
-
+                body: "username=" + this.state.name + "&password=" + this.state.password
+            }).then(this.signIn.bind(this));
+        }
+    }, {
+        key: 'handleForm',
+        value: function handleForm(e) {
+            e.preventDefault();
+            this.state.name = this.form.data().username;
+            this.state.password = this.form.data().password;
+            this.signIn();
+        }
+    }, {
+        key: 'signIn',
+        value: function signIn() {
             fetch("/api/login", {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: body
+                body: JSON.stringify({
+                    username: this.state.name,
+                    password: this.state.password
+                })
             }).then(checkStatus).then(this.success.bind(this)).catch(this.fail.bind(this));
         }
     }, {
@@ -14610,7 +14612,7 @@ var SignIn = function (_React$Component) {
         value: function success(authObject) {
             console.log("Signed in", authObject);
             _auth2.default.signIn(authObject);
-            _reactRouter.browserHistory.push("/");
+            _reactRouter.browserHistory.push("/home/");
         }
     }, {
         key: 'fail',
@@ -14635,7 +14637,7 @@ var SignIn = function (_React$Component) {
                 'div',
                 { className: 'col-sm-4 col-sm-offset-4' },
                 this.state.error ? _react2.default.createElement(Error, null) : null,
-                _react2.default.createElement(_userForm2.default, { submitLabel: 'Sign in', onSubmit: this.signIn, ref: function ref(_ref) {
+                _react2.default.createElement(_userForm2.default, { submitLabel: 'Sign in', onSubmit: this.handleForm, ref: function ref(_ref) {
                         return _this2.form = _ref;
                     } }),
                 _react2.default.createElement(_reactFacebookLogin2.default, { appId: '231018617305901', autoLoad: false, fields: 'name,email', callback: this.handleFacebook }),
