@@ -50,7 +50,7 @@ class SignIn extends React.Component {
         let locationState = this.props.location.state,
             nextPath = locationState ? locationState.nextPath : "/";
         this.props.router.replace(nextPath ? nextPath : "/");
-        this.props.router.reload();
+        //this.props.router.reload();
     }
 
     fail(res) {

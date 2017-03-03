@@ -1,6 +1,6 @@
-import cs2212group14.Role
-import cs2212group14.User
-import cs2212group14.UserRole
+import com.explainthatagain.Role
+import com.explainthatagain.User
+import com.explainthatagain.UserRole
 
 class BootStrap {
 

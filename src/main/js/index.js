@@ -6,12 +6,13 @@ import SignIn from './signin';
 import SignUp from './signup';
 import Logout from './logout';
 import auth from './auth';
-import FacebookLogin from 'react-facebook-login';
+import ConnectWithFacebook from './connect-with-facebook';
 
 const Paths = {
     SIGNIN: "/signin",
     LOGOUT: "/logout",
-    SIGNUP: "/signup"
+    SIGNUP: "/signup",
+    CONNECT: "/connect"
 };
 
 const Greet = () =>
@@ -19,11 +20,7 @@ const Greet = () =>
         <h1>Explain That Again</h1>
         <p>Please Login below</p>
         <SignIn />
-        <FacebookLogin
-            appId="231018617305901"
-            autoLoad={true}
-            fields="name,email,picture" />
-        <p><Link to={Paths.SIGNUP} className="btn btn-primary btn-lg">Sign Up</Link></p>
+        <ConnectWithFacebook />
     </div>;
 
 const NotFound = () =>
@@ -57,6 +54,7 @@ ReactDOM.render(
             <Route path={Paths.SIGNIN} component={SignIn} onEnter={checkAuth} />
             <Route path={Paths.LOGOUT} component={Logout}/>
             <Route path={Paths.SIGNUP} component={SignUp} onEnter={checkAuth}/>
+            <Route path={Paths.CONNECT} component={ConnectWithFacebook}/>
             <Route path="*" component={NotFound} />
         </Route>
     </Router>

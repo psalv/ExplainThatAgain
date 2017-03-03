@@ -1,4 +1,4 @@
-package cs2212group14
+package com.explainthatagain
 
 import grails.gorm.DetachedCriteria
 import groovy.transform.ToString
