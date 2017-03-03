@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { GraphUpdater } from './graph';
+import { GraphE } from './graph';
 
 
 /*
@@ -10,6 +11,9 @@ import { GraphUpdater } from './graph';
  */
 
 ReactDOM.render(
-    <GraphUpdater/>, document.getElementById('graph'),
-    <Graph/>, document.getElementById('graph')
+    <GraphUpdater/>, document.getElementById('graph'));
+ 
+
+ReactDOM.render(
+    <GraphE/>, document.getElementById('graphLocation')
 );

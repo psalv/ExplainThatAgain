@@ -50,9 +50,7 @@
         <div class="row fullsize">
             <div class="col-lg-9 text-center contentSession">
                 <div class="row contentContent">
-                    this will be where the graph/slides go
-
-                    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                    <div id="graphLocation" style="height: 300px; width: 100%;">location of graph</div>
 
 
                 </div>
@@ -77,7 +75,6 @@
 
     <link rel="javascript" href="${resource(dir: 'javascripts', file: 'jquery-2.2.0.min.js')}" type="text/css">
     <script src="//canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <link rel="javascript" href="${resource(dir: 'javascripts', file: 'graphGen.js')}" type="text/css">
 
 </body>
 
