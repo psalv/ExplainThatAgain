@@ -9639,7 +9639,9 @@ var GraphUpdaterField = _react2.default.createClass({
             data: [],
             success1: "",
             success2: "",
-            slide: 0
+            slide: 0,
+            lastETA: "",
+            multiple: ""
         };
     },
 
@@ -9659,6 +9661,14 @@ var GraphUpdaterField = _react2.default.createClass({
         }).then(function (res) {
             if (res.ok) {
                 _this.state.data[_this.state.slide - 1] = _this.state.data[_this.state.slide - 1] + 1;
+
+                if (_this.state.lastETA == _this.state.slide) {
+                    _this.state.multiple = "You've already clicked that.";
+                } else {
+                    _this.state.lastETA = _this.state.slide;
+                    _this.state.multiple = '';
+                }
+
                 _this.setState({ success1: 'You did not understand.' });
             } else {
                 var str = _this.state.slide == 0 ? "Please wait for the presentation to begin." : "Our server did not understand.";
@@ -9715,7 +9725,7 @@ var GraphUpdaterField = _react2.default.createClass({
                     { className: 'row' },
                     _react2.default.createElement(
                         'div',
-                        { className: 'col-md-3' },
+                        { className: 'col-md-2' },
                         _react2.default.createElement(
                             'button',
                             { onClick: this.handleConfused },
@@ -9724,7 +9734,7 @@ var GraphUpdaterField = _react2.default.createClass({
                     ),
                     _react2.default.createElement(
                         'div',
-                        { className: 'col-md-3' },
+                        { className: 'col-md-2' },
                         _react2.default.createElement(
                             'button',
                             { defaultValue: this.state.slide, onClick: this.handleSlide },
@@ -9751,6 +9761,11 @@ var GraphUpdaterField = _react2.default.createClass({
                         'Current slide: ',
                         _react2.default.createElement('br', null),
                         this.state.slide
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'col-md-2' },
+                        this.state.multiple
                     )
                 )
             )

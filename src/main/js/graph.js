@@ -11,7 +11,9 @@ let GraphUpdaterField = React.createClass({
             data: [],
             success1 : "",
             success2 : "",
-            slide : 0
+            slide : 0,
+            lastETA: "",
+            multiple: ""
         }
     },
 
@@ -28,6 +30,14 @@ let GraphUpdaterField = React.createClass({
         }).then(res =>{
             if(res.ok){
                 this.state.data[this.state.slide - 1] = this.state.data[this.state.slide - 1] + 1;
+
+                if(this.state.lastETA == this.state.slide){
+                    this.state.multiple = "You've already clicked that.";
+                }
+                else{
+                    this.state.lastETA = this.state.slide;
+                }
+
                 this.setState({success1: 'You did not understand.'});
             }
             else{
@@ -48,6 +58,7 @@ let GraphUpdaterField = React.createClass({
         }).then(res =>{
             if(res.ok){
                 this.changeSlide();
+                this.state.multiple = '';
                 this.setState({success2: 'New slide instance created.'});
             }
             else{
@@ -80,11 +91,11 @@ let GraphUpdaterField = React.createClass({
                 </div>
                 <div className="row contentControls">
                     <div className="row">
-                        <div className="col-md-3">
+                        <div className="col-md-2">
                             <button onClick={this.handleConfused}>Explain that again</button>
                         </div>
 
-                        <div className="col-md-3">
+                        <div className="col-md-2">
                             <button defaultValue={this.state.slide} onClick={this.handleSlide}>Next slide</button>
                         </div>
 
@@ -98,6 +109,9 @@ let GraphUpdaterField = React.createClass({
 
                         <div className="col-md-2">
                             Current slide: <br/>{this.state.slide}
+                        </div>
+                        <div className="col-md-2">
+                            {this.state.multiple}
                         </div>
                     </div>
                 </div>
