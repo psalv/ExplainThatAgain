@@ -2,16 +2,12 @@ package cs2212group14
 
 class User {
 
-    String realName
-    String username
-    String email
-    String password
-
-    static hasMany = [posts: Reply]
+    static hasMany = [posts: Reply, courses: Course]
+    static hasOne = [username: String, realname: String, email: String, password: String]
 
     static constraints = {
-        realName nullable: false
-        username nullable: false
+        realname nullable: false
+        username nullable: false, unique: true
         password size: 4..15, blank: false
         email email: true, blank: false
     }
