@@ -48,6 +48,7 @@ class ClassController extends RestfulController {
             response.status = 200
         }
     }
+
     //returns all the sessions in a Class
     //PARAMS {classname: Class}
     def getSessions(){
@@ -61,13 +62,6 @@ class ClassController extends RestfulController {
             response.status = 404
         }
     }
-
-    def addAdmins(){
-
-
-
-    }
-
-    def deleteAdmins(){}
+    
 
 }
