@@ -19,7 +19,7 @@ class GraphController extends RestfulController{
         if(session != null){
             def graph = session.getGraph()
             if(graph != null){
-                new GraphInstance(graph: graph, slide: params.slide).save()
+                new GraphInstance(graph: graph, slide: params.slide).save(flush: true, failOnError: true)
                 response.status = 200
             }
         }

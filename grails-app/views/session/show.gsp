@@ -71,7 +71,6 @@
         <g:link controller="Session" action="returnToIndex">Back</g:link>
     </div>
 
-
     %{--Bundles all javascripts into a single file--}%
     <asset:javascript src="bundle.js"/>
 

@@ -23,9 +23,11 @@ let GraphUpdaterField = React.createClass({
         // Prevents reinitialization
         e.preventDefault();
         fetch('http://localhost:8080/Graph/updateInstance?sessionID=1&slide=' + this.state.slide, {
+        // fetch('api/updateInstance?sessionID=1&slide=' + this.state.slide, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
+                // "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
             }
         }).then(res =>{
             if(res.ok){
@@ -51,9 +53,11 @@ let GraphUpdaterField = React.createClass({
         // Prevents reinitialization
         e.preventDefault();
         fetch('http://localhost:8080/Graph/addInstance?sessionID=1&slide=' + ++this.state.slide, {
+        // fetch('api/addInstance?sessionID=1&slide=' + ++this.state.slide, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
+                // "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
             }
         }).then(res =>{
             if(res.ok){
@@ -80,14 +84,14 @@ let GraphUpdaterField = React.createClass({
                 {
                     label: "Confusometer",
                     borderWidth: 1,
-                    data: this.state.data,
+                    data: this.state.data
                 }
             ]
         };
         return (
             <div>
                 <div className="row contentContent">
-                    <Bar className="theGraph" data={graphData} width="1000" height="600"></Bar>
+                    <Bar className="theGraph" data={graphData} width="1000" height="600"/>
                 </div>
                 <div className="row contentControls">
                     <div className="row">

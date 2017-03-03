@@ -2,28 +2,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { GraphUpdater } from './graph';
+import { CourseObject } from './course';
+import { SessionObject } from './session';
 
 
-/*
- Example of how to render element to the DOM.
- The StatusSearch object is being created in a separate js file
- */
+function run() {
+    try {
+        ReactDOM.render(<GraphUpdater/>, document.getElementById('graph'));
+    }
+    catch(err){
+        console.log("no graph field")
+    }
+    
+    try {
+        ReactDOM.render(<SessionObject/>, document.getElementById('sessionField'));
+    }
+    catch(err){
+        console.log("no session field")
+    }
 
-ReactDOM.render(
-    <GraphUpdater/>, document.getElementById('graph'));
+    try {
+        ReactDOM.render(<CourseObject/>, document.getElementById('courseField'));
+    }
+    catch(err){
+        console.log("no course field")
+    }
+}
 
+const loadedStates = ['complete', 'loaded', 'interactive'];
 
-ReactDOM.render(
-    <Router history={browserHistory}>
-
-        <IndexRoute component={Greet}/>
-        <Route path={Paths.ADDADMIN}/>
-        <Route path={Paths.DELETEADMIN}/>
-        <Route path={Paths.ADDCLASS}/>
-        <Route path={Paths.DELETECLASS}/>
-        <Route path={Paths.ADDCOURSE}/>
-        <Route path={Paths.DELETECOURSE}/>
-        <Route path="*" component={NotFound} />
-
-    </Router>
-, document.getElementById(''));
+if (loadedStates.includes(document.readyState) && document.body) {
+    run();
+} else {
+    window.addEventListener('DOMContentLoaded', run, false);
+}
