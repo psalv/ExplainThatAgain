@@ -58,8 +58,23 @@ class UserController extends RestfulController{
 
 
 
+    def addCourse(@RequestParameter('courseName') String courseName){
+        response.status = 404
+        println "\Course name sent is: " + courseName
 
-    def addCourse(@RequestParameter('courseName') String courseName, @RequestParameter('sessionName') String sessionName){
+        def course = Course.findByCourseName(courseName)
+
+        if(course == null){
+            def graph = session.getGraph()
+            if(graph != null){
+                new GraphInstance(graph: graph, slide: params.slide).save()
+                response.status = 200
+            }
+        }
+    }
+
+
+    def addSession(@RequestParameter('courseName') String courseName, @RequestParameter('sessionName') String sessionName){
         response.status = 404
         println "\nSession name sent is: " + sessionName
 

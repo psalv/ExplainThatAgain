@@ -17,7 +17,21 @@ let NewCourse = React.createClass({
     },
 
     handleAdd () {
-        // need to get the course name and pass it to the controller to add, state success
+        e.preventDefault();
+        fetch('http://localhost:8080/User/addCourse?courseName=' + this.state.courseName, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+                // "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+            }
+        }).then(res =>{
+            if(res.ok){
+                this.setState({success2: 'New session created.'});
+            }
+            else{
+                this.setState({success2: 'Trouble creating new session, check that the course exists and the session is unique.'});
+            }
+        })
     },
 
     // need some way to list all courses, and then some way to list all sessions
