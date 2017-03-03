@@ -89,32 +89,14 @@ export class GraphUpdater extends React.Component{
     }
 }
 
-var script = document.createElement('script');
-script.type = 'text/javascript';
-script.src = "//canvasjs.com/assets/script/canvasjs.min.js";
 
-function loadScript(callback)
-{
-    let url = "//canvasjs.com/assets/script/canvasjs.min.js";
-    // Adding the script tag to the head as suggested before
-    var head = document.getElementsByTagName('head')[0];
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = url;
 
-    // Then bind the event to the callback function.
-    // There are several events for cross browser compatibility.
-    script.onreadystatechange = callback;
-    script.onload = callback;
-
-    // Fire the loading
-    head.appendChild(script);
-}
 
 function createNewChart (dataPoints) {
     CanvasJS.addColorSet("1color", ["#3CB371"]);
 
-    let chart = new CanvasJS.Chart("chartContainer", {
+    // let chart = new CanvasJS.Chart($("#graphLocation"), {
+    let chart = new CanvasJS.Chart($('#chartContainer'), {
         colorSet: "1color",
         title: {
             text: "Explain That Again"
@@ -144,65 +126,19 @@ function createNewChart (dataPoints) {
 
 var GraphEl = React.createClass({
 
-
-    // createNewChart (dataPoints){
-    //     CanvasJS.addColorSet("1color", ["#3CB371"]);
-    //
-    //     let chart = new CanvasJS.Chart("chartContainer", {
-    //         colorSet: "1color",
-    //         title: {
-    //             text: "Explain That Again"
-    //         },
-    //         axisX: {
-    //             title: "Lecture Slide"
-    //         },
-    //         axisY: {
-    //             title: "Number of Confused Students",
-    //             interlacedColor: "#F0F8FF"
-    //         },
-    //         axisX2: {
-    //             title: "Confusion Chart"
-    //         },
-    //         data: [
-    //             {
-    //                 // Change type to "doughnut", "line", "splineArea", etc.
-    //                 type: "column",
-    //                 dataPoints: dataPoints
-    //             }
-    //         ]
-    //     });
-    //
-    //     chart.render();
-
-        // let yVal = 15, updateCount = 0;
-        // let updateChart = function () {
-        //
-        //     yVal = yVal + Math.round(5 + Math.random() * (-5 - 5));
-        //     updateCount++;
-        //
-        //     dataPoints.push({
-        //         y : yVal
-        //     });
-        //     chart.render();
-        //
-        // };
-        // update every 1 seconds
-        // setInterval(function(){updateChart()}, 10000);
-    // },
-
     getInitialState () {
         return {
             dataPoints : [],
             chart : createNewChart([{y : 10}, {y : 13}, {y : 18}, {y : 20}, {y : 17}])
         }
-    },
-
-    render () {
-        return (
-            <div id="chartContainer" style="height: 300px; width: 100%;">this is the graph container</div>
-
-        );
     }
+
+    // render () {
+    //     return (
+    //         <div id="chartContainer" style="height: 300px; width: 100%;">this is the graph container</div>
+    //
+    //     );
+    // }
 
 });
 
@@ -213,3 +149,6 @@ export class GraphE extends React.Component{
         );
     }
 }
+
+
+
