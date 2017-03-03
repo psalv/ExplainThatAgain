@@ -62,6 +62,6 @@ class ClassController extends RestfulController {
             response.status = 404
         }
     }
-    
+
 
 }
