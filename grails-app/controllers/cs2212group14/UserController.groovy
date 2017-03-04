@@ -146,6 +146,7 @@ class UserController extends RestfulController{
         }
     }
 
+
     def deleteSession(@RequestParameter('courseName') String coursName, @RequestParameter('sessionName') String sessionName, @RequestParameter('user') String user){
         response.status = 404
         println "Session name sent is: " + sessionName
