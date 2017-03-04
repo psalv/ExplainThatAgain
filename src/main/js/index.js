@@ -5,6 +5,7 @@ import { GraphUpdater } from './graph';
 import { CourseObject } from './course';
 import { SessionObject } from './session';
 import { AdminObject } from './admin';
+import { MakeAlive } from './live';
 
 
 function run() {
@@ -34,6 +35,13 @@ function run() {
     }
     catch(err){
         console.log("no admin field")
+    }
+    
+    try {
+        ReactDOM.render(<MakeAlive/>, document.getElementById('liveButton'));
+    }
+    catch(err){
+        console.log("no live field")
     }
 }
 

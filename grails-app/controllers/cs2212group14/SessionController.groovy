@@ -1,10 +1,11 @@
 package cs2212group14
 
 import grails.rest.RestfulController
+import grails.web.RequestParameter
 
 class SessionController extends RestfulController{
 
-    static allowedMethods = [createSession: 'POST', show: 'GET', deleteSession: 'DELETE']
+    static allowedMethods = [createSession: 'POST', show: 'GET', deleteSession: 'DELETE', liven: 'POST']
     static responseFormats = ['json', 'xml']
 
     SessionController(){
@@ -28,6 +29,10 @@ class SessionController extends RestfulController{
 
     def returnToIndex(){
         render(view: "/index")
+    }
+
+    def liven(@RequestParameter('courseName') String coursName, @RequestParameter('sessionName') String sessionName, @RequestParameter('user') String user){
+
     }
 
     def endSession (){
