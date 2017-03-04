@@ -53,18 +53,14 @@ class UserController extends RestfulController{
         }
     }
 
-    def addSession(@RequestParameter('courseName') String coursName, @RequestParameter('sessionName') String sessionName, @RequestParameter('user') String user){
+    def deleteCourse(@RequestParameter('courseName') String coursName, @RequestParameter('user') String user){
         response.status = 404
-        println "Session name sent is: " + sessionName
+        println "Course name sent is: " + coursName
 
         def usr = User.findByUsername(user)
-        println usr
         if(usr != null){
-            println "found user"
             def courses = usr.getCourses()
             def course = null
-
-            println "here"
 
             for(Course c: courses){
                 if(c.getCourseName().equals(coursName)){
@@ -74,7 +70,32 @@ class UserController extends RestfulController{
             }
 
             if(course != null){
-                println "here1"
+                course.delete(flush: true)
+//                usr.removeFromCourses(course)
+//                usr.save(flush: true)
+                response.status = 200
+            }
+        }
+    }
+
+    def addSession(@RequestParameter('courseName') String coursName, @RequestParameter('sessionName') String sessionName, @RequestParameter('user') String user){
+        response.status = 404
+        println "Session name sent is: " + sessionName
+
+        def usr = User.findByUsername(user)
+        println usr
+        if(usr != null){
+            def courses = usr.getCourses()
+            def course = null
+
+            for(Course c: courses){
+                if(c.getCourseName().equals(coursName)){
+                    course = c
+                    break
+                }
+            }
+
+            if(course != null){
                 def sessions = course.getSessions()
                 def session = null
 
@@ -87,8 +108,47 @@ class UserController extends RestfulController{
                 }
 
                 if(session == null){
-                    println "here2"
                     new Session(sessionID: 2, sessionName: sessionName, course: course, active: false).save(flush: true)
+                    response.status = 200
+                }
+
+            }
+        }
+    }
+
+    def deleteSession(@RequestParameter('courseName') String coursName, @RequestParameter('sessionName') String sessionName, @RequestParameter('user') String user){
+        response.status = 404
+        println "Session name sent is: " + sessionName
+
+        def usr = User.findByUsername(user)
+        println usr
+        if(usr != null){
+            def courses = usr.getCourses()
+            Course course = null
+
+            for(Course c: courses){
+                if(c.getCourseName().equals(coursName)){
+                    course = c
+                    break
+                }
+            }
+
+            if(course != null){
+                def sessions = course.getSessions()
+                Session session = null
+
+
+                for(Session s: sessions){
+                    if(s.getSessionName().equals(sessionName)){
+                        session = s
+                        break
+                    }
+                }
+
+                if(session != null){
+                    session.delete(flush: true)
+//                    course.removeFromSessions(session)
+//                    course.save(flush: true)
                     response.status = 200
                 }
 

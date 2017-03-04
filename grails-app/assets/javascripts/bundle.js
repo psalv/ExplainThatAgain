@@ -9634,7 +9634,8 @@ var NewCourse = _react2.default.createClass({
     getInitialState: function getInitialState() {
         return {
             courseName: "",
-            success: ""
+            success1: "",
+            success2: ""
         };
     },
     handleChange: function handleChange(e) {
@@ -9653,16 +9654,29 @@ var NewCourse = _react2.default.createClass({
             }
         }).then(function (res) {
             if (res.ok) {
-                _this.setState({ success: 'New course created.' });
+                _this.setState({ success1: 'New course created.' });
             } else {
-                _this.setState({ success: 'Trouble creating new course, check that the course does not already exist.' });
+                _this.setState({ success1: 'Trouble creating new course, check that the course does not already exist.' });
             }
         });
     },
+    handleDelete: function handleDelete(e) {
+        var _this2 = this;
 
-
-    // need some way to list all courses, and then some way to list all sessions
-
+        e.preventDefault();
+        fetch('http://localhost:8080/User/deleteCourse?user=test&courseName=' + this.state.courseName, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (res) {
+            if (res.ok) {
+                _this2.setState({ success2: 'Course deleted.' });
+            } else {
+                _this2.setState({ success2: 'Trouble deleting new course, check that the course exists.' });
+            }
+        });
+    },
     render: function render() {
         return _react2.default.createElement(
             "div",
@@ -9673,11 +9687,19 @@ var NewCourse = _react2.default.createClass({
                 _react2.default.createElement("input", { type: "text", placeholder: "Course name", onChange: this.handleChange }),
                 _react2.default.createElement("input", { type: "submit", value: "Add a course" })
             ),
+            _react2.default.createElement(
+                "form",
+                { onSubmit: this.handleDelete },
+                _react2.default.createElement("input", { type: "submit", value: "Delete a course" })
+            ),
             "Add course: ",
             this.state.courseName,
             _react2.default.createElement("br", null),
-            "Success: ",
-            this.state.success
+            "Create success: ",
+            this.state.success1,
+            _react2.default.createElement("br", null),
+            "Delete success: ",
+            this.state.success2
         );
     }
 });
