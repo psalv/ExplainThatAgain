@@ -83,7 +83,7 @@ class SignIn extends React.Component {
             <div className="col-sm-4 col-sm-offset-4">
                 { this.state.error ? <Error/> : null }
                 <UserForm submitLabel="Sign in" onSubmit={this.handleForm} ref={ (ref) => this.form = ref }/>
-                <FacebookLogin appId="231018617305901" autoLoad={false} fields="name,email" callback={this.handleFacebook} />
+                <FacebookLogin appId="231018617305901" autoLoad={false} fields="name,email" callback={this.handleFacebook} reAuthenticate={true} />
                 <Link to="/signup">Sign up</Link>
             </div>
         )

@@ -14640,7 +14640,7 @@ var SignIn = function (_React$Component) {
                 _react2.default.createElement(_userForm2.default, { submitLabel: 'Sign in', onSubmit: this.handleForm, ref: function ref(_ref) {
                         return _this2.form = _ref;
                     } }),
-                _react2.default.createElement(_reactFacebookLogin2.default, { appId: '231018617305901', autoLoad: false, fields: 'name,email', callback: this.handleFacebook }),
+                _react2.default.createElement(_reactFacebookLogin2.default, { appId: '231018617305901', autoLoad: false, fields: 'name,email', callback: this.handleFacebook, reAuthenticate: true }),
                 _react2.default.createElement(
                     _reactRouter.Link,
                     { to: '/signup' },
