@@ -43,6 +43,94 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="${resource(dir: 'stylesheets', file: 'session.css')}" type="text/css">
 
+
+    <!--======================================= FILE UPLOAD SCRIPT =======================================-->
+
+    <script type="text/javascript">
+
+      //
+      //
+      //
+      // Adapted from Google Picker API Docs
+      //
+      //
+      //
+
+      // The Browser API key obtained from the Google Developers Console.
+      var developerKey = 'AIzaSyCDL5_1jZURjI89oeSDf_1LJOxpK-EfrlA';
+
+      // The Client ID obtained from the Google Developers Console. Replace with your own Client ID.
+      var clientId = "363460569785-8ktpo5pp14r8anevl1imeco4rsa4soro.apps.googleusercontent.com"
+
+      // Scope to use to access user's documents.
+      var scope = ['https://www.googleapis.com/auth/drive'];
+
+      var pickerApiLoaded = false;
+      var oauthToken;
+
+      function newtab(url) {
+        var win = window.open(url, '_blank');
+        win.focus();
+      }
+
+      // Use the API Loader script to load google.picker and gapi.auth.
+      function onApiLoad() {
+        gapi.load('auth', {'callback': onAuthApiLoad});
+        gapi.load('picker', {'callback': onPickerApiLoad});
+      }
+
+      function onAuthApiLoad() {
+        window.gapi.auth.authorize(
+            {
+              'client_id': clientId,
+              'scope': scope,
+              'immediate': false
+            },
+            handleAuthResult);
+      }
+
+      function onPickerApiLoad() {
+        pickerApiLoaded = true;
+        createPicker();
+      }
+
+      function handleAuthResult(authResult) {
+        if (authResult && !authResult.error) {
+          oauthToken = authResult.access_token;
+          createPicker();
+        }
+      }
+
+      // Create and render a Picker object for picking user documents.
+      function createPicker() {
+        if (pickerApiLoaded && oauthToken) {
+          var docsView = new google.picker.DocsView()
+                .setIncludeFolders(true)
+                .setMimeTypes('application/vnd.google-apps.presentation,application/pdf,application/vnd.ms-powerpoint.presentation.macroEnabled.12,text/plain')
+                .setSelectFolderEnabled(true);
+
+          var picker = new google.picker.PickerBuilder().
+              addView(docsView).
+              setOAuthToken(oauthToken).
+              setDeveloperKey(developerKey).
+              setCallback(pickerCallback).
+              build();
+
+          picker.setVisible(true);
+        }
+      }
+
+      // A simple callback implementation.
+      function pickerCallback(data) {
+        var url = 'nothing';
+        if (data[google.picker.Response.ACTION] == google.picker.Action.PICKED) {
+          var doc = data[google.picker.Response.DOCUMENTS][0];
+          url = doc[google.picker.Document.URL];
+          newtab(url);
+        }
+      }
+    </script>
+
 </head>
 
 <body>
@@ -55,6 +143,10 @@
         <div id="sessionField"></div>
         <br>
         <div id="adminField">test</div>
+        <br>
+
+        <script type="text/javascript" src="//apis.google.com/js/api.js"></script>
+        <a onclick="onApiLoad()">Upload a New Presentation From Google Docs (.pptx, .pdf, and Google Slides) or a Chatlog, Graph, or Analytical File (.txt)</a>
     </div>
 
     <div class="row text-center">

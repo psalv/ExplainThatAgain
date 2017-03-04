@@ -13,23 +13,22 @@ let NewCourse = React.createClass({
     handleChange (e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ name : e.target.value });
+        this.setState({ courseName : e.target.value });
     },
 
-    handleAdd () {
+    handleAdd (e) {
         e.preventDefault();
-        fetch('http://localhost:8080/User/addCourse?courseName=' + this.state.courseName, {
+        fetch('http://localhost:8080/User/addCourse?user=test&courseName=' + this.state.courseName, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
-                // "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
             }
         }).then(res =>{
             if(res.ok){
-                this.setState({success2: 'New session created.'});
+                this.setState({success: 'New course created.'});
             }
             else{
-                this.setState({success2: 'Trouble creating new session, check that the course exists and the session is unique.'});
+                this.setState({success: 'Trouble creating new course, check that the course does not already exist.'});
             }
         });
     },
