@@ -10,9 +10,8 @@ GENERAL USAGE NOTES
     git clone “http://github.com/r-meagher/CS2212Group14.git”
   in this directory, type:
     grails run-app
-----------------------------------------------
-Installing
------------
+    
+----------------------------------------------Installing----------------------------------------------
 - Installing SDKman:
     curl -s get.sdkman.io | bash
     source “$HOME/.sdkman/bin/sdkman-init.sh”
@@ -24,8 +23,8 @@ Installing
 - Installing react and react-facebook:
     git clone https://github.com/keppelen/react-facebook-login.git && cd react-facebook-login
     npm install react react-dom react-facebook-login --save
-——----------------------------------------------
-Run Instructions
+
+——----------------------------------------------Run Instructions——----------------------------------------------
 
 Because the design of our application has two main components (a cloud-based service to store and retrieve sessions,
 and a local service to display the graph and manage chat windows), we decided to break our project into two different
@@ -41,9 +40,9 @@ Since the application is broken down into two applications, in order to fully te
 run separately. They can be found in their respective folders, Local and Cloud. To run, go into the
  respective folder, input the grails run-app -https command, and navigate to the webpage that is prompted.
  Adblockers may interfere with the Facebook authentication, so if it doesn’t work they may need to be disabled
-——----------------------------------------------
-Repository Organization
-------------------------
+
+——---------------------------------Repository Organization——---------------------------------
+
 - The features of managing administrators (adding adms and deleting adms) are implemented
   in UserController.
 - The login authentication using Facebook api is implemented in UserController.
