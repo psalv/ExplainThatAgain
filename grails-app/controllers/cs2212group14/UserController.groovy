@@ -29,7 +29,38 @@ class UserController extends RestfulController{
         render(view: "/index")
     }
 
+    def addAdmin(@RequestParameter('user') String userName,@RequestParameter('adminName') String adminName){
+        def user = User.find{username == userName}
+        def admin = User.find{username == adminName}
+        if (user==null || admin ==null) {
+            System.out.println("User or admin does not exist")
+            response.status = 400
+        }else{
+            if (user.belongsToAdmins(admin))
+            user.addToAdmins(admin)
+            user.save(flush: true)
+            System.out.println("admin added")
+            response.status=200
+        }
+    }
 
+    def deleteAdmin(@RequestParameter('user') String userName,@RequestParameter('adminName') String adminName){
+        def user = User.find{username == userName}
+        def admin = User.find{username == adminName}
+        if (user==null || admin ==null){
+            System.out.println("User or admin does not exist")
+            response.status=400
+        }else{
+            user.removeFromAdmins(admin)
+            user.save(flush: true)
+            System.out.println("admin removed")
+            response.status=200
+        }
+    }
+
+
+
+    def addCourse(@RequestParameter('courseName') String courseName){
     def addCourse(@RequestParameter('courseName') String coursName, @RequestParameter('user') String user){
         response.status = 404
         println "Course name sent is: " + coursName

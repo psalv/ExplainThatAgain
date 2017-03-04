@@ -48,7 +48,7 @@ let NewCourse = React.createClass({
             else{
                 this.setState({success2: 'Trouble deleting new course, check that the course exists.'});
             }
-        })
+        });
     },
 
 
