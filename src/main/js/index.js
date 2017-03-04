@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { GraphUpdater } from './graph';
 import { CourseObject } from './course';
 import { SessionObject } from './session';
+import { AdminObject } from './admin';
 
 
 function run() {
@@ -26,6 +27,13 @@ function run() {
     }
     catch(err){
         console.log("no course field")
+    }
+
+    try {
+        ReactDOM.render(<AdminObject/>, document.getElementById('adminField'));
+    }
+    catch(err){
+        console.log("no admin field")
     }
 }
 

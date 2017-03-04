@@ -115,7 +115,7 @@
               setDeveloperKey(developerKey).
               setCallback(pickerCallback).
               build();
-          
+
           picker.setVisible(true);
         }
       }
@@ -143,6 +143,8 @@
         <div id="sessionField"></div>
         <br>
         <div id="liveButton"></div>
+        <br>
+        <div id="adminField">test</div>
         <br>
 
         <script type="text/javascript" src="//apis.google.com/js/api.js"></script>
