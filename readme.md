@@ -1,4 +1,8 @@
-Explain That Again(R) version 1.0 03/03/2017
+# Explain That Again
+### CS2212 Group 14
+
+[<b>Visit our project site.</b>](https://r-meagher.github.io/CS2212Group14/)
+
 GENERAL USAGE NOTES
 --------------------
 - Create a new directory on your terminal, go to the new directory, then clone the the
@@ -21,22 +25,22 @@ Installing
     git clone https://github.com/keppelen/react-facebook-login.git && cd react-facebook-login
     npm install react react-dom react-facebook-login --save
 ——----------------------------------------------
-Because the design of our application has two main components
-(a cloud-based service to store and retrieve sessions, and a local service to
-display the graph and manage chat windows), we decided to break our project into
-two different Grails projects for stage 2, with <REDACTED> representing the cloud
-server and <REDACTED> representing the local server on the Professor’s computer.
+Run Instructions
 
-The cloud server so far manages the login and authentication of the user. It gives
-the user the option to sign up via email (redirecting the User to an account creation link)
-or to sign up via Facebook, at which point they are prompted to enter their Facebook
-credentials and are automatically logged in afterward. The Facebook credentials are stored
-as a cookie on the user’s computer, meaning that they are automatically logged back in on returning to the page.
+Because the design of our application has two main components (a cloud-based service to store and retrieve sessions,
+and a local service to display the graph and manage chat windows), we decided to break our project into two different
+Grails projects for stage 2, with CloudApplication representing the cloud server and LocalApplication representing the local
+server on the Professor’s computer.
 
-Since the application is broken down into two applications, in order to fully test it each app must
-be run separately. They can be found in their respective folders, Local and Cloud. To run, go into the
-respective folder, input the grails run-app -https command, and navigate to the webpage that is prompted.
-Adblockers may interfere with the Facebook authentication, so if it doesn’t work they may need to be disabled.
+The cloud server so far manages the login and authentication of the user. It gives the user the option to sign up
+via email (redirecting the User to an account creation link) or to sign up via Facebook, at which point they are
+prompted to enter their Facebook credentials and are automatically logged in afterward. The Facebook credentials are
+stored as a cookie on the user’s computer, meaning that they are automatically logged back in on returning to the page.
+
+Since the application is broken down into two applications, in order to fully test it each app must be
+run separately. They can be found in their respective folders, Local and Cloud. To run, go into the
+ respective folder, input the grails run-app -https command, and navigate to the webpage that is prompted.
+ Adblockers may interfere with the Facebook authentication, so if it doesn’t work they may need to be disabled
 ——----------------------------------------------
 Repository Organization
 ------------------------
