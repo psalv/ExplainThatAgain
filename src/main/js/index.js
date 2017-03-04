@@ -5,6 +5,7 @@ import App from './app';
 import SignIn from './signin';
 import SignUp from './signup';
 import Logout from './logout';
+import HomePage from './homepage';
 import auth from './auth';
 
 const Paths = {
@@ -34,6 +35,7 @@ ReactDOM.render(
             <IndexRoute component={SignIn} onEnter={checkAuth} />
             <Route path={Paths.LOGOUT} component={Logout}/>
             <Route path={Paths.SIGNUP} component={SignUp} onEnter={checkAuth}/>
+            <Route path="home" component={HomePage} />
             <Route path="*" component={NotFound} />
         </Route>
     </Router>
