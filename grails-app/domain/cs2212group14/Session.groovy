@@ -7,26 +7,17 @@ at that time spot. Students can add comments to chatroom. “Most confusing” g
  */
 class Session {
 
-    static hasOne = [transcript: Transcript, powerpoint: Presentation, chatroom: ChatRoom, graph: Graph, sessionID: Integer, active: Boolean]
+    static hasOne = [sessionName: String, transcript: Transcript, powerpoint: Presentation, chatroom: ChatRoom, graph: Graph, sessionID: Integer, active: Boolean]
     static belongsTo = [course: Course]
-    File notes
-
 
     static constraints = {
         transcript nullable: true
         powerpoint nullable: true
         chatroom nullable: true
         graph nullable: true
-        notes nullable: true
         sessionID nullable: false
+        sessionName nullable: false
 
     }
 
-    def endSession(){
-
-    }
-
-    def uploadNotes(String path){
-
-    }
 }

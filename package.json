@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "chart.js": "^1.1.1",
-    "fusioncharts": "^3.11.3-sr.1",
     "react": "^15.4.2",
     "react-chartjs": "^0.8.0",
     "react-dom": "^15.4.2",
