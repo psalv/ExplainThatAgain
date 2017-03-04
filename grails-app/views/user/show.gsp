@@ -53,6 +53,8 @@
         <div id="courseField"></div>
         <br>
         <div id="sessionField"></div>
+        <br>
+        <div id="adminField">test</div>
     </div>
 
     <div class="row text-center">
