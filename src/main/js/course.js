@@ -13,10 +13,10 @@ let NewCourse = React.createClass({
     handleChange (e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ name : e.target.value });
+        this.setState({ courseName : e.target.value });
     },
 
-    handleAdd () {
+    handleAdd (e) {
         e.preventDefault();
         fetch('http://localhost:8080/User/addCourse?user=test&courseName=' + this.state.courseName, {
             method: 'POST',
