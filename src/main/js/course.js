@@ -31,7 +31,7 @@ let NewCourse = React.createClass({
             else{
                 this.setState({success2: 'Trouble creating new session, check that the course exists and the session is unique.'});
             }
-        })
+        });
     },
 
     // need some way to list all courses, and then some way to list all sessions
