@@ -9762,14 +9762,13 @@ var NewCourse = _react2.default.createClass({
     getInitialState: function getInitialState() {
         return {
             courseName: "",
-            success1: "",
-            success2: ""
+            success: ""
         };
     },
     handleChange: function handleChange(e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ courseName: e.target.value });
+        this.setState({ courseName: e.target.value, success: "..." });
     },
     handleAdd: function handleAdd(e) {
         var _this = this;
@@ -9782,9 +9781,9 @@ var NewCourse = _react2.default.createClass({
             }
         }).then(function (res) {
             if (res.ok) {
-                _this.setState({ success1: 'New course created.' });
+                _this.setState({ success: 'New course created.' });
             } else {
-                _this.setState({ success1: 'Trouble creating new course, check that the course does not already exist.' });
+                _this.setState({ success: 'Trouble creating new course, check that the course does not already exist.' });
             }
         });
     },
@@ -9799,9 +9798,9 @@ var NewCourse = _react2.default.createClass({
             }
         }).then(function (res) {
             if (res.ok) {
-                _this2.setState({ success2: 'Course deleted.' });
+                _this2.setState({ success: 'Course deleted.' });
             } else {
-                _this2.setState({ success2: 'Trouble deleting new course, check that the course exists.' });
+                _this2.setState({ success: 'Trouble deleting new course, check that the course exists.' });
             }
         });
     },
@@ -9823,11 +9822,8 @@ var NewCourse = _react2.default.createClass({
             "Add course: ",
             this.state.courseName,
             _react2.default.createElement("br", null),
-            "Create success: ",
-            this.state.success1,
-            _react2.default.createElement("br", null),
-            "Delete success: ",
-            this.state.success2
+            "success: ",
+            this.state.success
         );
     }
 });
@@ -10098,21 +10094,21 @@ var Liven = _react2.default.createClass({
             }
         }).then(function (res) {
             if (res.ok) {
-                _this.setState({ success: 'Session is live.' });
+                _this.setState({ success: 'Session is live. Session name: ' + _this.state.sessionName });
             } else {
-                _this.setState({ success: 'Trouble livening session, check that the session is unique.' });
+                _this.setState({ success: 'Trouble livening session, check that the session is unique and not already live.' });
             }
         });
     },
     handleChangeSession: function handleChangeSession(e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ sessionName: e.target.value });
+        this.setState({ sessionName: e.target.value, success: "..." });
     },
     handleChangeCourse: function handleChangeCourse(e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ courseName: e.target.value });
+        this.setState({ courseName: e.target.value, success: "..." });
     },
     render: function render() {
         return _react2.default.createElement(
@@ -10124,7 +10120,9 @@ var Liven = _react2.default.createClass({
                 _react2.default.createElement("input", { type: "text", placeholder: "Course name", onChange: this.handleChangeCourse }),
                 _react2.default.createElement("input", { type: "text", placeholder: "Session name", onChange: this.handleChangeSession }),
                 _react2.default.createElement("input", { type: "submit", value: "Make session go live." })
-            )
+            ),
+            "Success: ",
+            this.state.success
         );
     }
 });
@@ -10224,12 +10222,12 @@ var NewSession = _react2.default.createClass({
     handleChangeSession: function handleChangeSession(e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ sessionName: e.target.value });
+        this.setState({ sessionName: e.target.value, success: "..." });
     },
     handleChangeCourse: function handleChangeCourse(e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ courseName: e.target.value });
+        this.setState({ courseName: e.target.value, success: "..." });
     },
     render: function render() {
         return _react2.default.createElement(

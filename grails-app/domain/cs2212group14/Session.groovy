@@ -20,4 +20,16 @@ class Session {
 
     }
 
+    def goLive(){
+        active = true
+    }
+
+    def unLive(){
+        active = false;
+    }
+
+    def liveStatus(){
+        return active
+    }
+
 }
