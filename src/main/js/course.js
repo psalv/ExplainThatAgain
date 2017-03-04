@@ -6,7 +6,8 @@ let NewCourse = React.createClass({
     getInitialState () {
         return {
             courseName: "",
-            success: ""
+            success1: "",
+            success2: ""
         }
     },
 
@@ -25,15 +26,31 @@ let NewCourse = React.createClass({
             }
         }).then(res =>{
             if(res.ok){
-                this.setState({success: 'New course created.'});
+                this.setState({success1: 'New course created.'});
             }
             else{
-                this.setState({success: 'Trouble creating new course, check that the course does not already exist.'});
+                this.setState({success1: 'Trouble creating new course, check that the course does not already exist.'});
+            }
+        })
+    },
+    
+    handleDelete (e) {
+        e.preventDefault();
+        fetch('http://localhost:8080/User/deleteCourse?user=test&courseName=' + this.state.courseName, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res =>{
+            if(res.ok){
+                this.setState({success2: 'Course deleted.'});
+            }
+            else{
+                this.setState({success2: 'Trouble deleting new course, check that the course exists.'});
             }
         })
     },
 
-    // need some way to list all courses, and then some way to list all sessions
 
     render(){
         return(
@@ -43,10 +60,15 @@ let NewCourse = React.createClass({
                     <input type="text" placeholder="Course name" onChange={this.handleChange}/>
                     <input type="submit" value="Add a course" />
                 </form>
+                <form onSubmit={this.handleDelete}>
+                    <input type="submit" value="Delete a course" />
+                </form>
 
                 Add course: {this.state.courseName}
                 <br/>
-                Success: {this.state.success}
+                Create success: {this.state.success1}
+                <br/>
+                Delete success: {this.state.success2}
 
             </div>
         );

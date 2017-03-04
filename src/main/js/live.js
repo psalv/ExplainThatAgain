@@ -1,6 +1,6 @@
 import React from 'react';
 
-let NewSession = React.createClass({
+let MakeAlive = React.createClass({
 
     getInitialState () {
         return {
@@ -12,7 +12,7 @@ let NewSession = React.createClass({
 
     handleAdd (e) {
         e.preventDefault();
-        fetch('http://localhost:8080/User/addSession?user=test&courseName=' + this.state.courseName + '&sessionName=' + this.state.sessionName, {
+        fetch('http://localhost:8080/Session/liven?user=test&courseName=' + this.state.courseName + '&sessionName=' + this.state.sessionName, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
@@ -50,10 +50,10 @@ let NewSession = React.createClass({
                     <input type="submit" value="Add a session" />
                 </form>
 
-                Add session: {this.state.sessionName} 
+                Add session: {this.state.sessionName}
                 <br/>
                 Success: {this.state.success}
-                
+
             </div>
         );
     }

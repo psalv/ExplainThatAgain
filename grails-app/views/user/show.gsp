@@ -142,9 +142,12 @@
         <br>
         <div id="sessionField"></div>
         <br>
+        <div id="liveButton"></div>
+        <br>
 
         <script type="text/javascript" src="//apis.google.com/js/api.js"></script>
         <a onclick="onApiLoad()">Upload a New Presentation From Google Docs (.pptx, .pdf, and Google Slides) or a Chatlog, Graph, or Analytical File (.txt)</a>
+
     </div>
 
     <div class="row text-center">
