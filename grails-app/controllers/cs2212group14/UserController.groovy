@@ -60,7 +60,6 @@ class UserController extends RestfulController{
 
 
 
-    def addCourse(@RequestParameter('courseName') String courseName){
     def addCourse(@RequestParameter('courseName') String coursName, @RequestParameter('user') String user){
         response.status = 404
         println "Course name sent is: " + coursName
