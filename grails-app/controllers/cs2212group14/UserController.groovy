@@ -138,10 +138,12 @@ class UserController extends RestfulController{
                 }
 
                 if(session == null){
-                    new Session(sessionID: 2, sessionName: sessionName, course: course, active: false).save(flush: true)
+                    Session ses = new Session(sessionID: 2, sessionName: sessionName, course: course, active: false).save(flush: true)
+                    Graph graph = new Graph(session: ses).save(flush: true)
+                    ses.setGraph(graph)
+                    ses.save(flush: true)
                     response.status = 200
                 }
-
             }
         }
     }

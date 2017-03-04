@@ -1,6 +1,6 @@
 import React from 'react';
 
-let MakeAlive = React.createClass({
+let Liven = React.createClass({
 
     getInitialState () {
         return {
@@ -10,24 +10,25 @@ let MakeAlive = React.createClass({
         }
     },
 
-    handleAdd (e) {
+    handleLiven (e) {
         e.preventDefault();
         fetch('http://localhost:8080/Session/liven?user=test&courseName=' + this.state.courseName + '&sessionName=' + this.state.sessionName, {
+
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
             }
         }).then(res =>{
             if(res.ok){
-                this.setState({success: 'New session created.'});
+                this.setState({success: 'Session is live.'});
             }
             else{
-                this.setState({success: 'Trouble creating new session, check that the course exists and the session is unique.'});
+                this.setState({success: 'Trouble livening session, check that the session is unique.'});
             }
         })
     },
 
-
+    
     handleChangeSession (e) {
         // Prevent following the link.
         e.preventDefault();
@@ -39,21 +40,15 @@ let MakeAlive = React.createClass({
         e.preventDefault();
         this.setState({ courseName : e.target.value });
     },
-
+    
     render(){
         return(
             <div>
-
-                <form onSubmit={this.handleAdd}>
+                <form onSubmit={this.handleLiven}>
                     <input type="text" placeholder="Course name" onChange={this.handleChangeCourse}/>
-                    <input type="text" placeholder="New session name" onChange={this.handleChangeSession}/>
-                    <input type="submit" value="Add a session" />
+                    <input type="text" placeholder="Session name" onChange={this.handleChangeSession}/>
+                    <input type="submit" value="Make session go live." />
                 </form>
-
-                Add session: {this.state.sessionName}
-                <br/>
-                Success: {this.state.success}
-
             </div>
         );
     }
@@ -61,11 +56,11 @@ let MakeAlive = React.createClass({
 });
 
 
-export class SessionObject extends React.Component{
+export class MakeAlive extends React.Component{
     render(){
         return(
             <div>
-                <NewSession/>
+                <Liven/>
             </div>
         );
     }
