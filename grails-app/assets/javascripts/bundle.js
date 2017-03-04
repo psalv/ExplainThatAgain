@@ -9640,9 +9640,9 @@ var NewCourse = _react2.default.createClass({
     handleChange: function handleChange(e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ name: e.target.value });
+        this.setState({ courseName: e.target.value });
     },
-    handleAdd: function handleAdd() {
+    handleAdd: function handleAdd(e) {
         var _this = this;
 
         e.preventDefault();
@@ -9936,11 +9936,11 @@ var NewSession = _react2.default.createClass({
             success: ""
         };
     },
-    handleAdd: function handleAdd() {
+    handleAdd: function handleAdd(e) {
         var _this = this;
 
         e.preventDefault();
-        fetch('http://localhost:8080/User/addCourse?courseName=' + this.state.courseName + '&sessionName=' + this.state.sessionName, {
+        fetch('http://localhost:8080/User/addSession?user=test&courseName=' + this.state.courseName + '&sessionName=' + this.state.sessionName, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
@@ -9949,7 +9949,6 @@ var NewSession = _react2.default.createClass({
             if (res.ok) {
                 _this.setState({ success: 'New session created.' });
             } else {
-                --_this.state.slide;
                 _this.setState({ success: 'Trouble creating new session, check that the course exists and the session is unique.' });
             }
         });
@@ -9957,12 +9956,12 @@ var NewSession = _react2.default.createClass({
     handleChangeSession: function handleChangeSession(e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ name: e.target.value });
+        this.setState({ sessionName: e.target.value });
     },
     handleChangeCourse: function handleChangeCourse(e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ name: e.target.value });
+        this.setState({ courseName: e.target.value });
     },
     render: function render() {
         return _react2.default.createElement(

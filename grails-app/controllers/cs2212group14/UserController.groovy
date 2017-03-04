@@ -5,7 +5,7 @@ import grails.web.RequestParameter
 
 class UserController extends RestfulController{
 
-    static allowedMethods = [show: 'POST', addCourse: 'POST', deleteCourse: 'POST', addSession: 'POST', deleteSession: 'POST']
+    static allowedMethods = [show: 'GET', addCourse: 'POST', deleteCourse: 'POST', addSession: 'POST', deleteSession: 'POST']
     static responseFormats = ['json', 'xml']
 
     UserController(){
@@ -30,78 +30,71 @@ class UserController extends RestfulController{
     }
 
 
-//
-//    def addAdmin(@RequestParameter('username') String username){
-//        def user = User.findByUsername(username)
-//        def admin = User.find{username == params.admin}
-//        if (user == null || admin == null){
-//            System.out.print("Nope, the user or admin doesn't exist")
-//            response.status = 400
-//        }else{
-//            user.addToAdmins(admin)
-//            user.save()
-//            System.out.print("admin added")
-//            response.status = 200
-//        }
-//    }
-//
-//    def deleteAdmin(@RequestParameter('username') String username){
-//        def user = User.findByUsername(username)
-//        def admin = User.find{username==params.admin}
-//        if (user==null || admin ==null){
-//            System.out.print("User or admin does not exist")
-//            response.status=400
-//        }else{
-//            user.delete()
-//            user.save()
-//            System.out.print("admin deleted")
-//            response.status=200
-//        }
-//    }
-
-
-
-    def addCourse(@RequestParameter('courseName') String courseName, @RequestParameter('user') String user){
+    def addCourse(@RequestParameter('courseName') String coursName, @RequestParameter('user') String user){
         response.status = 404
-        println "Course name sent is: " + courseName
+        println "Course name sent is: " + coursName
 
-        def usr = User.findByUserName(user)
+        def usr = User.findByUsername(user)
         if(usr != null){
-            def course = usr.getCourses().find{courseName: courseName}
+            def courses = usr.getCourses()
+            def course = null
+
+            for(Course c: courses){
+                if(c.getCourseName().equals(coursName)){
+                    course = c
+                    break
+                }
+            }
 
             if(course == null){
-                new Course(user: usr).save(flush: true)
+                new Course(user: usr, courseName: coursName).save(flush: true)
                 response.status = 200
             }
         }
     }
 
-//    def addSession(@RequestParameter('courseName') String courseName, @RequestParameter('sessionName') String sessionName){
-//        response.status = 404
-//        println "Course name sent is: " + courseName
-//
-//        def course = Course.findByCourseName(courseName)
-//
-//        if(course != null){
-//            new Course(graph: graph, slide: params.slide).save(flush: true)
-//            response.status = 200
-//        }
-//    }
-//
-//    def addSession(@RequestParameter('courseName') String courseName, @RequestParameter('sessionName') String sessionName){
-//        response.status = 404
-//        println "\nSession name sent is: " + sessionName
-//
-//
-//        def session = Session.findBySessionID(Integer.parseInt(params.sessionID))
-//
-//        if(session != null){
-//            def graph = session.getGraph()
-//            if(graph != null){
-//                new GraphInstance(graph: graph, slide: params.slide).save(flush: true)
-//                response.status = 200
-//            }
-//        }
-//    }
+    def addSession(@RequestParameter('courseName') String coursName, @RequestParameter('sessionName') String sessionName, @RequestParameter('user') String user){
+        response.status = 404
+        println "Session name sent is: " + sessionName
+
+        def usr = User.findByUsername(user)
+        println usr
+        if(usr != null){
+            println "found user"
+            def courses = usr.getCourses()
+            def course = null
+
+            println "here"
+
+            for(Course c: courses){
+                if(c.getCourseName().equals(coursName)){
+                    course = c
+                    break
+                }
+            }
+
+            if(course != null){
+                println "here1"
+                def sessions = course.getSessions()
+                def session = null
+
+
+                for(Session s: sessions){
+                    if(s.getSessionName().equals(sessionName)){
+                        session = s
+                        break
+                    }
+                }
+
+                if(session == null){
+                    println "here2"
+                    new Session(sessionID: 2, sessionName: sessionName, course: course, active: false).save(flush: true)
+                    response.status = 200
+                }
+
+            }
+        }
+    }
+
 
 }

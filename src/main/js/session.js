@@ -10,9 +10,9 @@ let NewSession = React.createClass({
         }
     },
 
-    handleAdd () {
+    handleAdd (e) {
         e.preventDefault();
-        fetch('http://localhost:8080/User/addCourse?courseName=' + this.state.courseName + '&sessionName=' + this.state.sessionName, {
+        fetch('http://localhost:8080/User/addSession?user=test&courseName=' + this.state.courseName + '&sessionName=' + this.state.sessionName, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
@@ -24,20 +24,20 @@ let NewSession = React.createClass({
             else{
                 this.setState({success: 'Trouble creating new session, check that the course exists and the session is unique.'});
             }
-        });
+        })
     },
 
 
     handleChangeSession (e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ name : e.target.value });
+        this.setState({ sessionName : e.target.value });
     },
 
     handleChangeCourse (e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ name : e.target.value });
+        this.setState({ courseName : e.target.value });
     },
 
     render(){
