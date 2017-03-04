@@ -6,15 +6,14 @@ let NewCourse = React.createClass({
     getInitialState () {
         return {
             courseName: "",
-            success1: "",
-            success2: ""
+            success: ""
         }
     },
 
     handleChange (e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ courseName : e.target.value });
+        this.setState({ courseName : e.target.value, success : "..." });
     },
 
     handleAdd (e) {
@@ -26,10 +25,10 @@ let NewCourse = React.createClass({
             }
         }).then(res =>{
             if(res.ok){
-                this.setState({success1: 'New course created.'});
+                this.setState({success: 'New course created.'});
             }
             else{
-                this.setState({success1: 'Trouble creating new course, check that the course does not already exist.'});
+                this.setState({success: 'Trouble creating new course, check that the course does not already exist.'});
             }
         })
     },
@@ -43,10 +42,10 @@ let NewCourse = React.createClass({
             }
         }).then(res =>{
             if(res.ok){
-                this.setState({success2: 'Course deleted.'});
+                this.setState({success: 'Course deleted.'});
             }
             else{
-                this.setState({success2: 'Trouble deleting new course, check that the course exists.'});
+                this.setState({success: 'Trouble deleting new course, check that the course exists.'});
             }
         });
     },
@@ -66,9 +65,7 @@ let NewCourse = React.createClass({
 
                 Add course: {this.state.courseName}
                 <br/>
-                Create success: {this.state.success1}
-                <br/>
-                Delete success: {this.state.success2}
+                success: {this.state.success}
 
             </div>
         );

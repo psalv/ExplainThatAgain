@@ -48,13 +48,13 @@ let NewSession = React.createClass({
     handleChangeSession (e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ sessionName : e.target.value });
+        this.setState({ sessionName : e.target.value, success : "..." });
     },
 
     handleChangeCourse (e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ courseName : e.target.value });
+        this.setState({ courseName : e.target.value, success : "..." });
     },
 
     render(){

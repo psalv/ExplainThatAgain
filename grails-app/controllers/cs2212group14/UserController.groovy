@@ -3,6 +3,9 @@ package cs2212group14
 import grails.rest.RestfulController
 import grails.web.RequestParameter
 
+/**
+ * adds and deletes Admins, Sessions, and Courses to a User's account
+ */
 class UserController extends RestfulController{
 
     static allowedMethods = [show: 'GET', addCourse: 'POST', deleteCourse: 'POST', addSession: 'POST', deleteSession: 'POST']
@@ -29,32 +32,70 @@ class UserController extends RestfulController{
         render(view: "/index")
     }
 
+    /**
+     *
+     * @param userName
+     * @param adminName
+     * @return 200 if admin is added, 404 if User or admin does not exist or is already an admin
+     */
     def addAdmin(@RequestParameter('user') String userName,@RequestParameter('adminName') String adminName){
-        def user = User.find{username == userName}
+        response.status = 404
+        User user = User.find{username == userName}
         def admin = User.find{username == adminName}
-        if (user==null || admin ==null) {
-            System.out.println("User or admin does not exist")
-            response.status = 400
-        }else{
-            if (user.belongsToAdmins(admin))
-            user.addToAdmins(admin)
-            user.save(flush: true)
-            System.out.println("admin added")
-            response.status=200
+        if (admin !=null){
+            //if admin is a user, check to see if is already an admin
+            //get list of admins
+            def adminlist = user.getAdmins()
+            def foundadmin = null
+            for(User a: adminlist){
+                if(a.getUserName().equals(adminName)){
+                    foundadmin = a
+                    break
+                }
+            }
+            //if admin is not already an admin, make admin
+            if(foundadmin == null){
+                user.addToAdmins(admin)
+                user.save(flush: true)
+                System.out.println("admin added")
+                response.status=200
+            }else{
+                System.out.println("User or admin does not exist or is already an admin")
+                response.status = 400
+            }
         }
     }
 
+    /**
+     *
+     * @param userName
+     * @param adminName
+     * @return 200 if admin is deleted, 404 if User or admin does not exist or is not an admin
+     */
     def deleteAdmin(@RequestParameter('user') String userName,@RequestParameter('adminName') String adminName){
         def user = User.find{username == userName}
         def admin = User.find{username == adminName}
-        if (user==null || admin ==null){
-            System.out.println("User or admin does not exist")
-            response.status=400
-        }else{
-            user.removeFromAdmins(admin)
-            user.save(flush: true)
-            System.out.println("admin removed")
-            response.status=200
+        if (admin !=null){
+            //if admin is a user, check to see if is already an admin
+            //get list of admins
+            def admins = user.getAdmins()
+            def foundadmin = null
+            for(User a: admins){
+                if(a.getUserName().equals(adminName)){
+                    foundadmin = a
+                    break
+                }
+            }
+            //if admin is an admin, delete it
+            if(foundadmin != null){
+                user.removeFromAdmins(admin)
+                user.save(flush: true)
+                System.out.println("admin removed")
+                response.status=200
+            }else{
+                System.out.println("User or admin does not exist or is not an admin")
+                response.status=400
+            }
         }
     }
 
@@ -100,9 +141,9 @@ class UserController extends RestfulController{
             }
 
             if(course != null){
+                usr.removeFromCourses(course)
                 course.delete(flush: true)
-//                usr.removeFromCourses(course)
-//                usr.save(flush: true)
+                usr.save(flush: true)
                 response.status = 200
             }
         }
@@ -179,9 +220,9 @@ class UserController extends RestfulController{
                 }
 
                 if(session != null){
+                    course.removeFromSessions(session)
                     session.delete(flush: true)
-//                    course.removeFromSessions(session)
-//                    course.save(flush: true)
+                    course.save(flush: true)
                     response.status = 200
                 }
 
