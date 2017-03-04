@@ -6,12 +6,11 @@ import groovy.transform.ToString
 @EqualsAndHashCode(includes='username')
 @ToString(includes='username', includeNames=true, includePackage=false)
 class User implements Serializable {
-	static hasMany = [posts: Reply, courses: Course, admins: User]
 
 	private static final long serialVersionUID = 1
 
-	String email
-	String realname
+	transient springSecurityService
+
 	String username
 	String password
 	boolean enabled = true
@@ -48,9 +47,6 @@ class User implements Serializable {
 	static constraints = {
 		username blank: false, unique: true
 		password blank: false
-		admins nullable: true
-        realname nullable: false
-        email email: true, blank: false
 	}
 
 	static mapping = {

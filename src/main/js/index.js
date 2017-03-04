@@ -5,10 +5,10 @@ import App from './app';
 import SignIn from './signin';
 import SignUp from './signup';
 import Logout from './logout';
-import HomePage from './homepage'
 import auth from './auth';
 
 const Paths = {
+    SIGNIN: "signin",
     LOGOUT: "logout",
     SIGNUP: "signup",
 };
@@ -16,7 +16,7 @@ const Paths = {
 const NotFound = () =>
     <div className="row">
         <div className="col-lg-12">
-            <h1>404 Page not Found :(</h1>
+            <h1>404. It's 362 more than 42 :(</h1>
         </div>
     </div>;
 
@@ -34,7 +34,6 @@ ReactDOM.render(
             <IndexRoute component={SignIn} onEnter={checkAuth} />
             <Route path={Paths.LOGOUT} component={Logout}/>
             <Route path={Paths.SIGNUP} component={SignUp} onEnter={checkAuth}/>
-            <Route path="home" component={HomePage} />
             <Route path="*" component={NotFound} />
         </Route>
     </Router>
