@@ -5,6 +5,7 @@ import App from './app';
 import SignIn from './signin';
 import SignUp from './signup';
 import Logout from './logout';
+import HomePage from './homepage';
 import auth from './auth';
 
 const Paths = {
@@ -21,10 +22,14 @@ const NotFound = () =>
     </div>;
 
 function checkAuth(next, replace) {
-    let nextPath = next.location.pathname;
     if (auth.loggedIn()) {
-        console.log("Logged in redirect");
         browserHistory.push("/home/")
+    }
+}
+
+function checkAuth2(next, replace) {
+    if (!auth.loggedIn()) {
+        browserHistory.push("/")
     }
 }
 
@@ -33,7 +38,8 @@ ReactDOM.render(
         <Route path="/" component={App} >
             <IndexRoute component={SignIn} onEnter={checkAuth} />
             <Route path={Paths.LOGOUT} component={Logout}/>
-            <Route path={Paths.SIGNUP} component={SignUp} onEnter={checkAuth}/>
+            <Route path={Paths.SIGNUP} component={SignUp} onEnter={checkAuth} />
+            <Route path={"home"} component={HomePage}  onEnter={checkAuth2} />
             <Route path="*" component={NotFound} />
         </Route>
     </Router>
