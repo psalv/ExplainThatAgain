@@ -23,7 +23,7 @@ let GraphUpdaterField = React.createClass({
         // Prevents reinitialization
         e.preventDefault();
         fetch('http://localhost:8080/Graph/updateInstance?sessionID=1&slide=' + this.state.slide, {
-        // fetch('api/updateInstance?sessionID=1&slide=' + this.state.slide, {
+            // fetch('api/updateInstance?sessionID=1&slide=' + this.state.slide, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
@@ -53,7 +53,7 @@ let GraphUpdaterField = React.createClass({
         // Prevents reinitialization
         e.preventDefault();
         fetch('http://localhost:8080/Graph/addInstance?sessionID=1&slide=' + ++this.state.slide, {
-        // fetch('api/addInstance?sessionID=1&slide=' + ++this.state.slide, {
+            // fetch('api/addInstance?sessionID=1&slide=' + ++this.state.slide, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
@@ -132,7 +132,6 @@ export class GraphUpdater extends React.Component{
         );
     }
 }
-
 
 
 

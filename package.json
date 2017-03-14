@@ -24,7 +24,8 @@
     "react": "^15.4.2",
     "react-chartjs": "^0.8.0",
     "react-dom": "^15.4.2",
-    "react-fusioncharts": "^1.0.4",
+    "react-facebook-login": "^3.5.0",
+    "react-router": "^4.0.0",
     "whatwg-fetch": "^2.0.2"
   },
   "devDependencies": {
