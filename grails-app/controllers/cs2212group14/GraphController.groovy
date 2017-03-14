@@ -2,6 +2,9 @@ package cs2212group14
 
 import grails.rest.RestfulController
 
+/**
+ * Controls the Graph changing the current slide
+ */
 class GraphController extends RestfulController{
 
     static allowedMethods = [addInstance: 'POST', updateInstance: 'POST']
@@ -57,5 +60,4 @@ class GraphController extends RestfulController{
         }
     }
 }
-
 

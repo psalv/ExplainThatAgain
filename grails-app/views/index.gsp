@@ -49,6 +49,7 @@
 
     <body>
 
+    <div id="root">test</div>
 
     <g:link controller="User" action="show" params="[username: 'test']">Navigate to profile</g:link>
     <g:link controller="Session" action="show" params="[sessionId: '1']">Navigate to session</g:link>

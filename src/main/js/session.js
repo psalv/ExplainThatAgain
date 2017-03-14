@@ -27,17 +27,34 @@ let NewSession = React.createClass({
         })
     },
 
+    handleDelete (e) {
+        e.preventDefault();
+        fetch('http://localhost:8080/User/deleteSession?user=test&courseName=' + this.state.courseName + '&sessionName=' + this.state.sessionName, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res =>{
+            if(res.ok){
+                this.setState({success: 'Session deleted.'});
+            }
+            else{
+                this.setState({success: 'Trouble deleting session, check that the course exists and the session is unique.'});
+            }
+        })
+    },
+
 
     handleChangeSession (e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ sessionName : e.target.value });
+        this.setState({ sessionName : e.target.value, success : "..." });
     },
 
     handleChangeCourse (e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ courseName : e.target.value });
+        this.setState({ courseName : e.target.value, success : "..." });
     },
 
     render(){
@@ -49,11 +66,14 @@ let NewSession = React.createClass({
                     <input type="text" placeholder="New session name" onChange={this.handleChangeSession}/>
                     <input type="submit" value="Add a session" />
                 </form>
+                <form onSubmit={this.handleDelete}>
+                    <input type="submit" value="Delete a course" />
+                </form>
 
-                Add session: {this.state.sessionName} 
+                Add session: {this.state.sessionName}
                 <br/>
                 Success: {this.state.success}
-                
+
             </div>
         );
     }
@@ -70,7 +90,6 @@ export class SessionObject extends React.Component{
         );
     }
 }
-
 
 
 
