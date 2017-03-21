@@ -28,38 +28,44 @@
 
 <body>
 
-<div class="row">
+    <div class="row">
 
-    <div class="col-md-8">
-        <button class="btn btn-raised btn-primary btn-lg logout">Logout</button>
-    </div>
-
-    <div class="col-md-4">
-
-        <div class="row">
-            <form id="searchProfessors" action="" method="post">
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <input type="text" id="profSearch" placeholder="Professor's Name">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <button class="btn btn-raised btn-primary btn-lg">Search for professor</button>
-                    </div>
-                </div>
-
-
-            </form>
+        <div class="col-md-8">
+            <button class="btn btn-raised btn-primary btn-lg logout">Logout</button>
         </div>
 
+        <div class="col-md-4">
 
+            <div class="row">
+                <form id="searchProfessors" action="" method="post">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" id="profSearch" placeholder="Professor's Name">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <button class="btn btn-raised btn-primary btn-lg">Search for professor</button>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+
+
+
+        </div>
 
     </div>
 
-</div>
+    <div class="row">
+
+        <ul id="searchResults"></ul>
+
+    </div>
 
 
 
@@ -81,6 +87,7 @@
 
 <!-- Scripts -->
 <script src="../assets/js/main.js" type="text/javascript"></script>
+<script src="../assets/js/loadSearch.js" type="text/javascript"></script>
 
 </body>
 </html>
