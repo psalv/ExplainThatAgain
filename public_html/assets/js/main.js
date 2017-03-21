@@ -2,6 +2,7 @@
 
 $(document).ready(function () {
 
+
     checkLoggedIn();
 
 
@@ -26,8 +27,6 @@ $(document).ready(function () {
             'searchString': searchString
         });
 
-        console.log(sendData);
-
         $.ajax({
             url: '../controller/search.php',
             crossDomain: false,
@@ -37,12 +36,9 @@ $(document).ready(function () {
 
             complete: function (data) {
 
-                console.log(data);
-
                 data = $.parseJSON(parseResponse(data.responseText));
 
                 if (data.success === true) {
-
 
                     var similar = data.res;
                     if(similar.length == 1){
