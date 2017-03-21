@@ -48,26 +48,7 @@ $(document).ready(function () {
                     $('#addCourse').modal('hide');
 
                     // Append the new course to the course list
-                    var li = document.createElement('li');
-                    li.setAttribute('class', 'courseList');
-                    li.setAttribute('data-courseID', data.id.id);
-                    li.innerHTML = courseName;
-
-                    // Create an anchor to target the add session modal
-                    var an = document.createElement('a');
-                    an.setAttribute('data-toggle', 'modal');
-                    an.setAttribute('data-target', '#addSession');
-                    an.setAttribute('class', 'sessionAnchor');
-                    an.setAttribute('data-id', data.id.id);
-                    an.innerHTML = "Add session";
-
-                    // An unordered list where the session information will go
-                    var ul = document.createElement('ul');
-                    ul.setAttribute('data-id', data.id.id);
-                    ul.setAttribute('class', 'sessions');
-
-                    li.appendChild(an);
-                    li.appendChild(ul);
+                    var li = createCourseLi(data.id.id, courseName);
 
                     document.getElementById('courses').appendChild(li);
 
@@ -89,6 +70,52 @@ $(document).ready(function () {
     });
 
 
+
+    $('#createSession').submit(function (e) {
+        e.preventDefault();
+
+        if(Cookies.get('username') != OWNER){
+            console.log('Hey, stop doing that.');
+            return;
+        }
+
+        var thisForm = $(this).closest('#createSession');
+        var sessionName = thisForm.find('#sessionName').val();
+        var sendData = JSON.stringify({
+            'sessionName': sessionName,
+            'courseid': COURSEID
+        });
+
+
+        $.ajax({
+            url: '../controller/addSession.php',
+            crossDomain: false,
+            data: sendData,
+            method: "POST",
+            cache: false,
+
+            complete: function (data) {
+
+                data = $.parseJSON(parseResponse(data.responseText));
+                console.log(data);
+
+                if (data.success === true) {
+                    $('#troubleSession').addClass('hidden');
+                    $('#addSession').modal('hide');
+
+
+
+                }
+                else {
+
+                    $('#troubleSession').removeClass('hidden');
+
+                }
+            }
+        });
+    });
+
+
     $('.logout').each(function () {
         $(this).on('click', function (e) {
             e.preventDefault();
@@ -100,6 +127,32 @@ $(document).ready(function () {
 
 });
 
+
+
+function createCourseLi(id, courseName){
+    var li = document.createElement('li');
+    li.setAttribute('class', 'courseList');
+    li.setAttribute('data-courseID', id);
+    li.innerHTML = courseName;
+
+    // Create an anchor to target the add session modal
+    var an = document.createElement('a');
+    an.setAttribute('data-toggle', 'modal');
+    an.setAttribute('data-target', '#addSession');
+    an.setAttribute('class', 'sessionAnchor');
+    an.setAttribute('data-id', id);
+    an.innerHTML = "Add session";
+
+    // An unordered list where the session information will go
+    var ul = document.createElement('ul');
+    ul.setAttribute('data-id', id);
+    ul.setAttribute('class', 'sessions');
+
+    li.appendChild(an);
+    li.appendChild(ul);
+
+    return li;
+}
 
 
 
@@ -128,24 +181,7 @@ function showCourses() {
 
                 for(var i = 0; i < courses.length; i++){
 
-                    var li = document.createElement('li');
-                    li.setAttribute('class', 'courseList');
-                    li.setAttribute('data-courseID', courses[i].id);
-                    li.innerHTML = courses[i].coursename;
-
-                    var an = document.createElement('a');
-                    an.setAttribute('data-toggle', 'modal');
-                    an.setAttribute('data-target', '#addSession');
-                    an.setAttribute('class', 'sessionAnchor');
-                    an.setAttribute('data-id', courses[i].id);
-                    an.innerHTML = "Add session";
-
-                    var ul = document.createElement('ul');
-                    ul.setAttribute('data-id', courses[i].id);
-                    ul.setAttribute('class', 'sessions');
-
-                    li.appendChild(an);
-                    li.appendChild(ul);
+                    var li = createCourseLi(courses[i].id, courses[i].coursename);
 
                     list.appendChild(li);
                 }

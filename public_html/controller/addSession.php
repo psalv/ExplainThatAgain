@@ -18,40 +18,46 @@ if ($conn->connect_error) {
 
 
 $getPost = (array)json_decode(file_get_contents('php://input'));
-$newCourse = $getPost['courseName'];
-$owner = $getPost['owner'];
+$sessionName = $getPost['sessionName'];
+$owner = $getPost['courseid'];
 
 
-$sql = "SELECT coursename FROM Courses WHERE userOwner = '" . $owner . "'";
+
+
+
+
+$sql = "SELECT sessionname FROM Sessions WHERE courseOwner = '" . $owner . "'";
 $result = $conn->query($sql);
+
 
 // Check if the course already exists for this user
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
 
         // If so return a failure, a user must have unique courses.
-        if($row == $newCourse){
-            echo json_encode(array('success' => false, 'message' => 'Course already exists', 'Exists' => 1));
+        if($row == $sessionName){
+            echo json_encode(array('success' => false, 'message' => 'Session already exists', 'Exists' => 1));
         };
     }
 
     // Insert the data into the sql table
-    $sql = "INSERT INTO Courses (coursename, userOwner) VALUES ('" . $newCourse . "', '" . $owner . "')";
+    $sql = "INSERT INTO Sessions (sessionname, courseOwner) VALUES ('" . $sessionName . "', '" . $owner . "')";
     if ($conn->query($sql) === TRUE) {
 
         // Get the id assigned to the new course, to be used in the li tag for reference
-        $sql = "SELECT id FROM Courses WHERE userOwner = '" . $owner . "' AND coursename = '" . $newCourse . "'";
+        $sql = "SELECT sessionid FROM Sessions WHERE courseOwner = '" . $owner . "' AND sessionname = '" . $sessionName . "'";
         $result = $conn->query($sql);
         $result = $result->fetch_assoc();
-        echo json_encode(array('success' => true, 'message' => 'Course created', 'id' => $result));
+        echo json_encode(array('success' => true, 'message' => 'Session created', 'id' => $result));
     } else {
-        echo json_encode(array('success' => false, 'message' => 'Error creating course', 'Exists' => 0));
+        echo json_encode(array('success' => false, 'message' => 'Error creating session', 'Exists' => 0));
     }
 
 } else{
-    echo json_encode(array('success' => false, 'message' => 'Trouble creating course', 'Exists' => -1));
+    echo json_encode(array('success' => false, 'message' => 'Trouble creating session', 'Exists' => -1));
 }
 
 
 
 $conn->close();
+
