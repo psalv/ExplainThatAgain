@@ -1,4 +1,6 @@
 
+/*** Load all search results from url parameters **********************************************************************/
+
 $(document).ready(function () {
     var variables = parent.document.URL.substring(parent.document.URL.indexOf('?') + 1,
                                                     parent.document.URL.length - 1).split('&');

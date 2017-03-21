@@ -94,12 +94,24 @@ $(document).ready(function () {
 });
 
 
+
+
+
+
+
+
+
+/*** Error prompts *****************************************************************************************************/
+
 function toggleHiddenToggler(on){
     $('.toggle-Hidden').each(function () {
         $(this).addClass('hidden')
     });
     $(on).removeClass('hidden');
 }
+
+
+/*** Parse responsetext for json **************************************************************************************/
 
 function parseResponse(response){
 

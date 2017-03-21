@@ -25,8 +25,10 @@ $owner = $getPost['owner'];
 $sql = "SELECT coursename FROM Courses WHERE userOwner = '" . $owner . "'";
 $result = $conn->query($sql);
 
+
+
 // Check if the course already exists for this user
-if ($result->num_rows > 0) {
+if ($result->num_rows >= 0) {
     while($row = $result->fetch_assoc()) {
 
         // If so return a failure, a user must have unique courses.
