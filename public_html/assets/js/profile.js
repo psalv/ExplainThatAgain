@@ -10,6 +10,9 @@ $(document).ready(function () {
     checkOwner();
 
 
+    showCourses();
+
+
 
     $('#createCourse').submit(function (e) {
         e.preventDefault();
@@ -37,10 +40,20 @@ $(document).ready(function () {
             complete: function (data) {
 
                 data = $.parseJSON(parseResponse(data.responseText));
+                console.log(data);
 
                 if (data.success === true) {
                     $('#troubleCourse').addClass('hidden');
                     $('#addCourse').modal('hide');
+
+
+                    // Append the new course to the course list
+                    var li = document.createElement('li');
+                    li.setAttribute('class', 'courseList');
+                    li.setAttribute('data-courseID', data.id.id);
+                    li.innerHTML = courseName;
+
+                    document.getElementById('courses').appendChild(li);
 
                     // need to call method to display courses and associated sessions,
                     // and add button to add sessions in new course
@@ -71,6 +84,51 @@ $(document).ready(function () {
 
 });
 
+
+
+
+function showCourses() {
+
+    var sendData = JSON.stringify({
+        'owner': OWNER
+    });
+
+    $.ajax({
+        url: '../controller/getCourses.php',
+        crossDomain: false,
+        data: sendData,
+        method: "POST",
+        cache: false,
+
+        complete: function (data) {
+
+            data = $.parseJSON(parseResponse(data.responseText));
+
+            if (data.success === true) {
+
+                var courses = data.courses;
+
+                var list = document.getElementById('courses');
+
+                for(var i = 0; i < courses.length; i++){
+
+                    var li = document.createElement('li');
+                    li.setAttribute('class', 'courseList');
+                    li.setAttribute('data-courseID', courses[i].id);
+                    li.innerHTML = courses[i].coursename;
+
+                    list.appendChild(li);
+                }
+
+            }
+            else {
+
+                // todo: need an error page
+
+            }
+        }
+    });
+}
 
 
 
