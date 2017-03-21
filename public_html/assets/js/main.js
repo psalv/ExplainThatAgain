@@ -1,7 +1,10 @@
 
 
 $(document).ready(function () {
+
     checkLoggedIn();
+
+
 
     $('.logout').each(function () {
         $(this).on('click', function (e) {
@@ -10,6 +13,9 @@ $(document).ready(function () {
             window.location = "../index.php";
         })
     });
+
+
+
 
     $('#searchProfessors').submit(function (e) {
         e.preventDefault();
@@ -37,13 +43,24 @@ $(document).ready(function () {
 
                 if (data.success === true) {
 
-                    console.log('success');
 
-                    // window.location = "html_elements/search.php?searchString=" + searchString;
+                    var similar = data.res;
+                    if(similar.length == 1){
+                        window.location = "profile.php?user=" + similar[0].username;
+                    }
+                    else{
+                        var buildUrl = "searchPage.php?";
+                        for(var i = 0; i < similar.length; i++){
+                            buildUrl += similar[i].username + '&';
+                        }
+                        window.location = buildUrl;
+                    }
+
                 }
                 else {
 
                     console.log('failure');
+
                     // todo add an error page
                 }
             }
@@ -53,11 +70,15 @@ $(document).ready(function () {
 });
 
 
+
+
 function checkLoggedIn() {
     if(Cookies.get('username') == undefined){
         window.location = "../index.php";
     }
 }
+
+
 
 function parseResponse(response){
 
