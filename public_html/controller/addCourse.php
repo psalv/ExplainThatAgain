@@ -16,26 +16,25 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
 $getPost = (array)json_decode(file_get_contents('php://input'));
 $newCourse = $getPost['courseName'];
 $owner = $getPost['owner'];
 
 
-$sql = "SELECT coursename FROM Courses WHERE userOwner = '" . $owner . "'";
+$sql = "SELECT coursename FROM Courses WHERE userOwner = '" . $owner . "' AND coursename = '" . $newCourse . "'";
 $result = $conn->query($sql);
 
 
 
 // Check if the course already exists for this user
 if ($result->num_rows >= 0) {
-    while($row = $result->fetch_assoc()) {
 
-        // If so return a failure, a user must have unique courses.
-        if($row == $newCourse){
-            echo json_encode(array('success' => false, 'message' => 'Course already exists', 'Exists' => 1));
-        };
+    if($result->num_rows > 0){
+        echo json_encode(array('success' => false, 'message' => 'Course already exists', 'Exists' => 1));
+        $conn->close();
+        return;
     }
+
 
     // Insert the data into the sql table
     $sql = "INSERT INTO Courses (coursename, userOwner) VALUES ('" . $newCourse . "', '" . $owner . "')";
