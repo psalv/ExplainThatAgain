@@ -30,6 +30,7 @@
 
     <div class="row">
 
+        <!-- The logout button, redirects to the index -->
         <div class="col-md-8">
             <button class="btn btn-raised btn-primary btn-lg logout">Logout</button>
         </div>
@@ -37,8 +38,9 @@
         <div class="col-md-4">
 
             <div class="row">
-                <form id="searchProfessors" action="" method="post">
 
+                <!-- Search for a professor by username, will return the most similar results -->
+                <form id="searchProfessors" action="" method="post">
                     <div class="row">
                         <div class="col-md-6">
                             <input type="text" id="profSearch" placeholder="Professor's Name">
@@ -50,14 +52,14 @@
                             <button class="btn btn-raised btn-primary btn-lg">Search for professor</button>
                         </div>
                     </div>
-
-
                 </form>
+
             </div>
 
             <div class="row">
-                <form id="goToSession" action="" method="post">
 
+                <!-- Go to a session by the specific session id -->
+                <form id="goToSession" action="" method="post">
                     <div class="row">
                         <div class="col-md-6">
                             <input type="text" id="idGo" placeholder="Session ID">
@@ -69,9 +71,8 @@
                             <button class="btn btn-raised btn-primary btn-lg">Go to session</button>
                         </div>
                     </div>
-
-
                 </form>
+
             </div>
 
         </div>

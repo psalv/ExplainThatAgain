@@ -29,6 +29,8 @@
 <body>
 
 <?php
+
+    // Creates database and tables if they do not yet exist
     include_once "../init_db.php";
     $page = "index-page";
     $hasGmap = true;
@@ -36,6 +38,8 @@
     ?>
 
     <div class="row">
+
+        <!-- Logo area -->
         <div class="col-md-8 text-center">
             This site uses cookies, please have them enabled.
         </div>
@@ -43,8 +47,9 @@
         <div class="col-md-4">
 
             <div class="row">
-                <form id="loginUser" action="" method="post">
 
+                <!-- Login by username and password -->
+                <form id="loginUser" action="" method="post">
                     <div class="row">
                         <div class="col-md-6">
                             <input type="text" id="signinUser" placeholder="User Name">
@@ -57,19 +62,14 @@
                     <div class="col-md-12 text-center">
                         <button class="btn btn-raised btn-primary btn-lg">Login</button>
                     </div>
-
-                    <div id="taken" class="hidden col-md-12 text-center">
-                        Username taken.
-                    </div>
-
-                    <div id="noMatch" class="hidden col-md-12 text-center">
-                        Passwords did not match.
-                    </div>
-
                 </form>
+
+
             </div>
 
             <div class="row">
+
+                <!-- Sign up by username and password -->
                 <form id="submitUser" action="" method="post">
 
                     <div class="row">
@@ -85,12 +85,13 @@
                     <div class="col-md-12 text-center">
                         <button class="btn btn-raised btn-primary btn-lg">Sign Up</button>
                     </div>
-
-
                 </form>
+
             </div>
 
             <div class="row">
+
+                <!-- Prompts for when the user cannot login -->
                 <div id="taken" class="hidden toggle-Hidden col-md-12 text-center">
                     Username taken.
                 </div>
