@@ -1,5 +1,6 @@
 
 var OWNER;
+var COURSEID;
 
 $(document).ready(function () {
 
@@ -46,17 +47,36 @@ $(document).ready(function () {
                     $('#troubleCourse').addClass('hidden');
                     $('#addCourse').modal('hide');
 
-
                     // Append the new course to the course list
                     var li = document.createElement('li');
                     li.setAttribute('class', 'courseList');
                     li.setAttribute('data-courseID', data.id.id);
                     li.innerHTML = courseName;
 
+                    // Create an anchor to target the add session modal
+                    var an = document.createElement('a');
+                    an.setAttribute('data-toggle', 'modal');
+                    an.setAttribute('data-target', '#addSession');
+                    an.setAttribute('class', 'sessionAnchor');
+                    an.setAttribute('data-id', data.id.id);
+                    an.innerHTML = "Add session";
+
+                    // An unordered list where the session information will go
+                    var ul = document.createElement('ul');
+                    ul.setAttribute('data-id', data.id.id);
+                    ul.setAttribute('class', 'sessions');
+
+                    li.appendChild(an);
+                    li.appendChild(ul);
+
                     document.getElementById('courses').appendChild(li);
 
-                    // need to call method to display courses and associated sessions,
-                    // and add button to add sessions in new course
+                    $('.sessionAnchor').each(function () {
+                        $(this).on('click', function () {
+                            COURSEID = $(this).attr('data-id');
+                            console.log(COURSEID);
+                        })
+                    });
 
                 }
                 else {
@@ -69,8 +89,6 @@ $(document).ready(function () {
     });
 
 
-
-
     $('.logout').each(function () {
         $(this).on('click', function (e) {
             e.preventDefault();
@@ -78,8 +96,6 @@ $(document).ready(function () {
             window.location = "../index.php";
         })
     });
-
-
 
 
 });
@@ -117,6 +133,20 @@ function showCourses() {
                     li.setAttribute('data-courseID', courses[i].id);
                     li.innerHTML = courses[i].coursename;
 
+                    var an = document.createElement('a');
+                    an.setAttribute('data-toggle', 'modal');
+                    an.setAttribute('data-target', '#addSession');
+                    an.setAttribute('class', 'sessionAnchor');
+                    an.setAttribute('data-id', courses[i].id);
+                    an.innerHTML = "Add session";
+
+                    var ul = document.createElement('ul');
+                    ul.setAttribute('data-id', courses[i].id);
+                    ul.setAttribute('class', 'sessions');
+
+                    li.appendChild(an);
+                    li.appendChild(ul);
+
                     list.appendChild(li);
                 }
 
@@ -126,8 +156,17 @@ function showCourses() {
                 // todo: need an error page
 
             }
+
+            $('.sessionAnchor').each(function () {
+                $(this).on('click', function () {
+                    COURSEID = $(this).attr('data-id');
+                    console.log(COURSEID);
+                })
+            });
         }
     });
+
+
 }
 
 
