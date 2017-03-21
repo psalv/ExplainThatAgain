@@ -30,8 +30,9 @@ $sql = "SELECT sessionname FROM Sessions WHERE courseOwner = '" . $owner . "'";
 $result = $conn->query($sql);
 
 
+
 // Check if the course already exists for this user
-if ($result->num_rows > 0) {
+if ($result->num_rows >= 0) {
     while($row = $result->fetch_assoc()) {
 
         // If so return a failure, a user must have unique courses.
@@ -42,6 +43,8 @@ if ($result->num_rows > 0) {
 
     // Insert the data into the sql table
     $sql = "INSERT INTO Sessions (sessionname, courseOwner) VALUES ('" . $sessionName . "', '" . $owner . "')";
+
+
     if ($conn->query($sql) === TRUE) {
 
         // Get the id assigned to the new course, to be used in the li tag for reference

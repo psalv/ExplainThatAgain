@@ -4,16 +4,18 @@ var COURSEID;
 
 $(document).ready(function () {
 
-
+    // Ensure the user is logged in
     checkLoggedIn();
 
-
+    // Unhide certain elements depending on if the user is the owner
     checkOwner();
 
-
+    // Get all courses associated with the profile
     showCourses();
 
 
+
+/*** Create a course **************************************************************************************************/
 
     $('#createCourse').submit(function (e) {
         e.preventDefault();
@@ -49,15 +51,7 @@ $(document).ready(function () {
 
                     // Append the new course to the course list
                     var li = createCourseLi(data.id.id, courseName);
-
                     document.getElementById('courses').appendChild(li);
-
-                    $('.sessionAnchor').each(function () {
-                        $(this).on('click', function () {
-                            COURSEID = $(this).attr('data-id');
-                            console.log(COURSEID);
-                        })
-                    });
 
                 }
                 else {
@@ -70,6 +64,8 @@ $(document).ready(function () {
     });
 
 
+
+/*** Create a session *************************************************************************************************/
 
     $('#createSession').submit(function (e) {
         e.preventDefault();
@@ -104,7 +100,6 @@ $(document).ready(function () {
                     $('#addSession').modal('hide');
 
 
-
                 }
                 else {
 
@@ -116,6 +111,7 @@ $(document).ready(function () {
     });
 
 
+    // Logout the user
     $('.logout').each(function () {
         $(this).on('click', function (e) {
             e.preventDefault();
@@ -127,6 +123,8 @@ $(document).ready(function () {
 
 });
 
+
+/*** Create html elements to display and give functionality to a new course ********************************************/
 
 
 function createCourseLi(id, courseName){
@@ -143,6 +141,12 @@ function createCourseLi(id, courseName){
     an.setAttribute('data-id', id);
     an.innerHTML = "Add session";
 
+    // Add an even listener to set the current courseid whenever this anchor is clicked
+    an.addEventListener('click', function () {
+        COURSEID = $(this).attr('data-id');
+        console.log(COURSEID);
+    });
+
     // An unordered list where the session information will go
     var ul = document.createElement('ul');
     ul.setAttribute('data-id', id);
@@ -154,6 +158,79 @@ function createCourseLi(id, courseName){
     return li;
 }
 
+/*** Create html elements to display and give functionality to a new session ******************************************/
+
+
+function createSessionLi(id, sessionName){
+    var li = document.createElement('li');
+    li.setAttribute('class', 'sessionList');
+    li.setAttribute('data-sessionID', id);
+    li.innerHTML = sessionName;
+
+    // Create an anchor to target the add session modal
+    var an = document.createElement('a');
+    an.setAttribute('href', 'session.php?id=' + id);
+    an.setAttribute('class', 'sessionLink');
+    an.setAttribute('data-id', id);
+    an.innerHTML = sessionName;
+
+
+
+    var but = document.createElement('button');
+    but.setAttribute('class', 'liveButton');
+    but.setAttribute('data-id', id);
+
+    // Add an even listener to toggle the 'liveness' of a session
+    but.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        if(Cookies.get('username') != OWNER){
+            console.log('Hey, stop doing that.');
+            return;
+        }
+
+        var sendData = JSON.stringify({
+            'sessionid': $(this).attr('data-id')
+        });
+
+
+        $.ajax({
+            url: '../controller/toggleLive.php',
+            crossDomain: false,
+            data: sendData,
+            method: "POST",
+            cache: false,
+
+            complete: function (data) {
+
+                data = $.parseJSON(parseResponse(data.responseText));
+                console.log(data);
+
+                if (data.success === true) {
+
+                    
+
+                }
+                else {
+
+                    // todo redirect to error page
+
+                }
+            }
+        });
+
+
+
+    });
+
+
+    li.appendChild(an);
+
+    return li;
+}
+
+
+/*** Get and show all courses using createCourseLi ********************************************************************/
 
 
 function showCourses() {
@@ -177,12 +254,10 @@ function showCourses() {
 
                 var courses = data.courses;
 
+                // Iterate through all of the returned courses and create html elements for them
                 var list = document.getElementById('courses');
-
                 for(var i = 0; i < courses.length; i++){
-
                     var li = createCourseLi(courses[i].id, courses[i].coursename);
-
                     list.appendChild(li);
                 }
 
@@ -193,19 +268,13 @@ function showCourses() {
 
             }
 
-            $('.sessionAnchor').each(function () {
-                $(this).on('click', function () {
-                    COURSEID = $(this).attr('data-id');
-                    console.log(COURSEID);
-                })
-            });
         }
     });
-
-
 }
 
 
+
+/*** Check that the user is logged in *********************************************************************************/
 
 function checkLoggedIn() {
     if(Cookies.get('username') == undefined){
@@ -213,6 +282,9 @@ function checkLoggedIn() {
     }
 }
 
+
+
+/*** Check if the user is owns the profile ****************************************************************************/
 
 function checkOwner() {
     OWNER = parent.document.URL.substring(parent.document.URL.indexOf('?') + 1,
@@ -225,6 +297,8 @@ function checkOwner() {
     }
 }
 
+
+/*** Parse responsetext for json **************************************************************************************/
 
 function parseResponse(response){
 

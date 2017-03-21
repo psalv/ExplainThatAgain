@@ -3,10 +3,11 @@
 $(document).ready(function () {
 
 
+    // Check that the user is logged in
     checkLoggedIn();
 
 
-
+    // Logout the user
     $('.logout').each(function () {
         $(this).on('click', function (e) {
             e.preventDefault();
@@ -16,7 +17,7 @@ $(document).ready(function () {
     });
 
 
-
+/*** Searches for users with names similar to the search parameter, or exactly matching *******************************/
 
     $('#searchProfessors').submit(function (e) {
         e.preventDefault();
@@ -65,6 +66,8 @@ $(document).ready(function () {
 
 
 
+/*** Takes the user to a specific session by id ***********************************************************************/
+
     // todo: write php and session
     $('#goToSession').submit(function (e) {
         e.preventDefault();
@@ -107,6 +110,7 @@ $(document).ready(function () {
 
 
 
+/*** Check that the user is logged in *********************************************************************************/
 
 function checkLoggedIn() {
     if(Cookies.get('username') == undefined){
@@ -115,6 +119,7 @@ function checkLoggedIn() {
 }
 
 
+/*** Parse responsetext for json **************************************************************************************/
 
 function parseResponse(response){
 
