@@ -29,11 +29,11 @@
 <body>
 
     <!-- The name of the profile owner -->
-    <div class="row">
+    <div class="row text-center text-uppercase">
         <h1 id="profileOwner"></h1>
     </div>
 
-    <div class="row">
+    <div class="row ownerOnly">
 
         <!-- The logout button, redirects to the index -->
         <div class="col-md-8">
@@ -42,30 +42,50 @@
 
         <div class="col-md-4">
 
-            <div class="row">
+            <a href="#" data-toggle="modal" data-target="#addCourse">Add course</a>
 
-                <!-- Create a course TODO: make this into a modal -->
-                <form id="createCourse" action="" method="post">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <input type="text" id="courseName" placeholder="Course Name">
-                        </div>
-                    </div>
+        </div
 
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <button class="btn btn-raised btn-primary btn-lg">Create Course</button>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-
-        </div>
 
     </div>
 
 
+    <!-- A modal for creating a course -->
+    <div class="modal fade" id="addCourse" tabindex="-1" role="dialog" aria-labelledby="Terms Of Service" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="row">
+
+                    <!-- Create a course  -->
+                    <form id="createCourse" action="" method="post">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" id="courseName" placeholder="Course Name">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-raised btn-primary btn-lg">Create Course</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="row">
+
+                    <!-- Prompts for when the course cannot be created -->
+                    <div id="troubleCourse" class="hidden toggle-Hidden col-md-12 text-center">
+                        Could not create course, ensure that it does not already exist.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>x
+    <div
 
 
 <!--=========================================== JS SCRIPTS ==========================================-->

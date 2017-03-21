@@ -33,6 +33,7 @@ if ($conn->query($sql) !== TRUE) {
 
 // Create Courses table
 $sql = "CREATE TABLE IF NOT EXISTS Courses (
+    id INT(6) UNSIGNED UNIQUE AUTO_INCREMENT,
     coursename VARCHAR(50) NOT NULL UNIQUE PRIMARY KEY,
     userOwner VARCHAR(30) NOT NULL
 )";
