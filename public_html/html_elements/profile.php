@@ -28,42 +28,42 @@
 
 <body>
 
-<div class="row">
-    <h1 id="profileOwner"></h1>
-</div>
-
-<div class="row">
-
-    <div class="col-md-8">
-        <button class="btn btn-raised btn-primary btn-lg logout">Logout</button>
+    <!-- The name of the profile owner -->
+    <div class="row">
+        <h1 id="profileOwner"></h1>
     </div>
 
-    <div class="col-md-4">
+    <div class="row">
 
-        <div class="row">
+        <!-- The logout button, redirects to the index -->
+        <div class="col-md-8">
+            <button class="btn btn-raised btn-primary btn-lg logout">Logout</button>
+        </div>
 
-            <form id="createCourse" action="" method="post">
+        <div class="col-md-4">
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <input type="text" id="courseName" placeholder="Course Name">
+            <div class="row">
+
+                <!-- Create a course TODO: make this into a modal -->
+                <form id="createCourse" action="" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" id="courseName" placeholder="Course Name">
+                        </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <button class="btn btn-raised btn-primary btn-lg">Create Course</button>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <button class="btn btn-raised btn-primary btn-lg">Create Course</button>
+                        </div>
                     </div>
-                </div>
+                </form>
 
-
-            </form>
+            </div>
 
         </div>
 
     </div>
-
-</div>
 
 
 
