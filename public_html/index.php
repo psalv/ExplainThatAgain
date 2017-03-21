@@ -24,21 +24,25 @@
 
 </head>
 
+    <!--=========================================== MAIN FILES ==========================================-->
+
 <body>
-<!--=========================================== MAIN FILES ==========================================-->
 
 <?php
     include_once "../init_db.php";
     $page = "index-page";
     $hasGmap = true;
 
+    include_once "html_elements/home.php"
 
     ?>
 
 
 
 
-<!--=========================================== JS SCRIPTS ==========================================-->
+    <!--=========================================== JS SCRIPTS ==========================================-->
+
+
 <!-- jQuery -->
 <script src="assets/js/jquery.min.js" type="text/javascript"></script>
 
@@ -47,6 +51,12 @@
 
 <!-- Plugin JavaScript -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+<!-- Cookies -->
+<script src="assets/js/js.cookie.js" type="text/javascript"></script>
+
+<!-- Scripts -->
+<script src="assets/js/main.js" type="text/javascript"></script>
 
 </body>
 </html>
