@@ -26,20 +26,21 @@ $owner = $getPost['courseid'];
 
 
 
-$sql = "SELECT sessionname FROM Sessions WHERE courseOwner = '" . $owner . "'";
+
+
+$sql = "SELECT sessionname FROM Sessions WHERE courseOwner = '" . $owner . "' AND sessionname = '" . $sessionName ."'";
 $result = $conn->query($sql);
 
 
 
 // Check if the course already exists for this user
 if ($result->num_rows >= 0) {
-    while($row = $result->fetch_assoc()) {
-
-        // If so return a failure, a user must have unique courses.
-        if($row == $sessionName){
-            echo json_encode(array('success' => false, 'message' => 'Session already exists', 'Exists' => 1));
-        };
+    if($result->num_rows > 0){
+        echo json_encode(array('success' => false, 'message' => 'Session already exists', 'Exists' => 1));
+        $conn->close();
+        return;
     }
+
 
     // Insert the data into the sql table
     $sql = "INSERT INTO Sessions (sessionname, courseOwner) VALUES ('" . $sessionName . "', '" . $owner . "')";
@@ -59,7 +60,6 @@ if ($result->num_rows >= 0) {
 } else{
     echo json_encode(array('success' => false, 'message' => 'Trouble creating session', 'Exists' => -1));
 }
-
 
 
 $conn->close();

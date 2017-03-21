@@ -92,6 +92,7 @@ $(document).ready(function () {
 
             complete: function (data) {
 
+                console.log(data);
                 data = $.parseJSON(parseResponse(data.responseText));
                 console.log(data);
 
@@ -99,6 +100,14 @@ $(document).ready(function () {
                     $('#troubleSession').addClass('hidden');
                     $('#addSession').modal('hide');
 
+                    var li = createSessionLi(data.id.sessionid, sessionName);
+
+                    $('.sessions').each(function () {
+                        if($(this).attr('data-id') == COURSEID){
+                            $(this).append(li);
+                            return;
+                        }
+                    })
 
                 }
                 else {
@@ -208,7 +217,7 @@ function createSessionLi(id, sessionName){
 
                 if (data.success === true) {
 
-                    
+                    // depending on the live, change the class of the live button
 
                 }
                 else {
