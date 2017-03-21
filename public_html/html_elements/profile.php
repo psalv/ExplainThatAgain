@@ -35,58 +35,66 @@
 
     <div class="row ownerOnly">
 
-        <!-- The logout button, redirects to the index -->
-        <div class="col-md-8">
-            <button class="btn btn-raised btn-primary btn-lg logout">Logout</button>
+        <div class="row">
+
+            <!-- The logout button, redirects to the index -->
+            <div class="col-md-8">
+                <button class="btn btn-raised btn-primary btn-lg logout">Logout</button>
+            </div>
+
+            <div class="col-md-4">
+
+                <a href="#" data-toggle="modal" data-target="#addCourse">Add course</a>
+
+            </div
+
+
         </div>
 
-        <div class="col-md-4">
 
-            <a href="#" data-toggle="modal" data-target="#addCourse">Add course</a>
+        <!-- A modal for creating a course -->
+        <div class="modal fade" id="addCourse" tabindex="-1" role="dialog" aria-labelledby="Terms Of Service" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="row">
 
-        </div
-
-
-    </div>
-
-
-    <!-- A modal for creating a course -->
-    <div class="modal fade" id="addCourse" tabindex="-1" role="dialog" aria-labelledby="Terms Of Service" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="row">
-
-                    <!-- Create a course  -->
-                    <form id="createCourse" action="" method="post">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input type="text" id="courseName" placeholder="Course Name">
+                        <!-- Create a course  -->
+                        <form id="createCourse" action="" method="post">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" id="courseName" placeholder="Course Name">
+                                </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <button class="btn btn-raised btn-primary btn-lg">Create Course</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <div class="row">
+
+                        <!-- Prompts for when the course cannot be created -->
+                        <div id="troubleCourse" class="hidden toggle-Hidden col-md-12 text-center">
+                            Could not create course, ensure that it does not already exist.
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-12 text-center">
-                                <button class="btn btn-raised btn-primary btn-lg">Create Course</button>
-                            </div>
-                        </div>
-                    </form>
-
-                </div>
-
-                <div class="row">
-
-                    <!-- Prompts for when the course cannot be created -->
-                    <div id="troubleCourse" class="hidden toggle-Hidden col-md-12 text-center">
-                        Could not create course, ensure that it does not already exist.
                     </div>
 
                 </div>
 
             </div>
+        </div>
+    </div>
 
-        </div>x
-    <div
 
+    <!-- An area for the search results to populate to -->
+    <div class="row">
+        <ul id="courses"></ul>
+    </div>
 
 <!--=========================================== JS SCRIPTS ==========================================-->
 

@@ -6,7 +6,6 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
     exit;
 }
 
-
 include_once("../../env.php");
 
 // Create connection
@@ -18,8 +17,6 @@ if ($conn->connect_error) {
 }
 
 
-
-
 $getPost = (array)json_decode(file_get_contents('php://input'));
 $newCourse = $getPost['courseName'];
 $owner = $getPost['owner'];
@@ -28,16 +25,25 @@ $owner = $getPost['owner'];
 $sql = "SELECT coursename FROM Courses WHERE userOwner = '" . $owner . "'";
 $result = $conn->query($sql);
 
+// Check if the course already exists for this user
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
+
+        // If so return a failure, a user must have unique courses.
         if($row == $newCourse){
             echo json_encode(array('success' => false, 'message' => 'Course already exists', 'Exists' => 1));
         };
     }
 
+    // Inser the data into the sql table
     $sql = "INSERT INTO Courses (coursename, userOwner) VALUES ('" . $newCourse . "', '" . $owner . "')";
     if ($conn->query($sql) === TRUE) {
-        echo json_encode(array('success' => true, 'message' => 'Course created'));
+
+        // Get the id assigned to the new course, to be used in the li tag for reference
+        $sql = "SELECT id FROM Courses WHERE userOwner = '" . $owner . "' AND coursename = '" . $newCourse . "'";
+        $result = $conn->query($sql);
+        $result = $result->fetch_assoc();
+        echo json_encode(array('success' => true, 'message' => 'Course created', 'id' => $result));
     } else {
         echo json_encode(array('success' => false, 'message' => 'Error creating course', 'Exists' => 0));
     }
