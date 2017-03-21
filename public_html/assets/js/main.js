@@ -1,25 +1,29 @@
 
-$(document).ready(function () {
 
-    $('#submitUser').submit(function (e) {
+$(document).ready(function () {
+    checkLoggedIn();
+
+    $('.logout').each(function () {
+        $(this).on('click', function (e) {
+            e.preventDefault();
+            Cookies.remove('username');
+            window.location = "../index.php";
+        })
+    });
+
+    $('#searchProfessors').submit(function (e) {
         e.preventDefault();
 
-        var thisForm = $(this).closest('#submitUser');
-        var password = thisForm.find('#formPass').val();
-        if(password != thisForm.find('#formPassC').val()){
-            $('#noMatch').removeClass('hidden');
-            return;
-        }
-
-        var username = thisForm.find('#formUser').val();
+        var thisForm = $(this).closest('#searchProfessors');
+        var searchString = thisForm.find('#profSearch').val();
         var sendData = JSON.stringify({
-            'username': username,
-            'password': password
+            'searchString': searchString
         });
 
+        console.log(sendData);
 
         $.ajax({
-            url: 'controller/newUser.php',
+            url: '../controller/search.php',
             crossDomain: false,
             data: sendData,
             method: "POST",
@@ -27,25 +31,36 @@ $(document).ready(function () {
 
             complete: function (data) {
 
+                console.log(data);
+
                 data = $.parseJSON(parseResponse(data.responseText));
 
                 if (data.success === true) {
-                    Cookies.set('username', username, { expires: 7});
 
-                    console.log(Cookies.get());
+                    console.log('success');
+
+                    // window.location = "html_elements/search.php?searchString=" + searchString;
                 }
                 else {
-                    $('#taken').removeClass('hidden');
+
+                    console.log('failure');
+                    // todo add an error page
                 }
             }
         });
     });
+
 });
 
-function parseResponse(response){
-    // if(response == null){
 
-    // }
+function checkLoggedIn() {
+    if(Cookies.get('username') == undefined){
+        window.location = "../index.php";
+    }
+}
+
+function parseResponse(response){
+
     var buildResponse = "";
     var build = false;
     var next = false;

@@ -33,11 +33,85 @@
     $page = "index-page";
     $hasGmap = true;
 
-    include_once "html_elements/home.php"
-
     ?>
 
+    <div class="row">
+        <div class="col-md-8 text-center">
+            This site uses cookies, please have them enabled.
+        </div>
 
+        <div class="col-md-4">
+
+            <div class="row">
+                <form id="loginUser" action="" method="post">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" id="signinUser" placeholder="User Name">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="password" id="signinPass" placeholder="Password">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-raised btn-primary btn-lg">Login</button>
+                    </div>
+
+                    <div id="taken" class="hidden col-md-12 text-center">
+                        Username taken.
+                    </div>
+
+                    <div id="noMatch" class="hidden col-md-12 text-center">
+                        Passwords did not match.
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="row">
+                <form id="submitUser" action="" method="post">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" id="formUser" placeholder="User Name">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="password" id="formPass" placeholder="Password">
+                            <input type="password" id="formPassC" placeholder="Confirm Password">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-raised btn-primary btn-lg">Sign Up</button>
+                    </div>
+
+
+                </form>
+            </div>
+
+            <div class="row">
+                <div id="taken" class="hidden toggle-Hidden col-md-12 text-center">
+                    Username taken.
+                </div>
+
+                <div id="noMatch" class="hidden toggle-Hidden col-md-12 text-center">
+                    Passwords did not match.
+                </div>
+
+                <div id="incorrectPass" class="hidden toggle-Hidden col-md-12 text-center">
+                    Incorrect password or username.
+                </div>
+
+                <div id="passLength" class="hidden toggle-Hidden col-md-12 text-center">
+                    Passwords must be 6 characters long.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 
     <!--=========================================== JS SCRIPTS ==========================================-->
@@ -56,7 +130,7 @@
 <script src="assets/js/js.cookie.js" type="text/javascript"></script>
 
 <!-- Scripts -->
-<script src="assets/js/main.js" type="text/javascript"></script>
+<script src="assets/js/index.js" type="text/javascript"></script>
 
 </body>
 </html>
