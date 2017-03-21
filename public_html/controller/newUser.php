@@ -15,7 +15,6 @@ $newUsername = $getPost['username'];
 $newPassword = $getPost['password'];
 
 
-
 $sql = "SELECT username FROM Users WHERE username = '" . $newUsername . "'";
 $result = $conn->query($sql);
 $result = $result->fetch_assoc();
