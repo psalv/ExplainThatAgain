@@ -47,7 +47,7 @@ $(document).ready(function () {
                     else{
                         var buildUrl = "searchPage.php?";
                         for(var i = 0; i < similar.length; i++){
-                            buildUrl += similar[i].username + '&';
+                            buildUrl += i + '=' + similar[i].username + '&';
                         }
                         window.location = buildUrl;
                     }
@@ -58,6 +58,46 @@ $(document).ready(function () {
                     console.log('failure');
 
                     // todo add an error page
+                }
+            }
+        });
+    });
+
+
+
+    // todo: write php and session
+    $('#goToSession').submit(function (e) {
+        e.preventDefault();
+
+        var thisForm = $(this).closest('#goToSession');
+        var gotoID = thisForm.find('#idGo').val();
+        var sendData = JSON.stringify({
+            'gotoID': gotoID
+        });
+
+        $.ajax({
+            url: '../controller/navToSession.php',
+            crossDomain: false,
+            data: sendData,
+            method: "POST",
+            cache: false,
+
+            complete: function (data) {
+
+                data = $.parseJSON(parseResponse(data.responseText));
+
+                if (data.success === true) {
+
+                    window.location = "session.php?id=" + data.id;
+
+                }
+                else {
+
+                    console.log('failure');
+
+                    // need to display if session is
+                            // 1) not live
+                            // 2) does not exist
                 }
             }
         });

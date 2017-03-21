@@ -97,7 +97,7 @@
 <script src="../assets/js/js.cookie.js" type="text/javascript"></script>
 
 <!-- Scripts -->
-<script src="../assets/js/main.js" type="text/javascript"></script>
+<script src="../assets/js/search.js" type="text/javascript"></script>
 
 </body>
 </html>
