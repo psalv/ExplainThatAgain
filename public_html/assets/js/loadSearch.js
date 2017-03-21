@@ -5,13 +5,14 @@ $(document).ready(function () {
 
     var list = document.getElementById('searchResults');
     for(var i = 0; i < variables.length; i++){
+        var param = variables[i].split('=')[1];
         var li = document.createElement('li');
 
         var an = document.createElement('a');
-        an.setAttribute('href', 'profile.php?user=' + variables[i]);
+        an.setAttribute('href', 'profile.php?user=' + param);
         an.setAttribute('class', 'searchRedirect');
         an.setAttribute('inn', 'searchRedirect');
-        an.innerHTML = variables[i];
+        an.innerHTML = param;
 
         li.appendChild(an);
         list.appendChild(li);

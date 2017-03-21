@@ -29,6 +29,10 @@
 <body>
 
 <div class="row">
+    <h1 id="profileOwner"></h1>
+</div>
+
+<div class="row">
 
     <div class="col-md-8">
         <button class="btn btn-raised btn-primary btn-lg logout">Logout</button>
@@ -57,8 +61,6 @@
 
         </div>
 
-
-
     </div>
 
 </div>
@@ -82,7 +84,7 @@
 <script src="../assets/js/js.cookie.js" type="text/javascript"></script>
 
 <!-- Scripts -->
-<script src="../assets/js/main.js" type="text/javascript"></script>
+<script src="../assets/js/profile.js" type="text/javascript"></script>
 
 </body>
 </html>
