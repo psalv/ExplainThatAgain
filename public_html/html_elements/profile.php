@@ -40,6 +40,8 @@
             <!-- The logout button, redirects to the index -->
             <div class="col-md-8">
                 <button class="btn btn-raised btn-primary btn-lg logout">Logout</button>
+                <button class="btn btn-raised btn-primary btn-lg profileButton">Profile</button>
+                <button class="btn btn-raised btn-primary btn-lg homeButton">Home</button>
             </div>
 
             <div class="col-md-4">
@@ -71,7 +73,7 @@
                             <ul>Want slides for your presentation?<br>Follow these steps:
                                 <li>Upload your slides to <a target="_blank" href="//docs.google.com/presentation/u/0/">Google Slides.</a></li>
                                 <li>Once the presentation is uploaded, click file</li>
-                                <li>Click "publish to the web"</li>
+                                <li>Click "publish to the web", then click publish</li>
                                 <li>Copy and paste the link in the box below (don't worry about any of the other options)</li>
                             </ul>
                             <div class="col-md-6">

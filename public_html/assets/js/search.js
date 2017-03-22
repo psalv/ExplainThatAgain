@@ -16,6 +16,22 @@ $(document).ready(function () {
         })
     });
 
+    // Go to own profile
+    $('.profileButton').each(function () {
+        $(this).on('click', function (e) {
+            e.preventDefault();
+            window.location = "profile.php?user=" + Cookies.get('username');
+        })
+    });
+
+    // Go home
+    $('.homeButton').each(function () {
+        $(this).on('click', function (e) {
+            e.preventDefault();
+            window.location = "loggedin.php";
+        })
+    });
+
 
 /*** Searches for users with names similar to the search parameter, or exactly matching *******************************/
 
@@ -75,7 +91,7 @@ $(document).ready(function () {
         });
 
         $.ajax({
-            url: '../controller/navToSession.php',
+            url: '../controller/getLive.php',
             crossDomain: false,
             data: sendData,
             method: "POST",

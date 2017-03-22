@@ -133,6 +133,22 @@ $(document).ready(function () {
         })
     });
 
+    // Go to own profile
+    $('.profileButton').each(function () {
+        $(this).on('click', function (e) {
+            e.preventDefault();
+            window.location = "profile.php?user=" + Cookies.get('username');
+        })
+    });
+
+    // Go home
+    $('.homeButton').each(function () {
+        $(this).on('click', function (e) {
+            e.preventDefault();
+            window.location = "loggedin.php";
+        })
+    });
+
 
 });
 
@@ -198,7 +214,7 @@ function createSessionLi(id, sessionName){
 
 
         $.ajax({
-            url: '../controller/navToSession.php',
+            url: '../controller/getLive.php',
             crossDomain: false,
             data: sendData,
             method: "POST",
@@ -221,7 +237,7 @@ function createSessionLi(id, sessionName){
 
 
     var but = document.createElement('button');
-    but.setAttribute('class', 'liveButton');
+    but.setAttribute('class', 'liveButton btn btn-raised btn-primary btn-sm');
     but.setAttribute('data-id', id);
     but.innerHTML = "Live";
 
@@ -231,7 +247,7 @@ function createSessionLi(id, sessionName){
 
     // Check if the sessions are live.
     $.ajax({
-        url: '../controller/navToSession.php',
+        url: '../controller/getLive.php',
         crossDomain: false,
         data: sendData,
         method: "POST",
@@ -271,7 +287,6 @@ function createSessionLi(id, sessionName){
             complete: function (data) {
 
                 data = $.parseJSON(parseResponse(data.responseText));
-                console.log(data);
 
                 if (data.success === true) {
 

@@ -11,7 +11,7 @@ $(document).ready(function () {
     checkLoggedIn();
 
     // Unhide certain elements depending on if the user is the owner
-    checkOwner();
+    checkOwnerGetSlideLink();
 
 
 
@@ -28,7 +28,21 @@ $(document).ready(function () {
         })
     });
 
+    // Go to own profile
+    $('.profileButton').each(function () {
+        $(this).on('click', function (e) {
+            e.preventDefault();
+            window.location = "profile.php?user=" + Cookies.get('username');
+        })
+    });
 
+    // Go home
+    $('.homeButton').each(function () {
+        $(this).on('click', function (e) {
+            e.preventDefault();
+            window.location = "loggedin.php";
+        })
+    });
 });
 
 
@@ -38,14 +52,33 @@ $(document).ready(function () {
 
 
 
-/*** Check that the session is live *********************************************************************************/
+/*** Check that the session is live ***********************************************************************************/
 
 function checkLive() {
     SESSIONID = parent.document.URL.substring(parent.document.URL.indexOf('?') + 1,
         parent.document.URL.length).split('&')[0].split('=')[1];
 
-    // need to do a post to check if the session is live.
 
+    var sendData = JSON.stringify({
+        'sessionID': SESSIONID
+    });
+
+    $.ajax({
+        url: '../controller/getLive.php',
+        crossDomain: false,
+        data: sendData,
+        method: "POST",
+        cache: false,
+
+        complete: function (data) {
+
+            data = $.parseJSON(parseResponse(data.responseText));
+
+            if (data.success === false) {
+                window.location = "youarelost.php";
+            }
+        }
+    });
 }
 
 
@@ -62,14 +95,14 @@ function checkLoggedIn() {
 
 /*** Check if the user is owns the profile ****************************************************************************/
 
-function checkOwner() {
+function checkOwnerGetSlideLink() {
 
     var sendData = JSON.stringify({
         'sessionID': SESSIONID
     });
 
     $.ajax({
-        url: '../controller/getSessionOwner.php',
+        url: '../controller/getSessionOwnerSlideLink.php',
         crossDomain: false,
         data: sendData,
         method: "POST",
@@ -78,14 +111,15 @@ function checkOwner() {
         complete: function (data) {
 
             data = $.parseJSON(parseResponse(data.responseText));
-            console.log(data);
+
             if (data.success === true) {
 
                 OWNER = data.owner;
-                console.log(OWNER);
                 $('.ownerOnly').each(function () {
                     $(this).removeClass('hidden');
-                })
+                });
+
+                $('#presentation').attr('src', swapEmbed(data.slideLink));
 
             }
             else {
@@ -95,6 +129,10 @@ function checkOwner() {
     });
 }
 
+function swapEmbed(ln) {
+    var ind = ln.indexOf('pub');
+    return ln.slice(0, ind) + "embed" + ln.slice(ind + 3);
+}
 
 /*** Parse responsetext for json **************************************************************************************/
 
