@@ -73,6 +73,10 @@
                     </div>
                 </form>
 
+                <div class="row hidden" id="notLive">
+                    <div>That session is not live</div>
+                </div>
+
             </div>
 
         </div>

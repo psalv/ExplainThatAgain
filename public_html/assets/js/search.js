@@ -92,7 +92,7 @@ $(document).ready(function () {
 
                 }
                 else {
-                    window.location = "youarelost.php";
+                    $('#notLive').removeClass('hidden');
                 }
             }
         });

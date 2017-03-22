@@ -81,10 +81,12 @@ $(document).ready(function () {
 
         var thisForm = $(this).closest('#createSession');
         var sessionName = thisForm.find('#sessionName').val();
+        var slideLink = thisForm.find('#slideLink').val();
         var sendData = JSON.stringify({
             'sessionName': sessionName,
             'courseid': COURSEID,
-            'owner': OWNER
+            'owner': OWNER,
+            'slideLink': slideLink
         });
 
 
