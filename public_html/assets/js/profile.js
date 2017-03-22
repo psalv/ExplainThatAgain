@@ -133,7 +133,7 @@ $(document).ready(function () {
         })
     });
 
-    // Go to own profile
+    // Logout the user
     $('.profileButton').each(function () {
         $(this).on('click', function (e) {
             e.preventDefault();
@@ -141,7 +141,7 @@ $(document).ready(function () {
         })
     });
 
-    // Go home
+    // Logout the user
     $('.homeButton').each(function () {
         $(this).on('click', function (e) {
             e.preventDefault();
@@ -309,8 +309,65 @@ function createSessionLi(id, sessionName){
         });
     });
 
+
+
+    var butDel = document.createElement('button');
+    butDel.setAttribute('class', 'deleteButton btn btn-raised btn-primary btn-sm');
+    butDel.setAttribute('data-id', id);
+    butDel.innerHTML = "Delete";
+
+
+/*
+    // Add an even listener to toggle the 'liveness' of a session
+    but.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        if(Cookies.get('username') != OWNER){
+            console.log('Hey, stop doing that.');
+            return;
+        }
+
+        var sendData = JSON.stringify({
+            'sessionid': id
+        });
+
+        $.ajax({
+            url: '../controller/toggleLive.php',
+            crossDomain: false,
+            data: sendData,
+            method: "POST",
+            cache: false,
+
+            complete: function (data) {
+
+                data = $.parseJSON(parseResponse(data.responseText));
+
+                if (data.success === true) {
+
+                    if(data.live == 1){
+
+                        // todo: give some graphic queue that the session is live
+
+                    }
+                    else{
+
+                        // todo: change the color back
+
+                    }
+
+                }
+                else {
+                    window.location = "youarelost.php";
+                }
+            }
+        });
+    });
+
+*/
+
     li.appendChild(an);
     li.appendChild(but);
+    li.appendChild(butDel);
 
     return li;
 }
