@@ -2,6 +2,8 @@
 var OWNER;
 var SESSIONID;
 var COOLDOWN = false;
+var FIRST = true;
+var CHART;
 
 var GRAPH_DATA = {
     labels: [],
@@ -31,7 +33,7 @@ var GRAPH_DATA = {
 };
 
 // update every 15 seconds
-var INTERVAL_TIME = 30000;
+var INTERVAL_TIME = 15000;
 
 $(document).ready(function () {
 
@@ -53,7 +55,7 @@ $(document).ready(function () {
         if(OWNER = Cookies.get('username')) {
             window.setInterval(newGraphPoint, INTERVAL_TIME);
         } else{
-            window.setInterval(updateGraphPoint, INTERVAL_TIME);
+            window.setInterval(loadGraphData, INTERVAL_TIME);
         }
     });
 
@@ -102,14 +104,57 @@ $(document).ready(function () {
     });
 });
 
-function loadGraphData(){
 
+
+/*** Loads all graph data and updates graph ***************************************************************************/
+
+function loadGraphData(){
+    var sendData = JSON.stringify({
+        'sessionID': SESSIONID
+    });
+
+    $.ajax({
+        url: '../controller/loadGraphData.php',
+        crossDomain: false,
+        data: sendData,
+        method: "POST",
+        cache: false,
+
+        complete: function (data) {
+
+            data = $.parseJSON(parseResponse(data.responseText));
+            console.log(data);
+
+            if (data.success === true) {
+
+                GRAPH_DATA.labels = [];
+                GRAPH_DATA.datasets[0].data = [];
+
+                for(var i = 0; i < data.points.length; i++){
+                    GRAPH_DATA.labels.push(data.points[i].xaxis);
+                    GRAPH_DATA.datasets[0].data.push(data.points[i].confusion)
+                }
+
+                if(FIRST){
+                    FIRST = false;
+                    createGraph();
+                }
+                else{
+                    CHART.update();2
+                }
+
+            }
+            else {
+                console.log("New graph point could not be made")
+            }
+        }
+    });
 }
 
 function createGraph(){
 
     var ctx = document.getElementById("graphArea");
-    new Chart(ctx, {
+    CHART = new Chart(ctx, {
         type: 'bar',
         data: GRAPH_DATA,
         options: {
@@ -133,8 +178,6 @@ function newGraphPoint(){
         'sessionID': SESSIONID
     });
 
-    console.log('here');
-
     $.ajax({
         url: '../controller/newGraphPoint.php',
         crossDomain: false,
@@ -145,48 +188,14 @@ function newGraphPoint(){
         complete: function (data) {
 
             data = $.parseJSON(parseResponse(data.responseText));
-            console.log(data);
 
             if (data.success === true) {
 
-                // todo: implement update graph point to display to graph
-                // updateGraphPoint();
+                loadGraphData();
 
             }
             else {
                 console.log("New graph point could not be made")
-            }
-        }
-    });
-}
-
-
-/*** Creates a get new point for the graph ****************************************************************************/
-
-function updateGraphPoint(){
-    var sendData = JSON.stringify({
-        'sessionID': SESSIONID
-    });
-
-    $.ajax({
-        url: '../controller/updateGraphPoint.php',
-        crossDomain: false,
-        data: sendData,
-        method: "POST",
-        cache: false,
-
-        complete: function (data) {
-
-            data = $.parseJSON(parseResponse(data.responseText));
-
-            if (data.success === true) {
-
-                //
-
-
-            }
-            else {
-                console.log("Could not fetch new graph point")
             }
         }
     });
