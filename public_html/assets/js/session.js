@@ -76,6 +76,8 @@ function newGraphPoint(){
         'sessionID': SESSIONID
     });
 
+    console.log('here');
+
     $.ajax({
         url: '../controller/newGraphPoint.php',
         crossDomain: false,
@@ -86,10 +88,12 @@ function newGraphPoint(){
         complete: function (data) {
 
             data = $.parseJSON(parseResponse(data.responseText));
+            console.log(data);
 
             if (data.success === true) {
 
-                updateGraphPoint();
+                // todo: implement update graph point to display to graph
+                // updateGraphPoint();
 
             }
             else {
@@ -149,11 +153,11 @@ function incrementGraph(){
 
         complete: function (data) {
 
-            console.log(data);
             data = $.parseJSON(parseResponse(data.responseText));
-            console.log(data);
 
             if (data.success === true) {
+
+                // nothing
 
             }
             else {
@@ -209,7 +213,7 @@ function checkLoggedIn() {
 
 /*** Check if the user is owns the profile ****************************************************************************/
 
-function checkOwnerGetSlideLink() {
+function checkOwnerGetSlideLink(callback) {
 
     var sendData = JSON.stringify({
         'sessionID': SESSIONID
@@ -241,6 +245,8 @@ function checkOwnerGetSlideLink() {
             }
         }
     });
+
+    callback();
 }
 
 function swapEmbed(ln) {
