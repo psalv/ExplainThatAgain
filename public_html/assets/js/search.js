@@ -55,10 +55,7 @@ $(document).ready(function () {
 
                 }
                 else {
-
-                    console.log('failure');
-
-                    // todo add an error page
+                    window.location = "youarelost.php";
                 }
             }
         });
@@ -68,14 +65,13 @@ $(document).ready(function () {
 
 /*** Takes the user to a specific session by id ***********************************************************************/
 
-    // todo: write php and session
     $('#goToSession').submit(function (e) {
         e.preventDefault();
 
         var thisForm = $(this).closest('#goToSession');
-        var gotoID = thisForm.find('#idGo').val();
+        var sessionID = thisForm.find('#idGo').val();
         var sendData = JSON.stringify({
-            'gotoID': gotoID
+            'sessionID': sessionID
         });
 
         $.ajax({
@@ -88,6 +84,7 @@ $(document).ready(function () {
             complete: function (data) {
 
                 data = $.parseJSON(parseResponse(data.responseText));
+                console.log(data);
 
                 if (data.success === true) {
 
@@ -95,17 +92,11 @@ $(document).ready(function () {
 
                 }
                 else {
-
-                    console.log('failure');
-
-                    // need to display if session is
-                            // 1) not live
-                            // 2) does not exist
+                    window.location = "youarelost.php";
                 }
             }
         });
     });
-
 });
 
 

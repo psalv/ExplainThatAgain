@@ -21,13 +21,23 @@ $owner = $getPost['owner'];
 $sql = "SELECT coursename, id FROM Courses WHERE userOwner = '" . $owner . "'";
 $result = $conn->query($sql);
 
-$toSend = array();
+$toSend1 = array();
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        array_push($toSend, $row);
+        array_push($toSend1, $row);
     }
 }
 
-echo json_encode(array('success' => true, 'message' => 'Course created', 'courses' => $toSend));
+$sql = "SELECT sessionname, sessionid, courseOwner FROM Sessions WHERE userOwner = '" . $owner . "'";
+$result = $conn->query($sql);
+
+$toSend2 = array();
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        array_push($toSend2, $row);
+    }
+}
+
+echo json_encode(array('success' => true, 'message' => 'Fetched courses and sessions', 'courses' => $toSend1, 'sessions' => $toSend2));
 
 $conn->close();

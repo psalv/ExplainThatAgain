@@ -26,14 +26,14 @@ $result = $conn->query($sql);
 $result = $result->fetch_assoc();
 
 if($result !== NULL){
-    $toggle = $result === 1 ? 0 : 1;
-    $sql = "UPDATE Sessions SET live=" . $toggle . " WHERE id=" . $sessionid;
+    $toggle = intval($result['live']) == 1 ? 0 : 1;
+    $sql = "UPDATE Sessions SET live=" . $toggle . " WHERE sessionid=" . $sessionid;
 
     if($conn->query($sql) === TRUE){
-        echo json_encode(array('success' => true, 'message' => 'Session toggled', 'live', $toggle));
+        echo json_encode(array('success' => true, 'message' => 'Session toggled', 'live' => $toggle));
     }
     else{
-        echo json_encode(array('success' => false, 'message' => 'Error togglingtoggled'));
+        echo json_encode(array('success' => false, 'message' => 'Error toggling'));
     }
 }
 else {
