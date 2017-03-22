@@ -43,7 +43,6 @@ $(document).ready(function () {
     // Ensure the user is logged in
     checkLoggedIn();
 
-
     // Loads the graph data from the mysql database
     loadGraphData();
 
@@ -320,6 +319,8 @@ function swapEmbed(ln) {
     var ind = ln.indexOf('pub');
     return ln.slice(0, ind) + "embed" + ln.slice(ind + 3);
 }
+
+
 
 /*** Parse responsetext for json **************************************************************************************/
 
