@@ -1,4 +1,3 @@
-
 <?php
 
 if($_SERVER['REQUEST_METHOD'] === 'GET'){
@@ -19,12 +18,12 @@ if ($conn->connect_error) {
 $getPost = (array)json_decode(file_get_contents('php://input'));
 $sessionID = $getPost['sessionID'];
 
-$sql = "SELECT userOwner FROM Sessions WHERE sessionid = '" . $sessionID . "'";
+$sql = "SELECT userOwner, slideLink FROM Sessions WHERE sessionid = '" . $sessionID . "'";
 $result = $conn->query($sql);
 $result = $result->fetch_assoc();
 
 if($result !== NULL){
-    echo json_encode(array('success' => true, 'message' => 'Found owner', 'owner' => $result['userOwner']));
+    echo json_encode(array('success' => true, 'message' => 'Found owner', 'owner' => $result['userOwner'], 'slideLink' => $result['slideLink']));
 }
 else{
     echo json_encode(array('success' => false, 'message' => 'Session not found'));
