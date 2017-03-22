@@ -20,6 +20,7 @@ if ($conn->connect_error) {
 $getPost = (array)json_decode(file_get_contents('php://input'));
 $sessionName = $getPost['sessionName'];
 $owner = $getPost['courseid'];
+$userOwner = $getPost['owner'];
 
 
 
@@ -43,7 +44,7 @@ if ($result->num_rows >= 0) {
 
 
     // Insert the data into the sql table
-    $sql = "INSERT INTO Sessions (sessionname, courseOwner) VALUES ('" . $sessionName . "', '" . $owner . "')";
+    $sql = "INSERT INTO Sessions (sessionname, courseOwner, userOwner) VALUES ('" . $sessionName . "', '" . $owner . "', '" . $userOwner . "')";
 
 
     if ($conn->query($sql) === TRUE) {

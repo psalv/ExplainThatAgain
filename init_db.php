@@ -47,7 +47,8 @@ $sql = "CREATE TABLE IF NOT EXISTS Sessions (
     sessionname VARCHAR(50) NOT NULL,
     sessionid INT(8) UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
     live INT(1) NOT NULL DEFAULT 0,
-    courseOwner INT(8) NOT NULL
+    courseOwner INT(8) NOT NULL,
+    userOwner VARCHAR(30) NOT NULL
 )";
 if ($conn->query($sql) !== TRUE) {
     echo "Error creating table: " . $conn->error;

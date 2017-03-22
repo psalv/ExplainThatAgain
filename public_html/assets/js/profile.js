@@ -1,6 +1,10 @@
 
+
+
 var OWNER;
 var COURSEID;
+
+
 
 $(document).ready(function () {
 
@@ -79,7 +83,8 @@ $(document).ready(function () {
         var sessionName = thisForm.find('#sessionName').val();
         var sendData = JSON.stringify({
             'sessionName': sessionName,
-            'courseid': COURSEID
+            'courseid': COURSEID,
+            'owner': OWNER
         });
 
 
@@ -108,12 +113,9 @@ $(document).ready(function () {
                             return;
                         }
                     })
-
                 }
                 else {
-
                     $('#troubleSession').removeClass('hidden');
-
                 }
             }
         });
@@ -133,8 +135,8 @@ $(document).ready(function () {
 });
 
 
-/*** Create html elements to display and give functionality to a new course ********************************************/
 
+/*** Create html elements to display and give functionality to a new course *******************************************/
 
 function createCourseLi(id, courseName){
     var li = document.createElement('li');
@@ -167,8 +169,9 @@ function createCourseLi(id, courseName){
     return li;
 }
 
-/*** Create html elements to display and give functionality to a new session ******************************************/
 
+
+/*** Create html elements to display and give functionality to a new session ******************************************/
 
 function createSessionLi(id, sessionName){
     var li = document.createElement('li');
@@ -178,16 +181,70 @@ function createSessionLi(id, sessionName){
 
     // Create an anchor to target the add session modal
     var an = document.createElement('a');
-    an.setAttribute('href', 'session.php?id=' + id);
+    an.setAttribute('href', '#' + id);
     an.setAttribute('class', 'sessionLink');
     an.setAttribute('data-id', id);
-    an.innerHTML = sessionName;
 
+    // Navigate to session if it is live
+    an.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        console.log(id);
+        var sendData = JSON.stringify({
+            'sessionID': id
+        });
+
+
+        $.ajax({
+            url: '../controller/navToSession.php',
+            crossDomain: false,
+            data: sendData,
+            method: "POST",
+            cache: false,
+
+            complete: function (data) {
+
+                data = $.parseJSON(parseResponse(data.responseText));
+
+                if (data.success === true) {
+                    window.location = "session.php?id=" + id;
+                }
+                else {
+                    window.location = "youarelost.php";
+                }
+            }
+        });
+    });
+    an.innerHTML = sessionName;
 
 
     var but = document.createElement('button');
     but.setAttribute('class', 'liveButton');
     but.setAttribute('data-id', id);
+    but.innerHTML = "Live";
+
+    var sendData = JSON.stringify({
+        'sessionID': id
+    });
+
+    // Check if the sessions are live.
+    $.ajax({
+        url: '../controller/navToSession.php',
+        crossDomain: false,
+        data: sendData,
+        method: "POST",
+        cache: false,
+
+        complete: function (data) {
+
+            data = $.parseJSON(parseResponse(data.responseText));
+
+            if (data.success === true) {
+
+                // todo change color for visual queue that the session is live
+            }
+        }
+    });
 
     // Add an even listener to toggle the 'liveness' of a session
     but.addEventListener('click', function (e) {
@@ -199,9 +256,8 @@ function createSessionLi(id, sessionName){
         }
 
         var sendData = JSON.stringify({
-            'sessionid': $(this).attr('data-id')
+            'sessionid': id
         });
-
 
         $.ajax({
             url: '../controller/toggleLive.php',
@@ -217,30 +273,34 @@ function createSessionLi(id, sessionName){
 
                 if (data.success === true) {
 
-                    // depending on the live, change the class of the live button
+                    if(data.live == 1){
+
+                        // todo: give some graphic queue that the session is live
+
+                    }
+                    else{
+
+                        // todo: change the color back
+
+                    }
 
                 }
                 else {
-
-                    // todo redirect to error page
-
+                    window.location = "youarelost.php";
                 }
             }
         });
-
-
-
     });
 
-
     li.appendChild(an);
+    li.appendChild(but);
 
     return li;
 }
 
 
-/*** Get and show all courses using createCourseLi ********************************************************************/
 
+/*** Get and show all courses using createCourseLi ********************************************************************/
 
 function showCourses() {
 
@@ -249,7 +309,7 @@ function showCourses() {
     });
 
     $.ajax({
-        url: '../controller/getCourses.php',
+        url: '../controller/getCoursesSessions.php',
         crossDomain: false,
         data: sendData,
         method: "POST",
@@ -270,13 +330,23 @@ function showCourses() {
                     list.appendChild(li);
                 }
 
+                var sessions = data.sessions;
+
+                // Iterate through all of the returned courses and create html elements for them
+                for(var i = 0; i < sessions.length; i++){
+                    var li = createSessionLi(sessions[i].sessionid, sessions[i].sessionname);
+
+
+                    $('.sessions').each(function () {
+                        if($(this).attr('data-id') == sessions[i].courseOwner){
+                            $(this).append(li);
+                        }
+                    });
+                }
             }
             else {
-
-                // todo: need an error page
-
+                window.location = "youarelost.php";
             }
-
         }
     });
 }
@@ -305,6 +375,7 @@ function checkOwner() {
         })
     }
 }
+
 
 
 /*** Parse responsetext for json **************************************************************************************/
