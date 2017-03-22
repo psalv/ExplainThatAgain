@@ -1,6 +1,10 @@
 
 var OWNER;
 var SESSIONID;
+var COOLDOWN = false;
+
+// update every 15 seconds
+var INTERVAL_TIME = 30000;
 
 $(document).ready(function () {
 
@@ -11,12 +15,31 @@ $(document).ready(function () {
     checkLoggedIn();
 
     // Unhide certain elements depending on if the user is the owner
-    checkOwnerGetSlideLink();
+    checkOwnerGetSlideLink(function () {
+        if(OWNER = Cookies.get('username')) {
+            window.setInterval(newGraphPoint, INTERVAL_TIME);
+        } else{
+            window.setInterval(updateGraphPoint, INTERVAL_TIME);
+        }
+    });
 
+    $('#ETA').on('click', function (e) {
+        e.preventDefault();
+        if(!COOLDOWN){
+            COOLDOWN = true;
+            incrementGraph();
 
+            // todo: change button color
 
+            window.setInterval(function () {
+                COOLDOWN = false;
 
+                // todo: change back color
 
+            }, INTERVAL_TIME*2);
+        }
+
+    });
 
 
     // Logout the user
@@ -46,8 +69,97 @@ $(document).ready(function () {
 });
 
 
+/*** Creates a new point for the graph *********************************************************************************/
+
+function newGraphPoint(){
+    var sendData = JSON.stringify({
+        'sessionID': SESSIONID
+    });
+
+    $.ajax({
+        url: '../controller/newGraphPoint.php',
+        crossDomain: false,
+        data: sendData,
+        method: "POST",
+        cache: false,
+
+        complete: function (data) {
+
+            data = $.parseJSON(parseResponse(data.responseText));
+
+            if (data.success === true) {
+
+                updateGraphPoint();
+
+            }
+            else {
+                console.log("New graph point could not be made")
+            }
+        }
+    });
+}
 
 
+/*** Creates a get new point for the graph ****************************************************************************/
+
+function updateGraphPoint(){
+    var sendData = JSON.stringify({
+        'sessionID': SESSIONID
+    });
+
+    $.ajax({
+        url: '../controller/updateGraphPoint.php',
+        crossDomain: false,
+        data: sendData,
+        method: "POST",
+        cache: false,
+
+        complete: function (data) {
+
+            data = $.parseJSON(parseResponse(data.responseText));
+
+            if (data.success === true) {
+
+                //
+
+
+            }
+            else {
+                console.log("Could not fetch new graph point")
+            }
+        }
+    });
+}
+
+
+
+/*** Increments current graph value ***********************************************************************************/
+
+function incrementGraph(){
+    var sendData = JSON.stringify({
+        'sessionID': SESSIONID
+    });
+
+    $.ajax({
+        url: '../controller/incrementGraph.php',
+        crossDomain: false,
+        data: sendData,
+        method: "POST",
+        cache: false,
+
+        complete: function (data) {
+
+            data = $.parseJSON(parseResponse(data.responseText));
+
+            if (data.success === true) {
+
+            }
+            else {
+                console.log("You're not confused, it's okay, don't worry about it.")
+            }
+        }
+    });
+}
 
 
 
