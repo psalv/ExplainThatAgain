@@ -19,6 +19,7 @@ if ($conn->connect_error) {
 
 $getPost = (array)json_decode(file_get_contents('php://input'));
 $sessionID = $getPost['sessionID'];
+$interval = $getPost['interval'];
 $table = "Graph_" . $sessionID;
 
 
@@ -34,7 +35,7 @@ if($result->num_rows >= 0){
         $result = $conn->query($sql);
         $result = $result->fetch_assoc();
 
-        $sql = "INSERT INTO " . $table . " (xaxis) VALUES ('" . (intval($result['xaxis']) + 30) . "')";
+        $sql = "INSERT INTO " . $table . " (xaxis) VALUES ('" . (intval($result['xaxis']) + intval($interval)) . "')";
 
     }
 

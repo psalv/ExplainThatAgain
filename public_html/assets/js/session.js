@@ -175,7 +175,8 @@ function createGraph(){
 
 function newGraphPoint(){
     var sendData = JSON.stringify({
-        'sessionID': SESSIONID
+        'sessionID': SESSIONID,
+        'interval': INTERVAL_TIME/1000
     });
 
     $.ajax({
