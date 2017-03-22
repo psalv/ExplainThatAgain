@@ -66,6 +66,7 @@
 <script src="../assets/js/js.cookie.js" type="text/javascript"></script>
 
 <!-- Scripts -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js" type="text/javascript"></script>
 <script src="../assets/js/session.js" type="text/javascript"></script>
 
 </body>

@@ -44,7 +44,7 @@ if($result !== NULL){
 
 }
 else{
-    echo json_encode(array('success' => false, 'message' => 'No slides exist'));
+    echo json_encode(array('success' => false, 'message' => 'Could not find any graph points'));
 }
 
 
