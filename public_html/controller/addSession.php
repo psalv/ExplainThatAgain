@@ -52,7 +52,21 @@ if ($result->num_rows >= 0) {
         $sql = "SELECT sessionid FROM Sessions WHERE courseOwner = '" . $owner . "' AND sessionname = '" . $sessionName . "'";
         $result = $conn->query($sql);
         $result = $result->fetch_assoc();
-        echo json_encode(array('success' => true, 'message' => 'Session created', 'id' => $result));
+
+        $sql = "CREATE TABLE IF NOT EXISTS Graph_" . $result['sessionid'] . " (
+                id INT(8) UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+                confusion INT(6) UNSIGNED NOT NULL DEFAULT 0,
+                xaxis INT(6) UNSIGNED NOT NULL
+                )";
+
+        if ($conn->query($sql) !== TRUE) {
+            echo "Error creating table: " . $conn->error;
+            echo json_encode(array('success' => false, 'message' => "Error creating table: " . $conn->error, 's' => $sql));
+        }
+        else{
+            echo json_encode(array('success' => true, 'message' => 'Session created', 'id' => $result));
+        }
+
     } else {
         echo json_encode(array('success' => false, 'message' => 'Error creating session', 'Exists' => 0));
     }

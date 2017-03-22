@@ -43,9 +43,8 @@
     <iframe id="presentation" src="" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </div>
 
-<!-- An area for the search results to populate to -->
 <div class="row">
-    <ul id="searchResults"></ul>
+    <button class="btn btn-raised btn-primary btn-lg" id="ETA">Explain that again</button>
 </div>
 
 
