@@ -149,7 +149,9 @@ function incrementGraph(){
 
         complete: function (data) {
 
+            console.log(data);
             data = $.parseJSON(parseResponse(data.responseText));
+            console.log(data);
 
             if (data.success === true) {
 
