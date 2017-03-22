@@ -64,7 +64,35 @@ function checkLoggedIn() {
 
 function checkOwner() {
 
-    // need to do a post based off of the SESSIONID to get the OWNER
+    var sendData = JSON.stringify({
+        'sessionID': SESSIONID
+    });
+
+    $.ajax({
+        url: '../controller/getSessionOwner.php',
+        crossDomain: false,
+        data: sendData,
+        method: "POST",
+        cache: false,
+
+        complete: function (data) {
+
+            data = $.parseJSON(parseResponse(data.responseText));
+            console.log(data);
+            if (data.success === true) {
+
+                OWNER = data.owner;
+                console.log(OWNER);
+                $('.ownerOnly').each(function () {
+                    $(this).removeClass('hidden');
+                })
+
+            }
+            else {
+                window.location = "youarelost.php";
+            }
+        }
+    });
 }
 
 

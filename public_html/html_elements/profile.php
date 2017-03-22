@@ -68,6 +68,18 @@
                         </div>
 
                         <div class="row">
+                            <ul>Want slides for your presentation?<br>Follow these steps:
+                                <li>Upload your slides to <a target="_blank" href="//docs.google.com/presentation/u/0/">Google Slides.</a></li>
+                                <li>Once the presentation is uploaded, click file</li>
+                                <li>Click "publish to the web"</li>
+                                <li>Copy and paste the link in the box below (don't worry about any of the other options)</li>
+                            </ul>
+                            <div class="col-md-6">
+                                <input type="text" id="slideLink" placeholder="Google Slides Link">
+                            </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-md-12 text-center">
                                 <button class="btn btn-raised btn-primary btn-lg">Create Session</button>
                             </div>

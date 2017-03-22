@@ -21,8 +21,7 @@ $getPost = (array)json_decode(file_get_contents('php://input'));
 $sessionName = $getPost['sessionName'];
 $owner = $getPost['courseid'];
 $userOwner = $getPost['owner'];
-
-
+$slideLink = $getPost['slideLink'];
 
 
 
@@ -44,7 +43,7 @@ if ($result->num_rows >= 0) {
 
 
     // Insert the data into the sql table
-    $sql = "INSERT INTO Sessions (sessionname, courseOwner, userOwner) VALUES ('" . $sessionName . "', '" . $owner . "', '" . $userOwner . "')";
+    $sql = "INSERT INTO Sessions (sessionname, courseOwner, userOwner, slideLink) VALUES ('" . $sessionName . "', '" . $owner . "', '" . $userOwner . "', '" . $slideLink . "')";
 
 
     if ($conn->query($sql) === TRUE) {
