@@ -3,6 +3,33 @@ var OWNER;
 var SESSIONID;
 var COOLDOWN = false;
 
+var GRAPH_DATA = {
+    labels: [],
+    datasets: [
+        {
+            label: "Confusometer",
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1,
+            data: []
+        }
+    ]
+};
+
 // update every 15 seconds
 var INTERVAL_TIME = 30000;
 
@@ -13,6 +40,13 @@ $(document).ready(function () {
 
     // Ensure the user is logged in
     checkLoggedIn();
+
+
+    // Loads the graph data from the mysql database
+    loadGraphData();
+
+    // Creates the graph itself and links it to the data
+    createGraph();
 
     // Unhide certain elements depending on if the user is the owner
     checkOwnerGetSlideLink(function () {
@@ -68,6 +102,29 @@ $(document).ready(function () {
     });
 });
 
+function loadGraphData(){
+
+}
+
+function createGraph(){
+
+    var ctx = document.getElementById("graphArea");
+    new Chart(ctx, {
+        type: 'bar',
+        data: GRAPH_DATA,
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+    });
+
+
+}
 
 /*** Creates a new point for the graph *********************************************************************************/
 
