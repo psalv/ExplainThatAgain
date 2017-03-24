@@ -47,7 +47,6 @@ $(document).ready(function () {
             complete: function (data) {
 
                 data = $.parseJSON(parseResponse(data.responseText));
-                console.log(data);
 
                 if (data.success === true) {
                     $('#troubleCourse').addClass('hidden');
@@ -99,7 +98,6 @@ $(document).ready(function () {
 
             complete: function (data) {
 
-                console.log(data);
                 data = $.parseJSON(parseResponse(data.responseText));
 
                 if (data.success === true) {
@@ -172,7 +170,6 @@ function createCourseLi(id, courseName){
     // Add an even listener to set the current courseid whenever this anchor is clicked
     an.addEventListener('click', function () {
         COURSEID = $(this).attr('data-id');
-        console.log(COURSEID);
     });
 
 
@@ -256,7 +253,6 @@ function createSessionLi(id, sessionName){
     an.addEventListener('click', function (e) {
         e.preventDefault();
 
-        console.log(id);
         var sendData = JSON.stringify({
             'sessionID': id
         });
