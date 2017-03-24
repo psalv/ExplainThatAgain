@@ -4,3 +4,50 @@
   height: 200px;
   border: solid black 1px;
 }
+* {
+  text-transform: lowercase !important;
+}
+body {
+  background-color: #3b444c;
+  color: white;
+}
+.loginSignup {
+  margin-top: 5%;
+}
+.insetArea {
+  padding: 10%;
+}
+.btn {
+  background-color: #687785;
+}
+.sp {
+  margin: 20px !important;
+  width: 200px;
+}
+input {
+  color: #3b444c !important;
+}
+.profileArea {
+  margin: 5%;
+}
+.profileArea li {
+  background-color: #515e69;
+  padding: 10px;
+}
+a {
+  color: white;
+}
+ul {
+  list-style-type: none;
+}
+.sessionAnchor {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.sessionLink {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.courseList {
+  margin: 10px !important;
+}

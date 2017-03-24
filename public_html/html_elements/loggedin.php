@@ -28,30 +28,34 @@
 
 <body>
 
-    <div class="row">
+    <nav class="fixed nav">
+        <button class="btn btn-raised btn-primary btn-lg logout">Logout</button>
+        <button class="btn btn-raised btn-primary btn-lg profileButton">Profile</button>
+        <button class="btn btn-raised btn-primary btn-lg homeButton">Home</button>
+    </nav>
+
+    <div class="row insetArea">
 
         <!-- The logout button, redirects to the index -->
         <div class="col-md-8">
-            <button class="btn btn-raised btn-primary btn-lg logout">Logout</button>
-            <button class="btn btn-raised btn-primary btn-lg profileButton">Profile</button>
-            <button class="btn btn-raised btn-primary btn-lg homeButton">Home</button>
+            <img src="../assets/images/ETA_logo_v2_white.png" width="80%">
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 loginSignup">
 
             <div class="row">
 
                 <!-- Search for a professor by username, will return the most similar results -->
                 <form id="searchProfessors" action="" method="post">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12 text-center">
                             <input type="text" id="profSearch" placeholder="Professor's Name">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <button class="btn btn-raised btn-primary btn-lg">Search for professor</button>
+                            <button class="sp btn btn-raised btn-primary btn-lg">Search for professor</button>
                         </div>
                     </div>
                 </form>
@@ -63,14 +67,14 @@
                 <!-- Go to a session by the specific session id -->
                 <form id="goToSession" action="" method="post">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12 text-center">
                             <input type="text" id="idGo" placeholder="Session ID">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <button class="btn btn-raised btn-primary btn-lg">Go to session</button>
+                            <button class="sp btn btn-raised btn-primary btn-lg">Go to session</button>
                         </div>
                     </div>
                 </form>
