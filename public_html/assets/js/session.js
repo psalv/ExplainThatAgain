@@ -210,12 +210,7 @@ function createGraph(){
                         stepSize: 1
                         }
                 }]
-            },
-            scaleOverride: true,
-            scaleSteps: 10,
-            scaleStepWidth: 1,
-            scaleStartValue: 0
-
+            }
         }
     });
 }
