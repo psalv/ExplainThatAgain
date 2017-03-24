@@ -37,16 +37,17 @@
 
     ?>
 
-    <div class="row">
+    <div class="row insetArea">
 
         <!-- Logo area -->
         <div class="col-md-8 text-center">
             This site uses cookies, please have them enabled.
+            <img src="./assets/images/ETA_logo_v2_white.png" width="80%">
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 loginSignup">
 
-            <div class="row">
+            <div class="row text-center">
 
                 <!-- Login by username and password -->
                 <form id="loginUser" action="" method="post">
@@ -60,14 +61,14 @@
                     </div>
 
                     <div class="col-md-12 text-center">
-                        <button class="btn btn-raised btn-primary btn-lg">Login</button>
+                        <button class="sp btn btn-raised btn-primary btn-lg">Login</button>
                     </div>
                 </form>
 
 
             </div>
 
-            <div class="row">
+            <div class="row text-center">
 
                 <!-- Sign up by username and password -->
                 <form id="submitUser" action="" method="post">
@@ -83,9 +84,12 @@
                     </div>
 
                     <div class="col-md-12 text-center">
-                        <button class="btn btn-raised btn-primary btn-lg">Sign Up</button>
+                        <button class="sp btn btn-raised btn-primary btn-lg">Sign Up</button>
                     </div>
                 </form>
+
+
+                <button class="sp btn btn-raised btn-primary btn-lg" id="facebookLogin">Login with Facebook</button>
 
             </div>
 

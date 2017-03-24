@@ -28,17 +28,14 @@
 
 <body>
 
+
+<nav class="fixed nav">
+    <button class="btn btn-raised btn-primary btn-lg logout">Logout</button>
+    <button class="btn btn-raised btn-primary btn-lg profileButton">Profile</button>
+    <button class="btn btn-raised btn-primary btn-lg homeButton">Home</button>
+</nav>
+
 <div class="row">
-    <div class="row">
-
-        <!-- The logout button, redirects to the index -->
-        <div class="col-md-12">
-            <button class="btn btn-raised btn-primary btn-lg logout">Logout</button>
-            <button class="btn btn-raised btn-primary btn-lg profileButton">Profile</button>
-            <button class="btn btn-raised btn-primary btn-lg homeButton">Home</button>
-        </div>
-
-    </div>
 
     <div class="row" id="slideArea">
         <div class="col-md-7">

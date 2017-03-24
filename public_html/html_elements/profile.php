@@ -28,123 +28,130 @@
 
 <body>
 
-    <!-- The name of the profile owner -->
-    <div class="row text-center text-uppercase">
-        <h1 id="profileOwner"></h1>
-    </div>
+    <nav class="fixed nav">
+        <button class="btn btn-raised btn-primary btn-lg logout">Logout</button>
+        <button class="btn btn-raised btn-primary btn-lg profileButton">Profile</button>
+        <button class="btn btn-raised btn-primary btn-lg homeButton">Home</button>
 
-    <div class="row ownerOnly">
+        <!-- The name of the profile owner -->
+        <div class="row text-center text-uppercase">
+            <h1 id="profileOwner"></h1>
+        </div>
+    </nav>
 
+
+
+    <div class="profileArea">
+
+        <div class="row ownerOnly">
+
+            <div class="row">
+
+                <!-- The logout button, redirects to the index -->
+
+                <div class="col-md-4">
+
+                    <a href="#" data-toggle="modal" data-target="#addCourse"><h3>Add course</h3></a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <!-- A modal for creating a session -->
+        <div class="modal fade" id="addSession" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="row">
+
+                        <!-- Create a course  -->
+                        <form id="createSession" action="" method="post">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" id="sessionName" placeholder="Session Name">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <ul>Want slides for your presentation?<br>Follow these steps:
+                                    <li>Upload your slides to <a target="_blank" href="//docs.google.com/presentation/u/0/">Google Slides.</a></li>
+                                    <li>Once the presentation is uploaded, click file</li>
+                                    <li>Click "publish to the web", then click publish</li>
+                                    <li>Copy and paste the link in the box below (don't worry about any of the other options)</li>
+                                </ul>
+                                <div class="col-md-6">
+                                    <input type="text" id="slideLink" placeholder="Google Slides Link">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <button class="btn btn-raised btn-primary btn-lg"><h2>Create Session</h2></button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <div class="row">
+
+                        <!-- Prompts for when the course cannot be created -->
+                        <div id="troubleSession" class="hidden toggle-Hidden col-md-12 text-center">
+                            Could not create session, ensure that it does not already exist.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- A modal for creating a course -->
+        <div class="modal fade text-center" id="addCourse" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="row">
+
+                        <!-- Create a course  -->
+                        <form id="createCourse" action="" method="post">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" id="courseName" placeholder="Course Name">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <button class="btn btn-raised btn-primary btn-lg">Create Course</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <div class="row">
+
+                        <!-- Prompts for when the course cannot be created -->
+                        <div id="troubleCourse" class="hidden toggle-Hidden col-md-12 text-center">
+                            Could not create course, ensure that it does not already exist.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- An area for the search results to populate to -->
         <div class="row">
-
-            <!-- The logout button, redirects to the index -->
-            <div class="col-md-8">
-                <button class="btn btn-raised btn-primary btn-lg logout">Logout</button>
-                <button class="btn btn-raised btn-primary btn-lg profileButton">Profile</button>
-                <button class="btn btn-raised btn-primary btn-lg homeButton">Home</button>
-            </div>
-
-            <div class="col-md-4">
-
-                <a href="#" data-toggle="modal" data-target="#addCourse">Add course</a>
-
-            </div>
-
-
+            <ul id="courses"></ul>
         </div>
 
-    </div>
-
-    <!-- A modal for creating a session -->
-    <div class="modal fade" id="addSession" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="row">
-
-                    <!-- Create a course  -->
-                    <form id="createSession" action="" method="post">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input type="text" id="sessionName" placeholder="Session Name">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <ul>Want slides for your presentation?<br>Follow these steps:
-                                <li>Upload your slides to <a target="_blank" href="//docs.google.com/presentation/u/0/">Google Slides.</a></li>
-                                <li>Once the presentation is uploaded, click file</li>
-                                <li>Click "publish to the web", then click publish</li>
-                                <li>Copy and paste the link in the box below (don't worry about any of the other options)</li>
-                            </ul>
-                            <div class="col-md-6">
-                                <input type="text" id="slideLink" placeholder="Google Slides Link">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 text-center">
-                                <button class="btn btn-raised btn-primary btn-lg">Create Session</button>
-                            </div>
-                        </div>
-                    </form>
-
-                </div>
-
-                <div class="row">
-
-                    <!-- Prompts for when the course cannot be created -->
-                    <div id="troubleSession" class="hidden toggle-Hidden col-md-12 text-center">
-                        Could not create session, ensure that it does not already exist.
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-
-    <!-- A modal for creating a course -->
-    <div class="modal fade" id="addCourse" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="row">
-
-                    <!-- Create a course  -->
-                    <form id="createCourse" action="" method="post">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input type="text" id="courseName" placeholder="Course Name">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 text-center">
-                                <button class="btn btn-raised btn-primary btn-lg">Create Course</button>
-                            </div>
-                        </div>
-                    </form>
-
-                </div>
-
-                <div class="row">
-
-                    <!-- Prompts for when the course cannot be created -->
-                    <div id="troubleCourse" class="hidden toggle-Hidden col-md-12 text-center">
-                        Could not create course, ensure that it does not already exist.
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-
-
-    <!-- An area for the search results to populate to -->
-    <div class="row">
-        <ul id="courses"></ul>
     </div>
 
 <!--=========================================== JS SCRIPTS ==========================================-->
