@@ -175,12 +175,62 @@ function createCourseLi(id, courseName){
         console.log(COURSEID);
     });
 
+
+    var butDel = document.createElement('button');
+    butDel.setAttribute('class', 'deleteButtonCourse btn btn-raised btn-primary btn-sm');
+    butDel.setAttribute('data-id', id);
+    butDel.innerHTML = "Delete";
+
+
+
+    // Deletes a course
+    butDel.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        if(Cookies.get('username') != OWNER){
+            console.log('Hey, stop doing that.');
+            return;
+        }
+
+        var sendData = JSON.stringify({
+            'courseid': id
+        });
+
+        $.ajax({
+            url: '../controller/deleteCourse.php',
+            crossDomain: false,
+            data: sendData,
+            method: "POST",
+            cache: false,
+
+            complete: function (data) {
+
+                data = $.parseJSON(parseResponse(data.responseText));
+
+                if (data.success === true) {
+
+                    $('.courseList').each(function () {
+                        if($(this).attr('data-courseID') == id){
+                            $(this).remove();
+                        }
+                    });
+
+                }
+                else {
+                    window.location = "youarelost.php";
+                }
+            }
+        });
+    });
+
+
     // An unordered list where the session information will go
     var ul = document.createElement('ul');
     ul.setAttribute('data-id', id);
     ul.setAttribute('class', 'sessions');
 
     li.appendChild(an);
+    li.appendChild(butDel);
     li.appendChild(ul);
 
     return li;
@@ -311,14 +361,13 @@ function createSessionLi(id, sessionName){
 
 
     var butDel = document.createElement('button');
-    butDel.setAttribute('class', 'deleteButton btn btn-raised btn-primary btn-sm');
+    butDel.setAttribute('class', 'deleteButtonSession btn btn-raised btn-primary btn-sm');
     butDel.setAttribute('data-id', id);
     butDel.innerHTML = "Delete";
 
 
-/*
-    // Add an even listener to toggle the 'liveness' of a session
-    but.addEventListener('click', function (e) {
+    // Deletes a session
+    butDel.addEventListener('click', function (e) {
         e.preventDefault();
 
         if(Cookies.get('username') != OWNER){
@@ -331,7 +380,7 @@ function createSessionLi(id, sessionName){
         });
 
         $.ajax({
-            url: '../controller/toggleLive.php',
+            url: '../controller/deleteSession.php',
             crossDomain: false,
             data: sendData,
             method: "POST",
@@ -343,16 +392,11 @@ function createSessionLi(id, sessionName){
 
                 if (data.success === true) {
 
-                    if(data.live == 1){
-
-                        // todo: give some graphic queue that the session is live
-
-                    }
-                    else{
-
-                        // todo: change the color back
-
-                    }
+                    $('.sessionList').each(function () {
+                        if($(this).attr('data-sessionID') == id){
+                            $(this).remove();
+                        }
+                    });
 
                 }
                 else {
@@ -362,7 +406,7 @@ function createSessionLi(id, sessionName){
         });
     });
 
-*/
+
 
     li.appendChild(an);
     li.appendChild(but);
