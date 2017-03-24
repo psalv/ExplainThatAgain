@@ -29,20 +29,18 @@ $result = $conn->query($sql);
 
 if($result->num_rows >= 0){
 
-    if($result->num_rows > 0){
-        $result = $result->fetch_assoc();
-        $sql = "SELECT xaxis FROM " . $table . " WHERE id=" . $result['id'];
-        $result = $conn->query($sql);
-        $result = $result->fetch_assoc();
+    $result = $result->fetch_assoc();
+    $sql = "SELECT xaxis FROM " . $table . " WHERE id=" . $result['id'];
+    $result = $conn->query($sql);
 
+    if($result){
+        $result = $result->fetch_assoc();
         $sql = "INSERT INTO " . $table . " (xaxis) VALUES ('" . (intval($result['xaxis']) + intval($interval)) . "')";
-
     }
-
     else{
         $sql = "INSERT INTO " . $table . " (xaxis) VALUES ('0')";
-
     }
+
 
     if($conn->query($sql) === TRUE){
         echo json_encode(array('success' => true, 'message' => 'Inserted new data point'));

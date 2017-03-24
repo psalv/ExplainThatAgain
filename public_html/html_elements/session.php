@@ -29,30 +29,58 @@
 <body>
 
 <div class="row">
+    <div class="row">
 
-    <!-- The logout button, redirects to the index -->
-    <div class="col-md-12">
-        <button class="btn btn-raised btn-primary btn-lg logout">Logout</button>
-        <button class="btn btn-raised btn-primary btn-lg profileButton">Profile</button>
-        <button class="btn btn-raised btn-primary btn-lg homeButton">Home</button>
+        <!-- The logout button, redirects to the index -->
+        <div class="col-md-12">
+            <button class="btn btn-raised btn-primary btn-lg logout">Logout</button>
+            <button class="btn btn-raised btn-primary btn-lg profileButton">Profile</button>
+            <button class="btn btn-raised btn-primary btn-lg homeButton">Home</button>
+        </div>
+
     </div>
 
+    <div class="row" id="slideArea">
+        <div class="col-md-7">
+            <iframe id="presentation" src="" frameborder="0" width="700" height="500" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+        </div>
+
+        <div class="col-md-5">
+            <canvas id="graphArea" width="700" height="500"></canvas>
+        </div>
+    </div>
+
+    <div class="row">
+        <button class="btn btn-raised btn-primary btn-lg" id="ETA">Explain that again</button>
+    </div>
 </div>
 
-<div class="row" id="slideArea">
-    <div class="col-md-7">
-        <iframe id="presentation" src="" frameborder="0" width="700" height="500" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-    </div>
-
-    <div class="col-md-5">
-        <canvas id="graphArea" width="700" height="500"></canvas>
-    </div>
-</div>
 
 <div class="row">
-    <button class="btn btn-raised btn-primary btn-lg" id="ETA">Explain that again</button>
-</div>
 
+    <div class="row">
+        <div class="messages">
+            <ul id="messageList"></ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <form id="submitMessage" action="" method="post">
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="text" id="message" placeholder="Your chat message">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-raised btn-primary btn-lg">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
 
 
 

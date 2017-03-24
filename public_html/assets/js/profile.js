@@ -101,7 +101,6 @@ $(document).ready(function () {
 
                 console.log(data);
                 data = $.parseJSON(parseResponse(data.responseText));
-                console.log(data);
 
                 if (data.success === true) {
                     $('#troubleSession').addClass('hidden');
