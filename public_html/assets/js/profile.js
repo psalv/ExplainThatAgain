@@ -221,6 +221,9 @@ function createCourseLi(id, courseName){
     });
 
 
+
+
+
     // An unordered list where the session information will go
     var ul = document.createElement('ul');
     ul.setAttribute('data-id', id);
@@ -403,10 +406,54 @@ function createSessionLi(id, sessionName){
     });
 
 
+    var butNotes = document.createElement('button');
+    butNotes.setAttribute('class', 'deleteButtonNotes btn btn-raised btn-primary btn-sm');
+    butNotes.setAttribute('data-id', id);
+    butNotes.innerHTML = "Slides";
+
+
+    // Opens notes in new tab/window
+    // TODO !! IMPORTANT !! ensure that we make a note for popup blockers to be off for this to work
+    butNotes.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        if(Cookies.get('username') != OWNER){
+            console.log('Hey, stop doing that.');
+            return;
+        }
+
+        var sendData = JSON.stringify({
+            'sessionid': id
+        });
+
+        $.ajax({
+            url: '../controller/getNotes.php',
+            crossDomain: false,
+            data: sendData,
+            method: "POST",
+            cache: false,
+
+            complete: function (data) {
+
+                data = $.parseJSON(parseResponse(data.responseText));
+
+                if (data.success === true) {
+                    window.open(data.url.slideLink,'_blank');
+
+                }
+
+                else{
+                    console.log("Error opening notes")
+                }
+            }
+        });
+    });
+
 
     li.appendChild(an);
     li.appendChild(but);
     li.appendChild(butDel);
+    li.appendChild(butNotes);
 
     return li;
 }
