@@ -10,30 +10,18 @@ var GRAPH_DATA = {
     datasets: [
         {
             label: "Confusometer",
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1,
-            data: []
+            borderWidth: 2,
+            data: [],
+            borderColor: 'rgb(227, 227, 227, 1)',
+            backgroundColor: 'rgb(227, 227, 227, 1)'
+
         }
     ]
+
 };
 
 // update every 15 seconds
-var INTERVAL_TIME = 15000;
+var INTERVAL_TIME = 150000;
 
 $(document).ready(function () {
 
@@ -49,7 +37,7 @@ $(document).ready(function () {
     // Creates the graph itself and links it to the data
     createGraph();
 
-    // Unhide certain elements depending on if the user is the owner
+    // Either creates new graph point or just updates graph based on if the user is the owner
     checkOwnerGetSlideLink(function () {
         if(OWNER = Cookies.get('username')) {
             window.setInterval(newGraphPoint, INTERVAL_TIME);
@@ -58,6 +46,11 @@ $(document).ready(function () {
         }
     });
 
+    // Gets all chat messages associated with this session
+    updateChat();
+    window.setInterval(updateChat, 5000);
+
+    // Explain that again button
     $('#ETA').on('click', function (e) {
         e.preventDefault();
         if(!COOLDOWN){
@@ -76,6 +69,50 @@ $(document).ready(function () {
 
     });
 
+
+
+/*** Submits new chat message *****************************************************************************************/
+
+    $('#submitMessage').submit(function (e) {
+        e.preventDefault();
+
+        var thisForm = $(this).closest('#submitMessage');
+        var message = thisForm.find('#message').val();
+
+        // No empty messages
+        if(message == ""){
+            return;
+        }
+
+        var sendData = JSON.stringify({
+            'sessionID': SESSIONID,
+            'message': message,
+            'owner': Cookies.get('username')
+        });
+
+        $.ajax({
+            url: '../controller/newMessage.php',
+            crossDomain: false,
+            data: sendData,
+            method: "POST",
+            cache: false,
+
+            complete: function (data) {
+
+                data = $.parseJSON(parseResponse(data.responseText));
+
+                if (data.success === true) {
+
+                    $('#message').val("");
+                    updateChat();
+
+                }
+                else {
+                    console.log("Could not update chat")
+                }
+            }
+        });
+    });
 
     // Logout the user
     $('.logout').each(function () {
@@ -122,14 +159,17 @@ function loadGraphData(){
         complete: function (data) {
 
             data = $.parseJSON(parseResponse(data.responseText));
-            console.log(data);
 
             if (data.success === true) {
 
                 GRAPH_DATA.labels = [];
                 GRAPH_DATA.datasets[0].data = [];
 
-                for(var i = 0; i < data.points.length; i++){
+                var len = data.points.length;
+
+                var startPos = len > 15? len - 15 : 0;
+
+                for(var i = startPos; i < len; i++){
                     GRAPH_DATA.labels.push(data.points[i].xaxis);
                     GRAPH_DATA.datasets[0].data.push(data.points[i].confusion)
                 }
@@ -139,7 +179,7 @@ function loadGraphData(){
                     createGraph();
                 }
                 else{
-                    CHART.update();2
+                    CHART.update();
                 }
 
             }
@@ -157,18 +197,30 @@ function createGraph(){
         type: 'bar',
         data: GRAPH_DATA,
         options: {
+            legend: {
+                display: false
+            },
             scales: {
+                xAxes: [{
+                    display: false
+                }],
                 yAxes: [{
                     ticks: {
-                        beginAtZero:true
-                    }
+                        fontSize: 40,
+                        stepSize: 1
+                        }
                 }]
-            }
+            },
+            scaleOverride: true,
+            scaleSteps: 10,
+            scaleStepWidth: 1,
+            scaleStartValue: 0
+
         }
     });
-
-
 }
+
+
 
 /*** Creates a new point for the graph *********************************************************************************/
 
@@ -234,6 +286,67 @@ function incrementGraph(){
 }
 
 
+
+/*** Updates the chat *************************************************************************************************/
+
+function updateChat(){
+    var sendData = JSON.stringify({
+        'sessionID': SESSIONID
+    });
+
+    $.ajax({
+        url: '../controller/loadChatData.php',
+        crossDomain: false,
+        data: sendData,
+        method: "POST",
+        cache: false,
+
+        complete: function (data) {
+
+            data = $.parseJSON(parseResponse(data.responseText));
+
+            if (data.success === true) {
+
+                buildChat(data.messages);
+
+            }
+            else {
+                console.log("Could not update chat")
+            }
+        }
+    });
+}
+
+
+function buildChat(messages){
+    $('#messageList').empty();
+    var messageList = document.getElementById('messageList');
+
+    for(var i = 0; i < messages.length; i++){
+        var li = createChatMessage(messages[i]);
+        messageList.appendChild(li);
+    }
+}
+
+
+function createChatMessage(data) {
+    var li = document.createElement('li');
+    li.setAttribute('class', 'chatMessage');
+
+    // Poster
+    var name = document.createElement('h3');
+    name.setAttribute('class', 'chatName');
+    name.innerHTML = data.username;
+
+    // Message
+    var div = document.createElement('div');
+    div.setAttribute('class', 'chatDiv');
+    div.innerHTML = data.message;
+
+    li.appendChild(name);
+    li.appendChild(div);
+    return li;
+}
 
 
 /*** Check that the session is live ***********************************************************************************/

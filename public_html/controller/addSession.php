@@ -61,10 +61,27 @@ if ($result->num_rows >= 0) {
 
         if ($conn->query($sql) !== TRUE) {
             echo "Error creating table: " . $conn->error;
-            echo json_encode(array('success' => false, 'message' => "Error creating table: " . $conn->error, 's' => $sql));
+            echo json_encode(array('success' => false, 'message' => "Error graph creating table: " . $conn->error, 's' => $sql));
         }
         else{
-            echo json_encode(array('success' => true, 'message' => 'Session created', 'id' => $result));
+
+            $sql = "SELECT sessionid FROM Sessions WHERE courseOwner = '" . $owner . "' AND sessionname = '" . $sessionName . "'";
+            $result = $conn->query($sql);
+            $result = $result->fetch_assoc();
+
+            $sql = "CREATE TABLE IF NOT EXISTS Chat_" . $result['sessionid'] . " (
+                id INT(8) UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+                username VARCHAR(30) NOT NULL,
+                message VARCHAR(600) NOT NULL
+                )";
+
+            if ($conn->query($sql) !== TRUE) {
+                echo "Error creating table: " . $conn->error;
+                echo json_encode(array('success' => false, 'message' => "Error creating chat table: " . $conn->error, 's' => $sql));
+            }
+            else {
+                echo json_encode(array('success' => true, 'message' => 'Session created', 'id' => $result));
+            }
         }
 
     } else {
