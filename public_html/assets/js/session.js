@@ -475,7 +475,6 @@ function checkOwnerGetSlideLink(callback) {
 
 function swapEmbed(ln) {
     var ind = ln.indexOf('pub');
-    console.log(ind);
     if(ind == -1){
         $('#presentation').addClass('hidden');
     }

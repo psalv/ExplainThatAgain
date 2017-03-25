@@ -88,7 +88,7 @@
                     </div>
                 </form>
 
-                <button class="sp btn btn-raised btn-primary btn-lg" id="facebookLogin">Login with Facebook</button>
+                <button class="sp btn btn-raised btn-primary btn-lg hidden" id="facebookLogin">Login with Facebook</button>
 
             </div>
 
