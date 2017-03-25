@@ -35,51 +35,52 @@
     <button class="btn btn-raised btn-primary btn-lg homeButton">Home</button>
 </nav>
 
-<div class="row">
-
-    <div class="row" id="slideArea">
-        <div class="col-md-7">
-            <iframe id="presentation" src="" frameborder="0" width="700" height="500" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-        </div>
-
-        <div class="col-md-5">
-            <canvas id="graphArea" width="700" height="500"></canvas>
-        </div>
-    </div>
-
+<div class="row sessionArea">
     <div class="row">
-        <button class="btn btn-raised btn-primary btn-lg" id="ETA">Explain that again</button>
-    </div>
-</div>
 
-
-<div class="row">
-
-    <div class="row">
-        <div class="messages">
-            <ul id="messageList"></ul>
-        </div>
-    </div>
-
-    <div class="row">
-        <form id="submitMessage" action="" method="post">
-            <div class="row">
-                <div class="col-md-6">
-                    <input type="text" id="message" placeholder="Your chat message">
-                </div>
+        <div class="row" id="slideArea">
+            <div class="col-md-7">
+                <iframe id="presentation" src="" frameborder="0" width="700" height="500" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
             </div>
 
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <button class="btn btn-raised btn-primary btn-lg">Submit</button>
-                </div>
+            <div class="col-md-5">
+                <canvas id="graphArea" width="700" height="660"></canvas>
             </div>
-        </form>
+        </div>
+
+        <div class="row eta text-center">
+            <button class="btn btn-raised btn-primary btn-lg" id="ETA">Explain that again</button>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <div class="row">
+            <div class="messages">
+                <ul id="messageList"></ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <form id="submitMessage" action="" method="post">
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <input type="text" id="message" placeholder="Your chat message">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-raised btn-primary btn-lg">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
     </div>
 
 </div>
-
-
 
 <!--=========================================== JS SCRIPTS ==========================================-->
 
