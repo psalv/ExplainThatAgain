@@ -12,9 +12,8 @@ var GRAPH_DATA = {
             label: "Confusometer",
             borderWidth: 2,
             data: [],
-            borderColor: 'rgb(227, 227, 227, 1)',
-            backgroundColor: 'rgb(227, 227, 227, 1)'
-
+            borderColor: 'rgb(255, 250, 250, 0)',
+            backgroundColor: 'rgb(255, 250, 250, 0)'
         }
     ]
 };
@@ -207,7 +206,7 @@ function createGraph(){
                     ticks: {
                         fontSize: 40,
                         stepSize: 1
-                        }
+                    }
                 }]
             }
         }

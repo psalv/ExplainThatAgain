@@ -165,7 +165,7 @@ function createCourseLi(id, courseName){
     an.setAttribute('data-target', '#addSession');
     an.setAttribute('class', 'sessionAnchor');
     an.setAttribute('data-id', id);
-    an.innerHTML = "Add session";
+    an.innerHTML = "+ Add session";
 
     // Add an even listener to set the current courseid whenever this anchor is clicked
     an.addEventListener('click', function () {
@@ -281,7 +281,7 @@ function createSessionLi(id, sessionName){
             }
         });
     });
-    an.innerHTML = sessionName;
+    an.innerHTML = "go to session";
 
 
     var but = document.createElement('button');
