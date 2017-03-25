@@ -312,7 +312,7 @@ function createSessionLi(id, sessionName){
 
             if (data.success === true) {
 
-                but.setAttribute('style', 'background-color: red !important')
+                but.setAttribute('class', 'liveButton btn btn-raised btn-primary btn-sm red');
             }
         }
     });
@@ -344,13 +344,11 @@ function createSessionLi(id, sessionName){
                 if (data.success === true) {
 
                     if(data.live == 1){
-                        $('#live-' + id).css('background-color', 'red !important');
+                        $('#live-' + id).addClass('red')
 
                     }
                     else{
-                        $('#live-' + id).css('background-color', 'none');
-
-
+                        $('#live-' + id).removeClass('red')
                     }
 
                 }
