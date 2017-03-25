@@ -40,11 +40,11 @@
 
         <div class="row" id="slideArea">
             <div class="col-md-7">
-                <iframe id="presentation" src="" frameborder="0" width="700" height="500" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+                <iframe id="presentation" src="" frameborder="0" width="600" height="500" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
             </div>
 
             <div class="col-md-5">
-                <canvas id="graphArea" width="700" height="660"></canvas>
+                <canvas id="graphArea" width="600" height="660"></canvas>
             </div>
         </div>
 

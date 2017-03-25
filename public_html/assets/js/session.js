@@ -40,7 +40,7 @@ $(document).ready(function () {
         if(OWNER = Cookies.get('username')) {
             window.setInterval(newGraphPoint, INTERVAL_TIME);
         } else{
-            window.setInterval(loadGraphData, INTERVAL_TIME);
+            window.setInterval(loadGraphData, INTERVAL_TIME/3);
         }
     });
 
@@ -55,12 +55,8 @@ $(document).ready(function () {
             COOLDOWN = true;
             incrementGraph();
 
-            // todo: change button color
-
             window.setInterval(function () {
                 COOLDOWN = false;
-
-                // todo: change back color
 
             }, INTERVAL_TIME*2);
         }
@@ -328,10 +324,15 @@ function createChatMessage(data) {
     li.setAttribute('class', 'chatMessage');
     li.setAttribute('data-chatID', id);
 
+
     // Poster
     var name = document.createElement('h3');
     name.setAttribute('class', 'chatName');
     name.innerHTML = data.username;
+
+    if(data.username == OWNER){
+        name.setAttribute('class', 'chatName redText')
+    }
 
     var butDel = document.createElement('button');
     butDel.setAttribute('class', 'deleteButtonMessage btn btn-raised btn-primary btn-sm ownerOnly hidden');
@@ -474,6 +475,10 @@ function checkOwnerGetSlideLink(callback) {
 
 function swapEmbed(ln) {
     var ind = ln.indexOf('pub');
+    console.log(ind);
+    if(ind == -1){
+        $('#presentation').addClass('hidden');
+    }
     return ln.slice(0, ind) + "embed" + ln.slice(ind + 3);
 }
 
