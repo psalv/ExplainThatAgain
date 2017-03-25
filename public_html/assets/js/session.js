@@ -19,7 +19,7 @@ var GRAPH_DATA = {
 };
 
 // update every 15 seconds
-var INTERVAL_TIME = 150000;
+var INTERVAL_TIME = 15000;
 
 $(document).ready(function () {
 
@@ -215,7 +215,7 @@ function createGraph(){
 
 
 
-/*** Creates a new point for the graph *********************************************************************************/
+/*** Creates a new point for the graph ********************************************************************************/
 
 function newGraphPoint(){
     var sendData = JSON.stringify({
@@ -333,9 +333,8 @@ function createChatMessage(data) {
     name.setAttribute('class', 'chatName');
     name.innerHTML = data.username;
 
-
     var butDel = document.createElement('button');
-    butDel.setAttribute('class', 'deleteButtonMessage btn btn-raised btn-primary btn-sm');
+    butDel.setAttribute('class', 'deleteButtonMessage btn btn-raised btn-primary btn-sm ownerOnly hidden');
     butDel.setAttribute('data-id', id);
     butDel.innerHTML = "Delete";
 

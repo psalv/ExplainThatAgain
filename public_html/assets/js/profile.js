@@ -415,14 +415,9 @@ function createSessionLi(id, sessionName){
 
 
     // Opens notes in new tab/window
-    // TODO !! IMPORTANT !! ensure that we make a note for popup blockers to be off for this to work
     butNotes.addEventListener('click', function (e) {
         e.preventDefault();
 
-        if(Cookies.get('username') != OWNER){
-            console.log('Hey, stop doing that.');
-            return;
-        }
 
         var sendData = JSON.stringify({
             'sessionid': id
@@ -505,9 +500,10 @@ function showCourses(callback) {
                         }
                     });
 
-                    callback();
-
                 }
+
+                callback();
+
             }
             else {
                 window.location = "youarelost.php";

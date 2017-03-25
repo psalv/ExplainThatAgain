@@ -79,7 +79,7 @@
                     </div>
                 </form>
 
-                <div class="row hidden" id="notLive">
+                <div class="row hidden text-center" id="notLive">
                     <div>That session is not live</div>
                 </div>
 
