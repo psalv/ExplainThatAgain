@@ -112,3 +112,6 @@ ul {
   background-color: #515e69;
   padding: 10px;
 }
+.red {
+  background-color: red !important;
+}
