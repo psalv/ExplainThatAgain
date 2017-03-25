@@ -12,10 +12,10 @@ $(document).ready(function () {
     checkLoggedIn();
 
     // Unhide certain elements depending on if the user is the owner
-    checkOwner();
+    getOwner();
 
     // Get all courses associated with the profile
-    showCourses();
+    showCourses(checkOwner);
 
 
 
@@ -55,6 +55,8 @@ $(document).ready(function () {
                     // Append the new course to the course list
                     var li = createCourseLi(data.id.id, courseName);
                     document.getElementById('courses').appendChild(li);
+
+                    checkOwner();
 
                 }
                 else {
@@ -111,7 +113,10 @@ $(document).ready(function () {
                             $(this).append(li);
                             return;
                         }
-                    })
+                    });
+
+                    checkOwner();
+
                 }
                 else {
                     $('#troubleSession').removeClass('hidden');
@@ -163,7 +168,7 @@ function createCourseLi(id, courseName){
     var an = document.createElement('a');
     an.setAttribute('data-toggle', 'modal');
     an.setAttribute('data-target', '#addSession');
-    an.setAttribute('class', 'sessionAnchor');
+    an.setAttribute('class', 'sessionAnchor ownerOnly hidden');
     an.setAttribute('data-id', id);
     an.innerHTML = "+ Add session";
 
@@ -174,7 +179,7 @@ function createCourseLi(id, courseName){
 
 
     var butDel = document.createElement('button');
-    butDel.setAttribute('class', 'deleteButtonCourse btn btn-raised btn-primary btn-sm');
+    butDel.setAttribute('class', 'deleteButtonCourse btn btn-raised btn-primary btn-sm ownerOnly hidden');
     butDel.setAttribute('data-id', id);
     butDel.innerHTML = "Delete";
 
@@ -283,7 +288,6 @@ function createSessionLi(id, sessionName){
     });
     an.innerHTML = "go to session";
 
-
     var but = document.createElement('button');
     but.setAttribute('class', 'liveButton btn btn-raised btn-primary btn-sm');
     but.setAttribute('id', 'live-' + id);
@@ -360,7 +364,7 @@ function createSessionLi(id, sessionName){
 
 
     var butDel = document.createElement('button');
-    butDel.setAttribute('class', 'deleteButtonSession btn btn-raised btn-primary btn-sm');
+    butDel.setAttribute('class', 'deleteButtonSession btn btn-raised btn-primary btn-sm ownerOnly hidden');
     butDel.setAttribute('data-id', id);
     butDel.innerHTML = "Delete";
 
@@ -462,7 +466,7 @@ function createSessionLi(id, sessionName){
 
 /*** Get and show all courses using createCourseLi ********************************************************************/
 
-function showCourses() {
+function showCourses(callback) {
 
     var sendData = JSON.stringify({
         'owner': OWNER
@@ -502,13 +506,19 @@ function showCourses() {
                             $(this).append(li);
                         }
                     });
+
+                    callback();
+
                 }
             }
             else {
                 window.location = "youarelost.php";
             }
         }
+
+
     });
+
 }
 
 
@@ -525,10 +535,14 @@ function checkLoggedIn() {
 
 /*** Check if the user is owns the profile ****************************************************************************/
 
-function checkOwner() {
+function getOwner() {
     OWNER = parent.document.URL.substring(parent.document.URL.indexOf('?') + 1,
         parent.document.URL.length).split('&')[0].split('=')[1];
+}
+
+function checkOwner() {
     $('#profileOwner').html(OWNER);
+
     if(Cookies.get('username') == OWNER){
         $('.ownerOnly').each(function () {
             $(this).removeClass('hidden');

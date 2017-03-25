@@ -50,7 +50,7 @@
 
                 <div class="col-md-4">
 
-                    <a href="#" data-toggle="modal" data-target="#addCourse"><h3>+ Add course</h3></a>
+                    <a href="#" data-toggle="modal" data-target="#addCourse"><h3 class="ownerOnly hidden">+ Add course</h3></a>
 
                 </div>
 
