@@ -1,7 +1,7 @@
 {
-  "name": "Moody Foody",
-  "description": "We have a lot of emotions and enjoy food.",
-  "repository": "https://github.com/psalv/MoodyFoody.git",
+  "name": "Explain That Again",
+  "description": "What is this professor talking about.",
+  "repository": "https://github.com/r-meagher/CS2212Group14",
   "logo": "",
-  "keywords": ["php", "heroku", "food"]
+  "keywords": ["php", "explainThatAgain", "2212"]
 }

@@ -3,12 +3,6 @@
   "description": "What is this prof talking about?",
   "minimum-stability": "stable",
   "license": "proprietary",
-  "authors": [
-    {
-      "name": "Paul Salvatore",
-      "email": "psalvato@uwo.ca"
-    }
-  ],
 
   "require-dev" : {
     "heroku/heroku-buildpack-php": "*"
