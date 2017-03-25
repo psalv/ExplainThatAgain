@@ -201,7 +201,8 @@ function createGraph(){
                 yAxes: [{
                     ticks: {
                         fontSize: 40,
-                        stepSize: 1
+                        stepSize: 1,
+                        beginAtZero: true
                     }
                 }]
             }
