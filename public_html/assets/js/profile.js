@@ -435,7 +435,14 @@ function createSessionLi(id, sessionName){
                 data = $.parseJSON(parseResponse(data.responseText));
 
                 if (data.success === true) {
-                    window.open(data.url.slideLink,'_blank');
+
+                    var ind = data.url.slideLink.indexOf('pub');
+                    if(ind == -1){
+                        window.open("youarelost.php",'_blank');
+                    }
+                    else{
+                        window.open(data.url.slideLink,'_blank');
+                    }
 
                 }
 
@@ -446,11 +453,26 @@ function createSessionLi(id, sessionName){
         });
     });
 
+    var butChat = document.createElement('button');
+    butChat.setAttribute('class', 'getChatButton btn btn-raised btn-primary btn-sm');
+    butChat.setAttribute('data-id', id);
+    butChat.innerHTML = "Chat";
+
+
+    // Opens chat in new tab/window
+    butChat.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        window.location = "chatlog.php?id=" + id;
+
+    });
+
 
     li.appendChild(an);
     li.appendChild(but);
     li.appendChild(butDel);
     li.appendChild(butNotes);
+    li.appendChild(butChat);
 
     return li;
 }
