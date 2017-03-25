@@ -286,6 +286,7 @@ function createSessionLi(id, sessionName){
 
     var but = document.createElement('button');
     but.setAttribute('class', 'liveButton btn btn-raised btn-primary btn-sm');
+    but.setAttribute('id', 'live-' + id);
     but.setAttribute('data-id', id);
     but.innerHTML = "Live";
 
@@ -307,7 +308,7 @@ function createSessionLi(id, sessionName){
 
             if (data.success === true) {
 
-                // todo change color for visual queue that the session is live
+                but.setAttribute('style', 'background-color: red !important')
             }
         }
     });
@@ -339,13 +340,12 @@ function createSessionLi(id, sessionName){
                 if (data.success === true) {
 
                     if(data.live == 1){
-
-                        // todo: give some graphic queue that the session is live
+                        $('#live-' + id).css('background-color', 'red !important');
 
                     }
                     else{
+                        $('#live-' + id).css('background-color', 'none');
 
-                        // todo: change the color back
 
                     }
 

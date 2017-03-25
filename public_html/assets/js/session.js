@@ -17,7 +17,6 @@ var GRAPH_DATA = {
 
         }
     ]
-
 };
 
 // update every 15 seconds
