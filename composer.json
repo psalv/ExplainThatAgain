@@ -9,8 +9,6 @@
   },
 
   "require": {
-    "ext-memcached": "*",
-    "ext-mysql": "*",
-    "facebook/graph-sdk" : "~5.0"
+    "ext-mysql": "*"
   }
 }
