@@ -2,6 +2,7 @@
 ### CS2212 Group 14
 
 [<b>Visit our project site.</b>](https://r-meagher.github.io/CS2212Group14/)
+[<b>Go to Explain That Again.</b>](https://explainthatagain.herokuapp.com/index.php)
 
 GENERAL USAGE NOTES
 --------------------
@@ -20,7 +21,9 @@ GENERAL USAGE NOTES
 - Next you need to go into env.php in the main directory and alter line 9 to have yoru new password
     - ex.  putenv("MYSQL_PASSWORD=$NEWPASSWORD");
 
-- At this point your project should run by running index.php, however, we strongly encourage downloading PhpStorm to run our project.
+- To run the project locally, we highly recommend downloading [PhpStorm]( https://www.jetbrains.com/phpstorm/)
+
+- Open this project within PhpStorm and navigate to public_html/index.php, and run this file locally to launch our project.
     
 ——---------------------------------Run instructions-------——---------------------------------
 You must have cookies enabled, as well as popups.
