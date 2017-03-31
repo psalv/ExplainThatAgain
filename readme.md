@@ -1,7 +1,7 @@
 # Explain That Again
 ### CS2212 Group 14
 
-[<b>Visit our project site.</b>](https://r-meagher.github.io/CS2212Group14/)
+[<b>Visit our project site.</b>](https://r-meagher.github.io/CS2212Group14/) <br>
 [<b>Go to Explain That Again.</b>](https://explainthatagain.herokuapp.com/index.php)
 
 GENERAL USAGE NOTES
