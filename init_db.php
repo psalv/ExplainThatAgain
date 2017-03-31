@@ -4,7 +4,6 @@
 include_once("env.php");
 
 
-
 // Create connection
 //$conn = new mysqli($servername, $username, $password);
 //
