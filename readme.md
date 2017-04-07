@@ -2,7 +2,7 @@
 ### CS2212 Group 14
 
 [<b>Visit our project site.</b>](https://r-meagher.github.io/CS2212Group14/) <br>
-[<b>Go to Explain That Again.</b>](https://explainthatagain.herokuapp.com/index.php)
+[<b>Go to Explain That Again.</b>](https://explainthatagain.herokuapp.com/index.php)<br>
 [<b>Check out our video tutorial.</b>](https://www.youtube.com/watch?v=LqvJvlzAu1o&feature=youtu.be)
 
 GENERAL USAGE NOTES
