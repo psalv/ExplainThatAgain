@@ -1,6 +1,8 @@
 # Explain That Again
 ### CS2212 Group 14
 
+The realtime professor-student feedback tool. <br>Use Explain That Again to enhance your lectures, and facilitate active learning.<br>
+
 [<b>Visit our project site.</b>](https://r-meagher.github.io/CS2212Group14/) <br>
 [<b>Go to Explain That Again.</b>](https://explainthatagain.herokuapp.com/index.php)<br>
 [<b>Check out our video tutorial.</b>](https://www.youtube.com/watch?v=LqvJvlzAu1o&feature=youtu.be)
