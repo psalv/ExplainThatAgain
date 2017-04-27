@@ -10,3 +10,4 @@ $username = $url["user"];
 $password = $url["pass"];
 $dbname = substr($url["path"], 1);
 
+
